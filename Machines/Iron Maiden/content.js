@@ -30,7 +30,9 @@ var F={
  inlane_l:{n:"Left inlane",c:0,s:[C(118,812,18)],a:[118,812],x:"Placed from the red insert."},
  outlanes:{n:"Outlanes",c:0,s:[C(80,850,18),C(518,850,18)],a:[80,850],x:"Placed from the REVIVE inserts."},
  revive_ins:{n:"Advance Revive insert",c:1,s:[C(165,772,18)],a:[165,772]},
- plunger:{n:"Plunger lane",c:0,s:[B([[590,1020],[590,760]],18)],a:[590,900],x:"The skill targets themselves are not visible in the photo."},
+ plunger:{n:"Plunger lane",c:0,s:[B([[590,1020],[590,760]],18)],a:[590,900],x:"Placed from the photo. The lane is partly hidden."},
+ skill_target:{n:"Skill shot target",c:1,s:[C(248,551,15),C(268,578,17)],a:[268,578],x:"Round red target, marked by the X insert in front of it. Across from and just above the upper right flipper. Located by the machine's owner.",v:{premium:{s:[C(246,549,15),C(266,576,17)],a:[266,576]}}},
+ gravestone:{n:"Gravestone target",c:1,s:[C(109,748,20)],a:[109,748],x:"On the far left, just above the left inlane and below a round white lamp. Located by the machine's owner.",v:{premium:{s:[C(103,749,20)],a:[103,749]}}},
  underworld:{n:"Underworld Scoop",c:0,s:[C(356,352,20)],a:[356,352],x:"The rulesheet only says it is under the center ramp. The spot is a guess.",v:{pro:{s:[]}}},
  mummy_ins:{n:"MUMMY inserts",c:1,s:[R(298,410,26,92)],a:[311,456]},
  battle_ins:{n:"Battle insert",c:1,s:[C(332,374,20)],a:[332,374]},
@@ -67,7 +69,7 @@ var SECTIONS=[
  {t:"Modes of play",h:[],b:'<p>Hold both flipper buttons in attract mode for a menu.</p><ul><li><b>Standard:</b> the rules in this guide.</li><li><b>Competition:</b> the same, with randomness removed.</li><li><b>DJ Mixer:</b> a jukebox, not a game mode.</li></ul><p>You can also pick a song at the start of each ball. It only changes the music.</p>'}
 ]},
 {g:"Layout and basics",id:"skill",title:"Skill shots",steps:[
- {t:"Skill Shot",h:["plunger"],b:'<p>Soft plunge into the skill shot target for 1M, one EDDIE letter and 5 more seconds of ball saver.</p>'+UNK("I could not locate this target in the photos.")},
+ {t:"Skill Shot",h:[["plunger",1],["skill_target",2]],b:'<p>Soft plunge into the skill shot target for 1M, one EDDIE letter and 5 more seconds of ball saver.</p>'},
  {t:"Super Skill Shot",h:[["plunger",1],["upper_left",2],["super_target",3]],b:'<p>Hold the left flipper and plunge to the inner orbit. The ball rolls back to the upper flipper. Shoot the Super Jackpot target for 5M, a lit Playfield X and 10 more seconds of ball saver.</p>'},
  {t:"Secret Skill Shots",h:[],b:'<p>The rulesheet says there are at least three, and gives no details.</p>'}
 ]},
@@ -125,7 +127,7 @@ var SECTIONS=[
 {g:"Other scoring",id:"pfx",title:"Playfield Multiplier",steps:[
  {t:"Qualifying",h:["x_targets",["pfx_ins",0,"alt"]],b:'<p>Shoot the flashing X targets to light a return lane for 2x. Complete them again for 3x, and again to add time. Qualified multipliers carry between balls.</p>'},
  {t:"Activating",h:["pfx_lanes",["flippers",0,"alt"]],b:'<p>Roll over the lit return lane. The flippers change which lane is lit. It lasts 20 seconds, and a flashing X adds 5. No timer shows on screen, but the insert flashes faster near the end.</p>'},
- {t:"Gravestone",h:["inlane_l"],b:'<p>Alley pass from the right flipper through the left inlane into the gravestone target. It helps a running mode or multiball, or spots an X when none is running.</p>'+UNK("I could not locate the gravestone target in the photos, so only the inlane is marked.")}
+ {t:"Gravestone",h:[["inlane_l",1],["gravestone",2]],b:'<p>Alley pass from the right flipper through the left inlane into the gravestone target. It helps a running mode or multiball, or spots an X when none is running.</p>'}
 ]},
 {g:"Other scoring",id:"drops-orb",title:"Drop targets and Orb",steps:[
  {t:"Awards",h:["drops",["drop_awards",0,"alt"]],b:'<p>Complete the targets for the flashing award: Bonus X (up to 50x), Light Orb, then Light Locks. A new game starts on Light Orb, or Bonus X on competition settings.</p>'},
