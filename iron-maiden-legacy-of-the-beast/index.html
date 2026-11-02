@@ -278,7 +278,7 @@ var F={
  drop_awards:{n:"Drop target award inserts",c:1,s:[R(344,434,50,76)],a:[368,472]},
  left_ramp:{n:"Left ramp",c:0,s:[B([[256,390],[248,310],[238,240],[215,178]],26)],a:[256,384],x:"My best reading, from the arrow left of the captive ball and the ramp entrance above it. Not certain."},
  right_ramp:{n:"Right ramp",c:0,s:[B([[435,558],[452,510],[500,400],[540,285],[545,195],[495,145]],30)],a:[435,552],x:"Placed from the arrow beside the Power Ramps insert, then along the metal ramp."},
- left_orbit:{n:"Left orbit",c:0,s:[B([[154,513],[125,440],[95,320],[76,205],[110,115],[200,100]],22)],a:[154,507],x:"Placed from the arrow between the two domes. The path behind the metal is a guess."},
+ left_orbit:{n:"Left orbit",c:0,s:[B([[200,622],[176,568],[154,513],[125,440],[95,320],[76,205],[110,115],[200,100]],22)],a:[190,600],x:"The entrance is just left of the skill shot target, per the machine's owner. It then follows the arrow between the two domes. The path behind the metal is a guess."},
  right_orbit:{n:"Right orbit",c:0,s:[B([[512,526],[545,450],[565,350],[575,235],[560,150]],22)],a:[512,520],x:"Placed from the arrow beside the Power Orbits insert. The path is a guess."},
  big_loop:{n:"Big loop",c:0,s:[B([[218,425],[182,400],[168,340],[178,285],[150,205],[188,150],[238,190]],20)],a:[182,400],x:"Placed along the loop value inserts. Where it runs past them is a guess."},
  mini_loop:{n:"Mini loop",c:0,s:[B([[222,420],[205,365],[205,305],[230,262]],18)],a:[205,340],x:"The rulesheet does not say where it runs. Placed inside the big loop, as a guess."},
@@ -292,13 +292,12 @@ var F={
  orb:{n:"Orb",c:0,s:[C(152,640,24)],a:[152,640],x:"Placed at the Clairvoyant art, which the apron card links to the Orb. The exact target spot is a guess."},
  super_target:{n:"Super Jackpot target",c:0,s:[C(424,340,20)],a:[424,340],x:"Placed beside the insert reading SUPER. The target itself is hidden in the photo."},
  x_targets:{n:"X targets",c:0,s:[C(99,580,15),C(268,578,15),C(418,373,15),C(456,307,15)],a:[268,578],x:"Marked at the printed X inserts, which I take to sit beside the targets. There may be others."},
- eb_target:{n:"Extra Ball target",c:0,s:[C(268,578,16),R(240,568,20,50)],a:[250,593],x:"Placed at the Extra Ball insert and the X beside it."},
  pfx_lanes:{n:"Return lanes",c:0,s:[C(118,812,18),C(477,809,18)],a:[118,812],x:"The lit lanes that activate Playfield X, placed from the red inserts."},
  inlane_l:{n:"Left inlane",c:0,s:[C(118,812,18)],a:[118,812],x:"Placed from the red insert."},
  outlanes:{n:"Outlanes",c:0,s:[C(80,850,18),C(518,850,18)],a:[80,850],x:"Placed from the REVIVE inserts."},
  revive_ins:{n:"Advance Revive insert",c:1,s:[C(165,772,18)],a:[165,772]},
  plunger:{n:"Plunger lane",c:0,s:[B([[590,1020],[590,760]],18)],a:[590,900],x:"Placed from the photo. The lane is partly hidden."},
- skill_target:{n:"Skill shot target",c:1,s:[C(248,551,15),C(268,578,17)],a:[268,578],x:"Round red target, marked by the X insert in front of it. Across from and just above the upper right flipper. Located by the machine's owner.",v:{premium:{s:[C(246,549,15),C(266,576,17)],a:[266,576]}}},
+ skill_target:{n:"Skill shot and Extra Ball target",c:1,s:[C(248,551,15),C(268,578,17)],a:[268,578],x:"Round red target, marked by the X insert in front of it, beside the Extra Ball and Skill Shot inserts. Across from and just above the upper right flipper, just right of the left orbit. Located by the machine's owner.",v:{premium:{s:[C(246,549,15),C(266,576,17)],a:[266,576]}}},
  gravestone:{n:"Gravestone target",c:1,s:[C(109,748,20)],a:[109,748],x:"On the far left, just above the left inlane and below a round white lamp. Located by the machine's owner.",v:{premium:{s:[C(103,749,20)],a:[103,749]}}},
  underworld:{n:"Underworld Scoop",c:0,s:[C(356,352,20)],a:[356,352],x:"The rulesheet only says it is under the center ramp. The spot is a guess.",v:{pro:{s:[]}}},
  mummy_ins:{n:"MUMMY inserts",c:1,s:[R(298,410,26,92)],a:[311,456]},
@@ -409,11 +408,11 @@ var SECTIONS=[
 {g:"Other scoring",id:"combos",title:"Combos and Deathblows",steps:[
  {t:"Combos",h:COMBO.concat([["upper_right",0,"alt"]]),b:'<p>Make different shots in a row. There is no time limit. Combos start at 500K for 2-way and rise steeply. A 6-Way lights a Tomb Treasure. A lamp by the upper right flipper strobes while one is running.</p>'},
  {t:"What ends one",h:[],b:'<ul><li>Scoring a Deathblow</li><li>Repeating a shot in the combo</li><li>Any standup or drop target</li><li>2 pop bumper hits</li></ul>'},
- {t:"Deathblows",h:["eb_target","captive","bullseye","super_target","left_spinner"],b:'<p>End the combo on one of these to score by its length. The Extra Ball target, captive ball and bullseye score a normal Deathblow.</p><p><b>Super Deathblow, worth 3x:</b> the bullseye\'s center, the Super Jackpot target or the REVIVE spinner.</p><p>The rulesheet gives 900M as the maximum.</p>'}
+ {t:"Deathblows",h:["skill_target","captive","bullseye","super_target","left_spinner"],b:'<p>End the combo on one of these to score by its length. The Extra Ball target, captive ball and bullseye score a normal Deathblow.</p><p><b>Super Deathblow, worth 3x:</b> the bullseye\'s center, the Super Jackpot target or the REVIVE spinner.</p><p>The rulesheet gives 900M as the maximum.</p>'}
 ]},
 {g:"Other scoring",id:"saves",title:"Revive, Extra Ball, bonus",steps:[
  {t:"Revive",h:[["left_spinner",1],["outlanes",2],["revive_ins",0,"alt"]],b:'<p>The left spinner spells REVIVE and lights outlanes for a save. The first spelling lights both, and each later one lights one. On factory settings each lit outlane is its own save. Lit Revives carry between balls. With both lit, spinner scoring goes up.</p><p>The rulesheet advises spelling it during a multiball or a long ball saver.</p>'},
- {t:"Extra Ball",h:["eb_target"],b:'<p>Lit by 3 Power Features, the 5th Tomb Treasure or 30 loops.</p>'},
+ {t:"Extra Ball",h:["skill_target"],b:'<p>Lit by 3 Power Features, the 5th Tomb Treasure or 30 loops. Collect it at the same target as the skill shot.</p>'},
  {t:"End-of-ball bonus",h:[],b:'<p>Multiplied by Bonus X.</p><table><tr><th>Item</th><th>Each</th></tr><tr><td>Switches</td><td>3,500</td></tr><tr><td>MUMMY letters</td><td>25,000</td></tr><tr><td>Deathblows</td><td>45,000</td></tr><tr><td>Loops</td><td>50,000</td></tr><tr><td>Power Features</td><td>75,000</td></tr><tr><td>Soul Shards</td><td>250,000</td></tr><tr><td>Eddie cards (level 2 counts twice)</td><td>250,000</td></tr></table>'}
 ]},
 {g:"Other scoring",id:"tomb",title:"Tomb Treasures",steps:[
