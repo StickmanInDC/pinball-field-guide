@@ -16,6 +16,7 @@ address that name a section still redirect to the Star Wars guide.
 - *Iron Maiden: Legacy of the Beast*: `iron-maiden-legacy-of-the-beast/index.html` (Pro / Premium / LE switch)
 - *James Bond 007*: `james-bond-007/index.html` (Pro / Premium / LE switch)
 - *Jurassic Park*: `jurassic-park/index.html` (Pro / Premium / LE switch)
+- *Pokémon*: `pokemon/index.html` (Pro / Premium / LE switch)
 - *Star Wars: Fall of the Empire*: `star-wars-fall-of-the-empire/index.html`
 - *Transformers: More Than Meets the Eye*: `transformers-more-than-meets-the-eye/index.html` (Pro / Premium / LE switch)
 
@@ -73,6 +74,11 @@ Each guide is a single static page, so no build tools are needed to host it.
 - Rules come from the supplied rulesheet (code 1.10). It treats Premium and LE as one game, and Stern has no LE page, so they share rules and the Premium photo.
 - The photos are Stern's 2500x4233 top views, aligned on the printed art, cropped to 1710x2995 and scaled to 1280x2240. Coordinates use a 640x1120 grid.
 - Printed inserts, the T-Rex, truck, right ramp and Raptor Pen are clear, but shot paths are estimated, and the rulesheet has no layout text. The match of arrows to shots and CHAOS letters is a reading of the photo. The upper loop and side ramp may be swapped. The spinner, helipad ramp, Control Room lane, right orbit, Light Escape standup, Supply Drop target, Light 2x Scoring standup, Set Trap targets and purple standups are the least certain. The rollover above the pops is not marked. Verify them on a real machine.
+
+## Accuracy (Pokémon)
+- Rules come from the supplied rulesheet (code 0.87). It treats Premium and LE as one game, so they share rules, but each has its own photo.
+- The photos are Stern's 1319x2560 top views, aligned on the printed art and cropped to 1002x1901. Coordinates use a 640x1214 grid.
+- Printed inserts, the Poké Ball, Meowth balloon, Pikachu, town scoop and Premium whirlpool are clear, but shot paths are estimated, and the rulesheet has no layout text. The bumpers, spinner, top lanes, berry targets, town targets, training targets, BATTLE targets, Psyduck sneak-in and captive ball are the least certain. The Center Playfield X Target is not marked. The Pokémon Master step comes from Stern's apron card, not the rulesheet. Verify them on a real machine.
 
 ## Add a machine
 Create `Machines/<name>/` with:
