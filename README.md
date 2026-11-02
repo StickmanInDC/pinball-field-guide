@@ -18,6 +18,7 @@ address that name a section still redirect to the Star Wars guide.
 - *Jurassic Park*: `jurassic-park/index.html` (Pro / Premium / LE switch)
 - *Pokémon*: `pokemon/index.html` (Pro / Premium / LE switch)
 - *Rush*: `rush/index.html` (Pro / Premium / LE switch)
+- *Star Trek*: `star-trek/index.html` (Pro / Premium / LE switch)
 - *Star Wars: Fall of the Empire*: `star-wars-fall-of-the-empire/index.html`
 - *Transformers: More Than Meets the Eye*: `transformers-more-than-meets-the-eye/index.html` (Pro / Premium / LE switch)
 
@@ -85,6 +86,11 @@ Each guide is a single static page, so no build tools are needed to host it.
 - Rules come from the supplied rulesheet (code 1.14). It treats Premium and LE as one game, so they share rules, but each has its own photo.
 - The photos are Stern's 1474x2500, 1494x2500 and 1475x2500 top views, aligned on the printed art and cropped to 990x1880. Coordinates use a 640x1215 grid.
 - Printed inserts, the Time Machine and the right ramp are clear. The 1-2-3 inserts on each lane fit the rulesheet's combo table, but shot paths are estimated, and the rulesheet has no layout text. The side ramp and side loop may be swapped. The scoops, dead end, spinner, pop bumpers, instrument standup, Lite and Lock standups and under-flipper shot are the least certain. The RUSH standups, Premium and LE captive ball and ramp diverter are not marked. Verify them on a real machine.
+
+## Accuracy (Star Trek)
+- Rules come from the supplied rulesheet (code 1.62). It does not separate the models, so they share rules. Stern publishes no full LE photo, so LE shows the Premium one. The Five Year Mission text stops mid-sentence.
+- The photos are Stern's 1036x2145 Pro and 1650x3000 Premium images. The Premium was aligned to the Pro's printed art by a perspective fit, about 1 pixel error on the art, and both were cropped to 960x1881. Coordinates use a 640x1254 grid. Raised toys do not line up exactly.
+- Printed inserts, the target groups named by the apron card, the spinner, warp ramp and right ramp are clear, but shot paths are estimated, and the rulesheet has no layout text. The shot order comes from its Klingon Battle II pattern. The left ramp, Vengeance shot and drop target, Black Hole target, Red Matter targets, Away Team rollover, both orbit paths and plunger lane are the least certain. The Vengeance standups, magnet, pop bumpers and slingshots are not marked. Lines from the apron card are labelled. Verify them on a real machine.
 
 ## Add a machine
 Create `Machines/<name>/` with:
