@@ -6,7 +6,8 @@ main page (index.html) from src/index.template.html.
   python tools/build.py "Fallout Pro"   -> one machine (the main page still lists them all)
 
 Each machine folder holds machine.json (listing details, names, photo size, output path), home.html (intro and
-trust notes), content.js (features F and SECTIONS) and playfield.jpg. The template is an
+trust notes), content.js (features F and SECTIONS) and playfield.jpg. A machine with an "editions" list
+gets a version switch and one photo per distinct "image" in that list instead. The template is an
 Artifact-style fragment (no doctype/head/body), so this wraps it in a standard HTML skeleton.
 GitHub Pages serves a full browser, so the no-script fallback at <!--STATIC--> is left empty.
 """
@@ -26,6 +27,13 @@ head = (
 
 def build(folder):
     cfg = json.loads((folder / "machine.json").read_text(encoding="utf-8"))
+    editions = cfg.get("editions", [])
+    files = list(dict.fromkeys(e["image"] for e in editions)) or ["playfield.jpg"]
+    photos = [base64.b64encode((folder / f).read_bytes()).decode() for f in files]
+    client_editions = [
+        {"id": e["id"], "label": e["label"], "like": e.get("like", e["id"]), "img": files.index(e["image"])}
+        for e in editions
+    ]
     body = template
     for token, value in [
         ("__TITLE__", cfg["title"]), ("__KICKER__", cfg["kicker"]), ("__HEADING__", cfg["heading"]),
@@ -33,7 +41,9 @@ def build(folder):
         ("__LABEL_SPLIT__", str(cfg["label_split"])),
         ("__HOME__", (folder / "home.html").read_text(encoding="utf-8")),
         ("__CONTENT__", (folder / "content.js").read_text(encoding="utf-8")),
-        ("__IMG__", base64.b64encode((folder / "playfield.jpg").read_bytes()).decode()),
+        ("__IMG__", photos[0]),
+        ("__EDITIONS__", json.dumps(client_editions)),
+        ("__EDITION_IMGS__", json.dumps(photos if editions else [])),
         ("<!--STATIC-->", ""),
     ]:
         body = body.replace(token, value)

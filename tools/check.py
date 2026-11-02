@@ -24,7 +24,7 @@ with sync_playwright() as p:
         print(" ", name, "scrollWidth", pg.evaluate("document.documentElement.scrollWidth"), "errors", errs)
         pg.close()
     for cfgfile in sorted((root / "Machines").glob("*/machine.json")):
-        output = json.loads(cfgfile.read_text(encoding="utf-8"))["output"]
+        cfg = json.loads(cfgfile.read_text(encoding="utf-8")); output = cfg["output"]
         url = base + output.replace("index.html", "") if base else (root / output).as_uri()
         out = root / "tools" / "shots" / cfgfile.parent.name.replace(" ", "-"); out.mkdir(parents=True, exist_ok=True)
         print(cfgfile.parent.name, url)
@@ -36,4 +36,14 @@ with sync_playwright() as p:
             pg.screenshot(path=str(out / f"{name}.png"))
             print(" ", name, "scrollWidth", pg.evaluate("document.documentElement.scrollWidth"), "errors", errs)
             pg.close()
+        for ed in cfg.get("editions", []):
+            for name, w, h, hash_ in cases:
+                errs = []
+                pg = b.new_page(viewport={"width": w, "height": h}, color_scheme="dark")
+                pg.on("pageerror", lambda e: errs.append(str(e)))
+                pg.goto(url + "?edition=" + ed["id"] + hash_); pg.wait_for_timeout(700)
+                pg.screenshot(path=str(out / f"{ed['id']}-{name}.png"))
+                on = pg.evaluate("document.querySelector('#edsw [aria-pressed=true]').dataset.id")
+                print(" ", ed["id"], name, "selected", on, "scrollWidth", pg.evaluate("document.documentElement.scrollWidth"), "errors", errs)
+                pg.close()
     b.close()

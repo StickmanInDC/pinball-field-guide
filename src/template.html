@@ -109,6 +109,10 @@ a.back{display:inline-block;text-decoration:none}
 .tgl[aria-pressed="true"]{border-color:var(--accent-text);color:var(--accent-text)}
 .tgl .sw{width:8px;height:8px;border-radius:50%;background:var(--line)}
 .tgl[aria-pressed="true"] .sw{background:var(--accent)}
+.edsw{display:flex;gap:2px;margin:0 0 12px;padding:3px;background:var(--panel);border:1px solid var(--line);border-radius:8px}
+.edsw button{flex:1;min-height:34px;padding:4px 8px;border:0;border-radius:6px;background:none;font-weight:600;color:var(--muted)}
+.edsw button:hover{color:var(--fg)}
+.edsw button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink)}
 .tools .hint{margin-left:auto;color:var(--muted);font-size:12.5px}
 .stagewrap{flex:1;min-height:0;display:flex;justify-content:center;gap:20px}
 .lgslot{display:none;flex:0 1 280px;min-width:200px;overflow:auto;scrollbar-width:thin;align-self:flex-start;max-height:100%}
@@ -185,6 +189,7 @@ html.js #static{display:none}
       <div class="kicker">__KICKER__</div>
       <h1>__HEADING__</h1>
     </header>
+    <div class="edsw" id="edsw" role="group" aria-label="Machine version" hidden></div>
     <div class="sidebody" id="sidebody">
       <div id="home">
         __HOME__<nav id="nav" aria-label="Sections"></nav>
@@ -222,7 +227,7 @@ html.js #static{display:none}
               <g id="cuts" fill="#000" stroke="#000" stroke-linecap="round" stroke-linejoin="round" filter="url(#soft)"></g>
             </mask>
           </defs>
-          <image href="data:image/jpeg;base64,__IMG__" x="0" y="0" width="__W__" height="__H__"/>
+          <image id="pfimg" href="data:image/jpeg;base64,__IMG__" x="0" y="0" width="__W__" height="__H__"/>
           <rect id="dim" x="0" y="0" width="__W__" height="__H__" fill="#030710" fill-opacity=".66" mask="url(#cutmask)" style="display:none"/>
           <g id="outl"></g>
           <g id="lbls"></g>
@@ -244,14 +249,37 @@ var $=function(s){return document.querySelector(s)};
 var NS="http://www.w3.org/2000/svg";
 var VBW=__W__,VBH=__H__,ASP=VBW/VBH;
 function se(tag,attrs,parent){var e=document.createElementNS(NS,tag);for(var k in attrs)e.setAttribute(k,attrs[k]);if(parent)parent.appendChild(e);return e}
+/* Machine versions: machine.json "editions" fills EDITIONS. "like" names the version an edition shares rules with. Empty means no switch. */
+var EDITIONS=__EDITIONS__,IMGS=__EDITION_IMGS__,ED=null;
+function edMatch(tag){return !ED||!tag||tag.split(" ").some(function(t){return t===ED.id||t===ED.like})}
+function edFilter(root){Array.prototype.forEach.call(root.querySelectorAll("[data-ed]"),function(e){e.hidden=!edMatch(e.getAttribute("data-ed"))})}
 var byId={},order=[];
-SECTIONS.forEach(function(s){byId[s.id]=s;order.push(s.id)});
+function buildIndex(){
+  byId={};order=[];
+  SECTIONS.forEach(function(s){
+    if(!edMatch(s.ed))return;
+    var steps=s.steps.filter(function(st){return edMatch(st.ed)});
+    if(!steps.length)return;
+    byId[s.id]={id:s.id,g:s.g,title:s.title,sub:s.sub,steps:steps};order.push(s.id);
+  });
+}
+/* A feature's "v" holds per-version overrides of its fields, keyed by edition id or "like". */
+function applyFeatures(){
+  Object.keys(F).forEach(function(k){
+    var f=F[k];if(!f.v)return;
+    if(!f.base)f.base={n:f.n,c:f.c,s:f.s,a:f.a,x:f.x};
+    var o=(ED&&(f.v[ED.id]||f.v[ED.like]))||{};
+    ["n","c","s","a","x"].forEach(function(p){f[p]=o[p]!==undefined?o[p]:f.base[p]});
+  });
+}
+buildIndex();
 var S={sec:null,step:0,zoom:false,labels:true};try{if(window.matchMedia("(max-width:760px)").matches)S.zoom=true}catch(e){}
 
 /* nav */
-(function buildNav(){
-  var nav=$("#nav"),cur=null,list=null;
-  SECTIONS.forEach(function(s){
+function buildNav(){
+  var nav=$("#nav"),cur=null,list=null;nav.textContent="";
+  order.forEach(function(id){
+    var s=byId[id];
     if(s.g!==cur){cur=s.g;var gd=document.createElement("div");gd.className="group";var h=document.createElement("h2");h.textContent=cur;gd.appendChild(h);list=document.createElement("div");list.className="list";gd.appendChild(list);nav.appendChild(gd)}
     var b=document.createElement("button");b.type="button";b.className="item"+(s.sub?" sub":"");
     var n=document.createElement("span");n.className="nm";n.textContent=s.title;
@@ -260,7 +288,8 @@ var S={sec:null,step:0,zoom:false,labels:true};try{if(window.matchMedia("(max-wi
     b.addEventListener("click",function(){go(s.id,0)});
     list.appendChild(b);
   });
-})();
+}
+buildNav();
 
 function norm(x){
   if(typeof x==="string")return{f:x,n:0,k:""};
@@ -269,7 +298,7 @@ function norm(x){
 function merge(list){
   var map={},out=[];
   list.map(norm).forEach(function(i){
-    if(!F[i.f])return;
+    if(!F[i.f]||!F[i.f].s.length)return;
     var m=map[i.f];
     if(!m){m=map[i.f]={f:i.f,ns:[],k:i.k};out.push(m)}
     if(i.n>0&&m.ns.indexOf(i.n)<0)m.ns.push(i.n);
@@ -399,7 +428,7 @@ function renderDrill(sec){
   $("#dcount").textContent="Step "+(S.step+1)+" of "+sec.steps.length;
   var card=$("#card");card.innerHTML="";
   var h=document.createElement("h3");h.textContent=st.t;card.appendChild(h);
-  var body=document.createElement("div");body.innerHTML=st.b;card.appendChild(body);
+  var body=document.createElement("div");body.innerHTML=st.b;edFilter(body);card.appendChild(body);
   var prev=$("#prev"),next=$("#next");
   prev.disabled=S.step===0;
   var last=S.step===sec.steps.length-1,idx=order.indexOf(sec.id),nx=order[idx+1];
@@ -472,6 +501,37 @@ document.addEventListener("keydown",function(e){
   else if(e.key==="ArrowLeft"){move(-1);e.preventDefault()}
   else if(e.key==="Escape"){home()}
 });
+function setEdition(id,keepUrl){
+  var e=EDITIONS.filter(function(x){return x.id===id})[0];if(!e)return;
+  var title=S.sec&&byId[S.sec]?byId[S.sec].steps[S.step].t:null;
+  ED=e;buildIndex();applyFeatures();buildNav();edFilter($("#home"));
+  $("#pfimg").setAttribute("href","data:image/jpeg;base64,"+IMGS[e.img]);
+  Array.prototype.forEach.call($("#edsw").children,function(b){b.setAttribute("aria-pressed",b.getAttribute("data-id")===id?"true":"false")});
+  try{localStorage.setItem("edition:"+location.pathname,id)}catch(err){}
+  if(!keepUrl){try{history.replaceState(null,"","?edition="+id+location.hash)}catch(err){}}
+  /* Stay on the same step where this version has it, else the section start, else the section list. */
+  if(S.sec){
+    var sec=byId[S.sec];
+    if(!sec){home();return}
+    var at=-1;sec.steps.forEach(function(st,i){if(at<0&&st.t===title)at=i});
+    go(S.sec,at<0?0:at);
+  }else render();
+}
+if(EDITIONS.length){
+  var sw=$("#edsw");sw.hidden=false;
+  EDITIONS.forEach(function(e){
+    var b=document.createElement("button");b.type="button";b.textContent=e.label;b.setAttribute("data-id",e.id);
+    b.addEventListener("click",function(){setEdition(e.id)});
+    sw.appendChild(b);
+  });
+  var want=null;
+  try{want=new URLSearchParams(location.search).get("edition")}catch(err){}
+  var fromUrl=EDITIONS.some(function(e){return e.id===want});
+  if(!fromUrl){try{want=localStorage.getItem("edition:"+location.pathname)}catch(err){}}
+  if(!EDITIONS.some(function(e){return e.id===want}))want=EDITIONS[0].id;
+  fromHash();
+  setEdition(want,fromUrl);
+}
 window.addEventListener("hashchange",fromHash);
 fromHash();
 if(!S.sec)render();
