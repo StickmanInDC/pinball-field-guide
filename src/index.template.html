@@ -1,0 +1,91 @@
+<title>Pinball Field Guides</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@600;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<script>
+/* Links from when the root address was the Star Wars guide carry a section in the hash. */
+if(location.hash)location.replace("star-wars-fall-of-the-empire/"+location.hash);
+</script>
+<style>
+:root{
+  --bg:#0c1117; --panel:#121920; --panel2:#18212b; --line:#26323f;
+  --fg:#e7edf3; --muted:#93a2b3; --accent-text:#ffc233;
+  --f-display:'Barlow Condensed','Arial Narrow',Arial,sans-serif;
+  --f-body:'Barlow',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --f-mono:'IBM Plex Mono',ui-monospace,Consolas,monospace;
+  color-scheme:dark;
+}
+@media (prefers-color-scheme:light){
+  :root:not([data-theme="dark"]){
+    --bg:#e8ecf0; --panel:#f6f8fa; --panel2:#ffffff; --line:#c9d3dd;
+    --fg:#121c27; --muted:#55657a; --accent-text:#8a5700; color-scheme:light;
+  }
+}
+:root[data-theme="light"]{
+  --bg:#e8ecf0; --panel:#f6f8fa; --panel2:#ffffff; --line:#c9d3dd;
+  --fg:#121c27; --muted:#55657a; --accent-text:#8a5700; color-scheme:light;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font:15px/1.5 var(--f-body);
+  padding:0 max(16px,env(safe-area-inset-right,0px)) 32px max(16px,env(safe-area-inset-left,0px))}
+main{max-width:760px;margin:0 auto;padding-top:14px}
+.brand{padding-bottom:12px;border-bottom:1px solid var(--line);margin-bottom:16px}
+.kicker,label,th,.count{font:500 11px var(--f-mono);letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+h1{margin:2px 0 0;font:700 34px/1 var(--f-display);letter-spacing:.01em;text-transform:uppercase;text-wrap:balance}
+.intro{color:var(--muted);margin:0 0 16px}
+.filters{display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end;margin-bottom:14px}
+.filters div{display:flex;flex-direction:column;gap:4px;flex:1 1 150px}
+select{font:inherit;color:var(--fg);background:var(--panel2);border:1px solid var(--line);border-radius:8px;padding:9px 10px;min-height:44px;width:100%}
+button{font:inherit;font-weight:600;color:var(--accent-text);background:none;border:1px solid var(--line);border-radius:8px;padding:9px 14px;min-height:44px;cursor:pointer}
+select:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid var(--accent-text);outline-offset:2px}
+.count{margin:0 0 6px}
+table{width:100%;border-collapse:separate;border-spacing:0 4px}
+th{text-align:left;padding:2px 12px}
+td{background:var(--panel);border-block:1px solid var(--line);padding:11px 12px;vertical-align:baseline}
+td:first-child{border-left:1px solid var(--line);border-radius:8px 0 0 8px}
+td:last-child{border-right:1px solid var(--line);border-radius:0 8px 8px 0}
+tbody tr{position:relative}
+tbody tr:hover td{border-color:var(--accent-text)}
+td a{color:inherit;font-weight:600;text-decoration:none}
+td a::after{content:"";position:absolute;inset:0}
+.yr{font:500 13px var(--f-mono);white-space:nowrap}
+.mf{color:var(--muted)}
+.none{color:var(--muted);padding:12px 0}
+[hidden]{display:none!important}
+</style>
+<main>
+  <header class="brand">
+    <div class="kicker">Rules and shots, step by step</div>
+    <h1>Pinball Field Guides</h1>
+  </header>
+  <p class="intro">Pick a machine to open its guide.</p>
+  <form class="filters" id="filters" aria-label="Filter guides">
+    <div><label for="fm">Manufacturer</label><select id="fm"><option value="">All manufacturers</option>__MANUFACTURERS__</select></div>
+    <div><label for="fy">Year</label><select id="fy"><option value="">All years</option>__YEARS__</select></div>
+    <button type="reset">Clear</button>
+  </form>
+  <p class="count" id="count" aria-live="polite"></p>
+  <table>
+    <thead><tr><th scope="col">Machine</th><th scope="col">Manufacturer</th><th scope="col">Year</th></tr></thead>
+    <tbody id="rows">
+__ROWS__
+    </tbody>
+  </table>
+  <p class="none" id="none" hidden>No guides match those filters.</p>
+</main>
+<script>
+(function(){
+  var fm=document.getElementById("fm"),fy=document.getElementById("fy"),rows=[].slice.call(document.querySelectorAll("#rows tr"));
+  function apply(){
+    var shown=0;
+    rows.forEach(function(r){
+      var ok=(!fm.value||r.getAttribute("data-m")===fm.value)&&(!fy.value||r.getAttribute("data-y")===fy.value);
+      r.hidden=!ok;if(ok)shown++;
+    });
+    document.getElementById("count").textContent=shown+" of "+rows.length+" guides";
+    document.getElementById("none").hidden=shown>0;
+    document.querySelector("table").hidden=shown===0;
+  }
+  fm.addEventListener("change",apply);fy.addEventListener("change",apply);
+  document.getElementById("filters").addEventListener("reset",function(){setTimeout(apply,0)});
+  apply();
+})();
+</script>

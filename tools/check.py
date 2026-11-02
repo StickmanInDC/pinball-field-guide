@@ -12,6 +12,17 @@ cases = [("phone-home", 390, 844, ""), ("phone-step", 390, 844, "#layout-s8"),
          ("tablet-step", 820, 1180, "#layout-s8"), ("laptop-step", 1440, 900, "#layout-s8")]
 with sync_playwright() as p:
     b = p.chromium.launch()
+    url = base or (root / "index.html").as_uri()
+    out = root / "tools" / "shots" / "main-page"; out.mkdir(parents=True, exist_ok=True)
+    print("Main page", url)
+    for name, w, h in [("phone", 390, 844), ("tablet", 820, 1180), ("laptop", 1440, 900)]:
+        errs = []
+        pg = b.new_page(viewport={"width": w, "height": h}, color_scheme="dark")
+        pg.on("pageerror", lambda e: errs.append(str(e)))
+        pg.goto(url); pg.wait_for_timeout(500)
+        pg.screenshot(path=str(out / f"{name}.png"))
+        print(" ", name, "scrollWidth", pg.evaluate("document.documentElement.scrollWidth"), "errors", errs)
+        pg.close()
     for cfgfile in sorted((root / "Machines").glob("*/machine.json")):
         output = json.loads(cfgfile.read_text(encoding="utf-8"))["output"]
         url = base + output.replace("index.html", "") if base else (root / output).as_uri()

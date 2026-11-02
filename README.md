@@ -4,11 +4,14 @@ Interactive, step-by-step guides to Stern pinball machines. Rulesheet sections o
 playfield photo highlights the shots for the current step. Works on phones, tablets and desktop.
 Use Back/Next or the arrow keys; Esc returns to the list.
 
-- *Star Wars: Fall of the Empire*: `star-wars-fall-of-the-empire/index.html`
+The main page, `index.html`, lists every machine alphabetically, with manufacturer and year
+filters. `tools/build.py` generates it from the `machine.json` files. Old links to the root
+address that name a section still redirect to the Star Wars guide.
+
 - *Fallout Pro*: `fallout-pro/index.html`
+- *Star Wars: Fall of the Empire*: `star-wars-fall-of-the-empire/index.html`
 
 Each guide is a single static page, so no build tools are needed to host it.
-The root `index.html` is a hand-written redirect that keeps old Star Wars links working.
 
 ## Accuracy (Star Wars)
 - Rules come from the Pinball Rule Sheets wiki (code 0.97). Its Layout and Jedi Master sections are blank.
@@ -26,7 +29,7 @@ The root `index.html` is a hand-written redirect that keeps old Star Wars links 
 
 ## Add a machine
 Create `Machines/<name>/` with:
-- `machine.json`: names, photo width and height, `label_split` (half the width), and `output` path
+- `machine.json`: listing `name`, `manufacturer` and `year`, page names, photo width and height, `label_split` (half the width), and `output` path
 - `playfield.jpg`: the cropped photo, whose pixel size matches the coordinates you use
 - `home.html`: intro text and trust notes
 - `content.js`: features `F` and steps `SECTIONS`

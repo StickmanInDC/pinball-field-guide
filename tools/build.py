@@ -1,15 +1,16 @@
 #!/usr/bin/env python3
-"""Build every field guide from src/template.html and the folders under Machines/.
+"""Build every field guide from src/template.html and the folders under Machines/, then the
+main page (index.html) from src/index.template.html.
 
   python tools/build.py                 -> all machines
-  python tools/build.py "Fallout Pro"   -> one machine
+  python tools/build.py "Fallout Pro"   -> one machine (the main page still lists them all)
 
-Each machine folder holds machine.json (names, photo size, output path), home.html (intro and
+Each machine folder holds machine.json (listing details, names, photo size, output path), home.html (intro and
 trust notes), content.js (features F and SECTIONS) and playfield.jpg. The template is an
 Artifact-style fragment (no doctype/head/body), so this wraps it in a standard HTML skeleton.
 GitHub Pages serves a full browser, so the no-script fallback at <!--STATIC--> is left empty.
 """
-import base64, json, pathlib, sys
+import base64, html, json, pathlib, sys
 
 root = pathlib.Path(__file__).resolve().parent.parent
 template = (root / "src" / "template.html").read_text(encoding="utf-8")
@@ -41,6 +42,26 @@ def build(folder):
     out.write_text(head + body + "\n</body></html>\n", encoding="utf-8")
     print(f"{folder.name}: wrote {cfg['output']} ({out.stat().st_size/1e6:.2f} MB)")
 
+def build_index():
+    machines = [json.loads(p.read_text(encoding="utf-8")) for p in (root / "Machines").glob("*/machine.json")]
+    machines.sort(key=lambda m: m["name"].casefold())
+    esc = html.escape
+    options = lambda values: "".join(f'<option value="{esc(str(v))}">{esc(str(v))}</option>' for v in values)
+    rows = "\n".join(
+        f'      <tr data-m="{esc(m["manufacturer"])}" data-y="{m["year"]}">'
+        f'<td><a href="{esc(m["output"].removesuffix("index.html"))}">{esc(m["name"])}</a></td>'
+        f'<td class="mf">{esc(m["manufacturer"])}</td><td class="yr">{m["year"]}</td></tr>'
+        for m in machines
+    )
+    body = (root / "src" / "index.template.html").read_text(encoding="utf-8")
+    body = body.replace("__MANUFACTURERS__", options(sorted({m["manufacturer"] for m in machines}, key=str.casefold)))
+    body = body.replace("__YEARS__", options(sorted({m["year"] for m in machines}, reverse=True)))
+    body = body.replace("__ROWS__", rows)
+    out = root / "index.html"
+    out.write_text(head + body + "\n</body></html>\n", encoding="utf-8")
+    print(f"main page: wrote index.html, {len(machines)} machines")
+
 names = sys.argv[1:] or sorted(p.parent.name for p in (root / "Machines").glob("*/machine.json"))
 for name in names:
     build(root / "Machines" / name)
+build_index()
