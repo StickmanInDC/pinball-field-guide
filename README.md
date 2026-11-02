@@ -10,6 +10,7 @@ address that name a section still redirect to the Star Wars guide.
 
 - *Avengers: Infinity Quest*: `avengers-infinity-quest/index.html` (Pro / Premium / LE switch)
 - *Fallout Pro*: `fallout-pro/index.html`
+- *Foo Fighters*: `foo-fighters/index.html` (Pro / Premium / LE switch)
 - *Guardians of the Galaxy*: `guardians-of-the-galaxy/index.html` (Pro / Premium / LE switch)
 - *Iron Maiden: Legacy of the Beast*: `iron-maiden-legacy-of-the-beast/index.html` (Pro / Premium / LE switch)
 - *Star Wars: Fall of the Empire*: `star-wars-fall-of-the-empire/index.html`
@@ -49,6 +50,11 @@ Each guide is a single static page, so no build tools are needed to host it.
 - Rules come from the supplied rulesheet (code 1.10). It treats Premium and LE as one game, and Stern has no LE page, so they share rules and the Premium photo.
 - The photos are Stern's 1387x2500 and 1389x2500 top views, aligned on the printed art and cropped to 1143x1950. Coordinates use a 640x1092 grid.
 - Printed inserts are clear, but most shot paths are estimated, because ramps cover much of the upper playfield. The left ramp, loops, spinners, Orb and Super Jackpot target are the least certain. The owner located the skill shot and gravestone targets. Verify the rest on a real machine.
+
+## Accuracy (Foo Fighters)
+- Rules come from the supplied rulesheet (code 1.04). It treats Premium and LE as one game, and Stern has no LE page, so they share rules and the Premium photo.
+- The photos are Stern's 1547x2500 and 1555x2500 top views, aligned on the printed art, cropped to about 1133x1883 and scaled to 1280x2128. Coordinates use a 640x1064 grid.
+- Printed inserts and most targets are clear, but shot paths are estimated, and the rulesheet has no layout text. The side ramp and side loop could be swapped. The left crossover, right orbit, Rock-O-Meter lane, Lightning target, Bot Award target, fourth bot target and the Premium upper playfield shots are the least certain. Verify them on a real machine.
 
 ## Add a machine
 Create `Machines/<name>/` with:
