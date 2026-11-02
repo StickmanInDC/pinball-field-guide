@@ -14,6 +14,7 @@ address that name a section still redirect to the Star Wars guide.
 - *Godzilla*: `godzilla/index.html` (Pro / Premium / LE switch)
 - *Guardians of the Galaxy*: `guardians-of-the-galaxy/index.html` (Pro / Premium / LE switch)
 - *Iron Maiden: Legacy of the Beast*: `iron-maiden-legacy-of-the-beast/index.html` (Pro / Premium / LE switch)
+- *James Bond 007*: `james-bond-007/index.html` (Pro / Premium / LE switch)
 - *Star Wars: Fall of the Empire*: `star-wars-fall-of-the-empire/index.html`
 - *Transformers: More Than Meets the Eye*: `transformers-more-than-meets-the-eye/index.html` (Pro / Premium / LE switch)
 
@@ -61,6 +62,11 @@ Each guide is a single static page, so no build tools are needed to host it.
 - Rules come from the supplied rulesheet (code 1.16). It treats Premium and LE as one game, and Stern has no LE page, so they share rules and the Premium photo.
 - The photos are Stern's 2500x4233 top views, aligned on the printed art, cropped to 1749x3274 and scaled to 1280x2396. Coordinates use a 640x1198 grid.
 - Printed inserts, the scoop and pop bumper are clear, but shot paths are estimated, and the rulesheet has no layout text. The upper loop, tail whip lane, right spinner (especially on the Premium), left ramp path, Magna-Grab captive ball, powerline targets, Maser Cannon target and Neo Barrier targets are the least certain. The reverse building exit, Mecha side lane and Mecha bottom rollover are not marked. Verify them on a real machine.
+
+## Accuracy (James Bond 007)
+- Rules come from the supplied rulesheet (code 1.01). It treats Premium and LE as one game, and Stern has no LE page, so they share rules and the Premium photo.
+- The photos are Stern's 2500x4233 top views, aligned on the printed art, cropped to 1780x3204 and scaled to 1280x2304. Coordinates use a 640x1152 grid.
+- Printed inserts, the rocket, DB5 and the two mode ramps are clear, but most shot paths are estimated, and the rulesheet has no layout text. The left ramp is the least certain and may be swapped with the rocket lane. The left eject, left orbit, spinner, center lane, bumper lane, Goldfinger target, DB5 eject, SPECTRE targets and the Premium jetpack and lock ring are also worth checking. Verify them on a real machine.
 
 ## Add a machine
 Create `Machines/<name>/` with:

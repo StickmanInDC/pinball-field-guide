@@ -29,3 +29,17 @@ Status: built, live at godzilla/index.html
 - [ ] Rulesheet conflicts, shown in the guide: Rampage Destruction Jackpot milestones (24, 36, 48 vs 28, 44, 60); first conquered city Power-Ups (+2 vs +3); Power-Up bonus (300K vs 200K); loop bonus (100K vs 150K); Mechagodzilla super build (15 vs 20 seconds, I used 20); King of the Monsters at Power-Up #11 (either of two modes vs all three).
 - [ ] LE photo: Stern's LE page returns 404, so the LE reuses the Premium photo. Sources: https://www.sternpinball.com/game/godzilla/pro/ and /premium/
 - [ ] My choices: left out the rulesheet's Game Information credits and story text. I listed the Secret Combos, which the rulesheet hides behind a spoiler tag, and the guide says they are spoilers. Year 2021 comes from the rulesheet's September 2021 release date.
+
+## James Bond 007
+Status: built, live at james-bond-007/index.html
+
+- [ ] Left ramp: I could not see where it starts. I marked the arrow left of the Bond Women inserts, with the rocket lane going up through the green inserts. These two may be swapped. Check on a machine first.
+- [ ] Verify estimated shots on a machine: left orbit, left eject (no scoop hole visible; I used the arrow by High Stakes and the diver panel), center lane, upper loop, right orbit path, bumper lane, DB5 eject, plunger lane, outlanes.
+- [ ] Verify guessed targets: spinner (diamond art plate), drop targets (marked along the sign), Dragon Tank target (small target with explosion art), Goldfinger target (dark gold object behind the amber arrow), pop bumpers (three domes), SPECTRE targets (marked at the lit letters).
+- [ ] Apron conflict: the apron card says shoot the left orbit to start Jetpack features. The rulesheet says left eject. The guide follows the rulesheet and notes it.
+- [ ] My readings of rulesheet names: upper loop = side loop (the apron supports this), center lane = center loop = center orbit, left eject = left scoop, "right eject" in Duel on the Disco Volante = DB5 eject, "two upper flipper shots" = side ramp and upper loop, "the two ramps" in Ahoy, Mr. Bond = side and right ramps.
+- [ ] Rulesheet gaps: no layout text. It never lists the "nine major shots", so those steps mark my ten main shots. It does not list the Laser Ray shot sets or the right side shots in Orient Express.
+- [ ] Rulesheet conflicts, shown or noted: super modes "for the rest of the ball" vs about a minute (shown); "+2 weapons perk" vs +2 smart missiles (noted); Goldfinger target "between the ramps" vs "between the side ramp and right orbit" (I used the second).
+- [ ] Premium: jetpack figure, jetpack track and Bird One lock ring are my reading of the toys. Mark them against a real Premium.
+- [ ] LE photo: Stern's LE page returns 404, so the LE reuses the Premium photo. Sources: https://www.sternpinball.com/game/james-bond-007/pro/ and /premium/
+- [ ] My choices: left out the rulesheet's story text. I listed the final wizard details, which the rulesheet hides behind a spoiler tag, and the guide warns first. Year 2022 comes from the rulesheet's November 2022 release date. The rulesheet's own wording "Pussy Galore" is kept as the character name.

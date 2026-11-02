@@ -1,0 +1,18 @@
+{
+  "name": "James Bond 007",
+  "manufacturer": "Stern",
+  "year": 2022,
+  "code_rev": "1.01",
+  "title": "James Bond 007 Field Guide",
+  "heading": "James Bond 007",
+  "aria": "James Bond 007 playfield with the current step's shots highlighted",
+  "width": 640,
+  "height": 1152,
+  "label_split": 320,
+  "output": "james-bond-007/index.html",
+  "editions": [
+    {"id": "pro", "label": "Pro", "image": "playfield-pro.jpg"},
+    {"id": "premium", "label": "Premium", "image": "playfield-premium.jpg"},
+    {"id": "le", "label": "LE", "like": "premium", "image": "playfield-premium.jpg"}
+  ]
+}
