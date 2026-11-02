@@ -30,7 +30,7 @@ Each guide is a single static page, so no build tools are needed to host it.
 
 ## Accuracy (Avengers)
 - Rules come from the supplied rulesheet (code 1.08). It only separates Pro from Premium/LE, so Premium and LE show the same rules and art.
-- The photos are Stern's 821x1536 images, cropped to the playfield. Coordinates are in the 640x1190 crop.
+- The photos are Stern's 2255x4217 originals, cropped to the playfield and scaled to 1280x2380 for the page. Coordinates use a 640x1190 grid.
 - Most shot paths are estimated from the photos and tagged Estimated. Verify them on a real machine.
 
 ## Add a machine
