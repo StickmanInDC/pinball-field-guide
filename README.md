@@ -21,6 +21,7 @@ address that name a section still redirect to the Star Wars guide.
 - *Star Trek*: `star-trek/index.html` (Pro / Premium / LE switch)
 - *Star Wars (2017)*: `star-wars/index.html` (Pro / Premium / LE switch)
 - *Star Wars: Fall of the Empire*: `star-wars-fall-of-the-empire/index.html`
+- *Teenage Mutant Ninja Turtles*: `teenage-mutant-ninja-turtles/index.html` (Pro / Premium / LE switch)
 - *Transformers: More Than Meets the Eye*: `transformers-more-than-meets-the-eye/index.html` (Pro / Premium / LE switch)
 
 Each guide is a single static page, so no build tools are needed to host it.
@@ -98,6 +99,11 @@ Each guide is a single static page, so no build tools are needed to host it.
 - Rules come from the supplied rulesheet (code 1.31). It treats Premium and LE as one game, so they share rules, but each has its own photo. Its Layout section is blank and its Pict-o-Pops list is unfinished.
 - The photos are Stern's 1467x2500, 1378x2500 and 1426x2500 top views. Premium and LE were aligned to the Pro's printed art by a perspective fit, about 1 pixel error or less, and all were cropped to 1130x1980 of the Pro and scaled to 1280x2242. Coordinates use a 640x1121 grid. Raised toys do not line up.
 - Printed inserts, the planet cards, the FORCE drop targets and the 3-bank are clear. The planet cards fix the left mini-loop, left ramp and right mini-loop, but shot paths are estimated. The left orbit, right ramp, right orbit, right scoop, Jedi Training standups, TIE Fighter target, top lanes, pop bumpers, right outlane and Hyperspace wireform are the least certain. Spinners, slingshots and the outlane gate are not marked. Lines from the apron card are labelled. Verify them on a real machine.
+
+## Accuracy (Teenage Mutant Ninja Turtles)
+- Rules come from the supplied rulesheet (code 1.50, though it also mentions 1.54 and 1.55). It treats Premium and LE as one game, so they share rules, but each has its own photo. Its Layout section is only pictures, Cowabunga Multiball is not described, and it gives two places for starting Final Battle.
+- The photos are Stern's 1476x2500 top views. Premium and LE were aligned to the Pro's printed art by a perspective fit, under 1 pixel error, and all were cropped to 970x1800 of the Pro and scaled to 1280x2376. Coordinates use a 640x1188 grid. Raised toys do not line up.
+- Printed inserts, the turtle arrows, the left ramp, right ramp entrance and Dimension X targets are clear, but shot paths are estimated. The center ramp and Krang Loop may be swapped. The Pizza Parlor path, LAIR Lane, LAIR Target, APRIL Target, 2X Target, orbits, pop bumpers and top lanes are the least certain. The Pizza Targets, spinner and slingshots are not marked. Lines from the apron card are labelled. Verify them on a real machine.
 
 ## Add a machine
 Create `Machines/<name>/` with:
