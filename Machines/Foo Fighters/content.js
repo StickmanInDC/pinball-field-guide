@@ -24,6 +24,7 @@ var F={
  radio:{n:"Sonic Radio targets",c:1,s:[C(155,622,14),C(144,650,14)],a:[155,622],x:"The two round FF targets, on the left side as the rulesheet says, with print beside them mentioning the radio."},
  bots:{n:"Bot standup targets",c:0,s:[C(225,305,12),C(427,328,12),C(490,355,12),C(510,420,12)],a:[427,328],x:"Marked at small targets with spider-bot art. The owner confirmed the one by the upper flipper. The rulesheet says two flank the right ramp."},
  bot_flank:{n:"Bot targets flanking the right ramp",c:0,s:[C(427,328,12),C(490,355,12)],a:[427,328],x:"Marked either side of the right ramp entrance, as the rulesheet describes."},
+ bot_award:{n:"Bot Award target",c:1,s:[B([[484,613],[493,637]],15)],a:[488,625],x:"The yellow target between two screw heads, almost under the wireform, just right of the Bot Award and Extra Ball inserts. Located by the owner."},
  bot_ins:{n:"Bot Award and Extra Ball inserts",c:1,s:[C(393,662,18),C(425,650,18)],a:[410,656]},
  lightning:{n:"Lightning target",c:0,s:[C(565,460,16)],a:[565,460],x:"The rulesheet says it is slightly above the Rock-O-Meter lane entrance. Marked at the panel there, as a guess."},
  lightning_ins:{n:"Lightning bolt inserts",c:1,s:[C(240,552,17),C(475,540,17)],a:[240,552],x:"Printed bolts near the ramp arrows. The rulesheet says these are at the left and right ramps."},
@@ -65,7 +66,7 @@ var SECTIONS=[
  {t:"UFO captive ball",h:["ufo",["ufo_ins",0,"alt"]],b:'<p>Hit it to charge up the action button, which collects a lit shot during van modes.</p>'},
  {t:"Drop targets and MOD-ulator",h:["drops","modulator",["mod_ins",0,"alt"]],b:'<p>Knock down all three drops, then hit the MOD-ulator target behind them to upgrade your van. Hit it early and you build Bonus X instead.</p>'},
  {t:"Sonic Radio targets",h:["radio"],b:'<p>Complete them to light a mystery award on the same targets. They also relight Overdrive.</p>'},
- {t:"Bot targets",h:["bots",["bot_ins",0,"alt"]],b:'<p>Four standups destroy spider-bots. Hit all four to light the Bot Award target on the far right.</p>'+UNK("The Bot Award target is not marked, because its location is not confirmed. The rulesheet only says it is on the far right.")},
+ {t:"Bot targets",h:["bots","bot_award",["bot_ins",0,"alt"]],b:'<p>Four standups destroy spider-bots. Hit all four to light the Bot Award target on the far right.</p>'},
  {t:"Area 51 upper playfield",ed:"premium",h:["up_pf","up_flip","up_spin","up_loop","secret"],b:'<p>Shots to the right ramp divert here. It has targets, a spinner, a loop and the Secret Files target at the back.</p>'},
  {t:"Rock-O-Meter and Lightning",h:["rock_lane",["rock_ins",0,"alt"],"lightning",["battery",0,"alt"]],b:'<p>The Rock-O-Meter builds playfield multipliers. The Lightning target sits slightly above the lane entrance and lights the lightning inserts at the ramps.</p>'},
  {t:"Modes of play",h:[],b:'<p>Hold both flipper buttons in attract mode for a menu.</p><ul><li><b>Standard:</b> the rules in this guide.</li><li><b>Competition:</b> the same, with radio mystery awards in a set order.</li><li><b>The Final Battle Challenge:</b> the wizard mode on its own, with high scores kept across players.</li><li><b>DJ Mixer:</b> a jukebox, not a game mode.</li></ul><p>A Competition Install from the utilities menu also sets Overlord multiball difficulty to medium, so Overlord shots cannot spot targets, and reduces the playfield multiplier and van mode timers.</p><p data-ed="premium">On the Premium and LE it also sets the Overdrive post save compensation ball save to 2 seconds, and turns off Area 51 progress spotting on the ramp.</p>'}
@@ -129,9 +130,9 @@ var SECTIONS=[
 ]},
 /* ====== SIDE MODES ====== */
 {g:"Side modes",id:"bots",title:"Bot Awards",steps:[
- {t:"Destroying bots",h:["bots",["bot_ins",0,"alt"]],b:'<p>Each unlit standup you hit destroys a spider-bot. All four light the Bot Award target. Every award also scores the Bot Bonus, 500K times bots destroyed.</p>'+UNK("The Bot Award target is not marked, because its location is not confirmed. The rulesheet only says it is on the far right.")},
- {t:"The awards",h:[["bot_ins",0,"alt"],["outlane_r",1],["modulator",2],["left_ramp",3],["save_ins",0,"alt"]],b:'<ol><li>Light ball save at the right outlane</li><li>Light MOD-ulator Frenzy at the paddle target</li><li>Light Bot Frenzy at the left ramp</li></ol><p>Then the last three awards loop.</p>'},
- {t:"Bot totals",h:[["bot_ins",0,"alt"]],b:'<p>Extra ball lights at the Bot Award target after 10 and 30 bots. End-of-ball bonus adds 50K per bot this game.</p>'}
+ {t:"Destroying bots",h:["bots","bot_award",["bot_ins",0,"alt"]],b:'<p>Each unlit standup you hit destroys a spider-bot. All four light the Bot Award target. Every award also scores the Bot Bonus, 500K times bots destroyed.</p>'},
+ {t:"The awards",h:["bot_award",["bot_ins",0,"alt"],["outlane_r",1],["modulator",2],["left_ramp",3],["save_ins",0,"alt"]],b:'<ol><li>Light ball save at the right outlane</li><li>Light MOD-ulator Frenzy at the paddle target</li><li>Light Bot Frenzy at the left ramp</li></ol><p>Then the last three awards loop.</p>'},
+ {t:"Bot totals",h:["bot_award",["bot_ins",0,"alt"]],b:'<p>Extra ball lights at the Bot Award target after 10 and 30 bots. End-of-ball bonus adds 50K per bot this game.</p>'}
 ]},
 {g:"Side modes",id:"frenzies",title:"Frenzy modes",steps:[
  {t:"MOD-ulator Frenzy",h:["modulator",["mod_ins",0,"alt"]],b:'<p>Starts on the next paddle target shot after the second Bot Award. For a timed period the mods cycle rapidly, and every paddle hit advances the lit one. It can run with all other modes except wizard modes. During a van mode, boosts apply at once.</p>'},
@@ -163,7 +164,7 @@ var SECTIONS=[
  {t:"Lightning",h:["lightning",["left_ramp",0,"alt"],["right_ramp",0,"alt"],["lightning_ins",0,"alt"]],b:'<p>Each hit lights the lightning bolt inserts at the left and right ramps for 50K. Make those ramps as combos to raise the value by 50K and award it again.</p><p>10 hits start 30-second Super Lightning, +5 seconds per earlier hit and lit ramp scored. The ramps then award 10x the built-up value.</p>'}
 ]},
 {g:"Other scoring",id:"misc",title:"Extra balls and bonus",steps:[
- {t:"Extra balls",h:[["bot_ins",0,"alt"],["radio",0,"alt"]],b:'<p>Lit at the Bot Award target by completing two van modes, by destroying 10 and 30 bots, or by a rare mystery award. If disabled or capped, it scores 10M, multiplied by playfield and ray gun multipliers.</p>'},
+ {t:"Extra balls",h:["bot_award",["bot_ins",0,"alt"],["radio",0,"alt"]],b:'<p>Lit at the Bot Award target by completing two van modes, by destroying 10 and 30 bots, or by a rare mystery award. If disabled or capped, it scores 10M, multiplied by playfield and ray gun multipliers.</p>'},
  {t:"End-of-ball bonus",h:[["modulator",0,"alt"]],b:'<ul><li>100K per lit van mode shot this ball</li><li>100K per mod collected or advanced this ball</li><li>50K per combo this ball</li><li>50K per bot this game</li></ul><p>All multiplied by Bonus X, built at the paddle target.</p>'}
 ]},
 /* ====== WIZARD ====== */

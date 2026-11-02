@@ -63,7 +63,7 @@ Each guide is a single static page, so no build tools are needed to host it.
 ## Accuracy (Foo Fighters)
 - Rules come from the supplied rulesheet (code 1.04). It treats Premium and LE as one game, and Stern has no LE page, so they share rules and the Premium photo.
 - The photos are Stern's 1547x2500 and 1555x2500 top views, aligned on the printed art, cropped to about 1133x1883 and scaled to 1280x2128. Coordinates use a 640x1064 grid.
-- Printed inserts and most targets are clear, but shot paths are estimated, and the rulesheet has no layout text. The side ramp and side loop could be swapped. The left crossover, right orbit, Rock-O-Meter lane and Lightning target are the least certain. The Bot Award target is not marked, because its location is not confirmed. The owner confirmed the bot target by the upper flipper, and that the upper playfield's left arrow is the spinner and its right arrow the loop. Verify the rest on a real machine.
+- Printed inserts and most targets are clear, but shot paths are estimated, and the rulesheet has no layout text. The side ramp and side loop could be swapped. The left crossover, right orbit, Rock-O-Meter lane and Lightning target are the least certain. The owner located the Bot Award target, the yellow target just right of its insert, and confirmed the bot target by the upper flipper, and that the upper playfield's left arrow is the spinner and its right arrow the loop. Verify the rest on a real machine.
 
 ## Accuracy (Godzilla)
 - Rules come from the supplied rulesheet (code 1.16). It treats Premium and LE as one game, and Stern has no LE page, so they share rules and the Premium photo.
