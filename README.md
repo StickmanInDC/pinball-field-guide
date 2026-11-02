@@ -4,10 +4,11 @@ Interactive, step-by-step guides to Stern pinball machines. Rulesheet sections o
 playfield photo highlights the shots for the current step. Works on phones, tablets and desktop.
 Use Back/Next or the arrow keys; Esc returns to the list.
 
-- *Star Wars: Fall of the Empire*: `index.html`
+- *Star Wars: Fall of the Empire*: `star-wars-fall-of-the-empire/index.html`
 - *Fallout Pro*: `fallout-pro/index.html`
 
 Each guide is a single static page, so no build tools are needed to host it.
+The root `index.html` is a hand-written redirect that keeps old Star Wars links working.
 
 ## Accuracy (Star Wars)
 - Rules come from the Pinball Rule Sheets wiki (code 0.97). Its Layout and Jedi Master sections are blank.
