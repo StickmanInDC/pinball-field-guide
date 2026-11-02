@@ -1,0 +1,18 @@
+{
+  "name": "Star Wars (2017)",
+  "manufacturer": "Stern",
+  "year": 2017,
+  "code_rev": "1.31",
+  "title": "Star Wars (2017) Field Guide",
+  "heading": "Star Wars (2017)",
+  "aria": "Star Wars (2017) playfield with the current step's shots highlighted",
+  "width": 640,
+  "height": 1121,
+  "label_split": 320,
+  "output": "star-wars/index.html",
+  "editions": [
+    {"id": "pro", "label": "Pro", "image": "playfield-pro.jpg"},
+    {"id": "premium", "label": "Premium", "image": "playfield-premium.jpg"},
+    {"id": "le", "label": "LE", "like": "premium", "image": "playfield-le.jpg"}
+  ]
+}

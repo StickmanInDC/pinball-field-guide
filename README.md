@@ -19,6 +19,7 @@ address that name a section still redirect to the Star Wars guide.
 - *Pokémon*: `pokemon/index.html` (Pro / Premium / LE switch)
 - *Rush*: `rush/index.html` (Pro / Premium / LE switch)
 - *Star Trek*: `star-trek/index.html` (Pro / Premium / LE switch)
+- *Star Wars (2017)*: `star-wars/index.html` (Pro / Premium / LE switch)
 - *Star Wars: Fall of the Empire*: `star-wars-fall-of-the-empire/index.html`
 - *Transformers: More Than Meets the Eye*: `transformers-more-than-meets-the-eye/index.html` (Pro / Premium / LE switch)
 
@@ -91,6 +92,12 @@ Each guide is a single static page, so no build tools are needed to host it.
 - Rules come from the supplied rulesheet (code 1.62). It does not separate the models, so they share rules. Stern publishes no full LE photo, so LE shows the Premium one. The Five Year Mission text stops mid-sentence.
 - The photos are Stern's 1036x2145 Pro and 1650x3000 Premium images. The Premium was aligned to the Pro's printed art by a perspective fit, about 1 pixel error on the art, and both were cropped to 960x1881. Coordinates use a 640x1254 grid. Raised toys do not line up exactly.
 - Printed inserts, the target groups named by the apron card, the spinner, warp ramp and right ramp are clear, but shot paths are estimated, and the rulesheet has no layout text. The shot order comes from its Klingon Battle II pattern. The left ramp, Vengeance shot and drop target, Black Hole target, Red Matter targets, Away Team rollover, both orbit paths and plunger lane are the least certain. The Vengeance standups, magnet, pop bumpers and slingshots are not marked. Lines from the apron card are labelled. Verify them on a real machine.
+
+## Accuracy (Star Wars 2017)
+- This is Stern's 2017 game, not Star Wars: Fall of the Empire. The rulesheet gives an August 2017 release date, and Stern's page data gives June 2017.
+- Rules come from the supplied rulesheet (code 1.31). It treats Premium and LE as one game, so they share rules, but each has its own photo. Its Layout section is blank and its Pict-o-Pops list is unfinished.
+- The photos are Stern's 1467x2500, 1378x2500 and 1426x2500 top views. Premium and LE were aligned to the Pro's printed art by a perspective fit, about 1 pixel error or less, and all were cropped to 1130x1980 of the Pro and scaled to 1280x2242. Coordinates use a 640x1121 grid. Raised toys do not line up.
+- Printed inserts, the planet cards, the FORCE drop targets and the 3-bank are clear. The planet cards fix the left mini-loop, left ramp and right mini-loop, but shot paths are estimated. The left orbit, right ramp, right orbit, right scoop, Jedi Training standups, TIE Fighter target, top lanes, pop bumpers, right outlane and Hyperspace wireform are the least certain. Spinners, slingshots and the outlane gate are not marked. Lines from the apron card are labelled. Verify them on a real machine.
 
 ## Add a machine
 Create `Machines/<name>/` with:
