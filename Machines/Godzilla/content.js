@@ -1,0 +1,267 @@
+/* ---------- playfield features (coordinates in the 640x1198 crops; "v" overrides fields per version) ---------- */
+var C=function(x,y,r){return{t:"c",x:x,y:y,r:r}};
+var E=function(x,y,rx,ry){return{t:"e",x:x,y:y,rx:rx,ry:ry}};
+var B=function(p,w){return{t:"b",p:p,w:w}};
+var R=function(x,y,w,h){return{t:"r",x:x,y:y,w:w,h:h}};
+var F={
+ left_spinner:{n:"Left spinner",c:0,s:[B([[131,650],[102,600],[88,530],[100,468]],20)],a:[131,644],x:"Placed from the arrow with a TANK insert at lower left, running behind the upper flipper as the rulesheet says, to the metal plate. The path is my reading."},
+ left_ramp:{n:"Left ramp",c:0,s:[B([[165,466],[152,402],[140,342]],26)],a:[165,460],x:"Placed from the arrow above the Advance Train insert, which the rulesheet ties to this shot. The path past the arrow is a guess.",v:{premium:{s:[B([[165,466],[152,402],[140,342],[175,300],[208,272]],26)],x:"Placed from the arrow above the Advance Train insert, which the rulesheet ties to this shot. I read the clear bridge as the upper part of this ramp. The path is a guess."}}},
+ magna:{n:"Magna-Grab captive ball",c:0,s:[C(178,382,20)],a:[178,382],x:"Marked at the chrome cylinder that the yellow Magna-Grab arrow points at. I could not see the ball itself."},
+ magna_arrow:{n:"Magna-Grab arrow and Attack Bridge insert",c:1,s:[C(203,440,18),C(225,502,17)],a:[203,440]},
+ building:{n:"Building",c:1,s:[B([[270,362],[270,300]],34)],a:[270,352],x:"The arrow directly under the building."},
+ building_toy:{n:"Building toy",c:1,s:[R(195,92,120,180)],a:[255,180]},
+ center_spinner:{n:"Center spinner",c:0,s:[B([[350,366],[362,300],[380,232]],24)],a:[350,358],x:"Placed from the arrow with a TANK insert, then the numbered inserts, to the plate with monster art. The rulesheet does not say that plate is the spinner."},
+ right_ramp:{n:"Right ramp",c:0,s:[B([[407,340],[410,290],[450,190],[510,92]],30)],a:[407,334],x:"Placed from the arrow with a TANK insert, then up the large metal ramp. Where the arrow meets the ramp is hidden by wireforms."},
+ upper_loop:{n:"Upper loop",c:0,s:[B([[388,462],[428,420],[462,392]],22)],a:[412,436],x:"Placed from the wide arrow beside the Destruction Jackpot insert, because that shot collects at the loop and it points back at the upper flipper. The path beyond it is a guess. The rulesheet also says big loop and loop, and I treat them as this shot."},
+ tail_whip:{n:"Tail whip lane",c:1,s:[B([[375,505],[405,490],[430,468]],20)],a:[385,498],x:"The printed Tail Whip arrow. Where the lane runs past it is a guess."},
+ right_spinner:{n:"Right spinner",c:0,s:[B([[456,620],[468,582],[477,548]],24)],a:[456,612],x:"Placed from the red arrow, to the plate hanging on a wire bracket. The rulesheet does not locate it.",v:{premium:{s:[B([[420,664],[436,622],[458,590],[474,562]],22)],a:[420,656],x:"Placed from the red arrow, which sits further left than on the Pro. I could not see a spinner plate here, because the drum hides the area, so this is a guess."}}},
+ scoop:{n:"Scoop",c:1,s:[R(500,598,46,36)],a:[522,616],x:"The metal cup past the Select City insert. The Kaiju Battle, Power-Up and Ally lights are right above it."},
+ pop:{n:"Pop bumper",c:1,s:[C(533,700,38)],a:[533,700],x:"The rulesheet calls it the saucer bumper at the far right."},
+ upper_flipper:{n:"Upper flipper",c:1,s:[B([[117,526],[143,588]],16)],a:[130,556]},
+ flippers:{n:"Lower flippers",c:1,s:[B([[190,1076],[265,1130]],20),B([[430,1078],[352,1130]],20)],a:[228,1102]},
+ powerline:{n:"Powerline targets",c:0,s:[C(232,348,12),C(312,346,12),C(452,330,12)],a:[232,348],x:"Marked at the targets behind the three blue inserts. The third is partly hidden, and the rulesheet does not place any of them."},
+ power_ins:{n:"Powerline inserts",c:1,s:[C(235,380,15),C(310,373,15),C(440,355,15)],a:[310,373],x:"The three blue lightning inserts."},
+ maser:{n:"Maser Cannon target",c:0,s:[C(110,726,18)],a:[110,726],x:"Marked at the printed Maser Cannon panel. I could not pick out the standup itself."},
+ mystery_ins:{n:"Mystery insert",c:1,s:[B([[150,752],[232,795]],14)],a:[190,772],x:"The printed beam reads Mystery."},
+ neo:{n:"Neo Barrier targets",c:0,s:[C(397,530,14),C(410,570,14),C(468,578,14)],a:[410,570],x:"Marked at the three printed Neo Barrier inserts. I could not pick out the Pro standups. The rulesheet says the Pro uses two standups and the right spinner.",v:{premium:{s:[R(445,518,62,44)],a:[476,540],x:"Marked on the drum beside the Mechagodzilla toy. The rulesheet says only that the jump ramp rotates to the target bank side, so this is a guess."}}},
+ jump:{n:"Jump ramp",c:0,s:[E(425,600,42,30)],a:[425,600],x:"Marked at the bright insert in front of the drum. The rulesheet names the jump ramp but does not place it.",v:{pro:{s:[]}}},
+ mecha_toy:{n:"Mechagodzilla",c:1,s:[E(520,400,58,70)],a:[520,400],x:"Printed art on the Pro.",v:{premium:{s:[E(545,405,62,82)],a:[545,405],x:"The Mechagodzilla toy."}}},
+ godzilla_toy:{n:"Godzilla",c:1,s:[E(118,190,40,52)],a:[118,190],x:"Printed art on the Pro.",v:{premium:{s:[E(100,190,46,62)],a:[100,190],x:"The Godzilla toy."}}},
+ rollover_r:{n:"Rollover right of the bumper",c:0,s:[B([[590,612],[590,650]],12)],a:[590,632],x:"The slot right of the pop bumper. The rulesheet says a switch is here, and this slot is my reading."},
+ rollover_b:{n:"Rollover below the bumper",c:0,s:[B([[535,788],[582,764]],12)],a:[558,776],x:"The slot below the pop bumper. The rulesheet says a switch is here, and this slot is my reading."},
+ plunger:{n:"Plunger lane",c:0,s:[B([[608,960],[603,790]],18)],a:[606,880],x:"Placed from the photo. The rulesheet does not describe the lane."},
+ inlane_l:{n:"Left inlane",c:0,s:[B([[104,895],[104,942]],12)],a:[104,918],x:"The slot below the insert for the Rage Combo. I read this as the lane that feeds the left flipper."},
+ inlane_r:{n:"Right inlane",c:1,s:[B([[518,895],[518,948]],12)],a:[518,920],x:"The slot below the printed Magna-Grab insert."},
+ inlanes:{n:"Inlanes",c:0,s:[B([[104,895],[104,942]],12),B([[518,895],[518,948]],12)],a:[104,918],x:"The slots I read as the lanes feeding the lower flippers."},
+ outlane_l:{n:"Left outlane",c:1,s:[B([[43,962],[43,998]],12)],a:[43,980],x:"The slot below the Mothra Save insert."},
+ outlane_r:{n:"Right outlane",c:1,s:[B([[570,956],[570,998]],12)],a:[570,978],x:"The slot below the Oxygen Destroyer insert."},
+ tank_ins:{n:"TANK inserts",c:1,s:[C(150,683,14),C(177,493,14),C(213,475,14),C(345,388,14),C(400,355,14),C(478,680,14)],a:[213,475]},
+ train_ins:{n:"Advance Train insert",c:1,s:[C(187,522,16)],a:[187,522]},
+ damage:{n:"Damage Meter",c:1,s:[R(243,400,68,72)],a:[277,436]},
+ destruct_ins:{n:"Light Destruction Jackpot insert",c:1,s:[C(270,382,15)],a:[270,382]},
+ destruct_arrow:{n:"Destruction Jackpot insert",c:1,s:[C(366,470,18)],a:[366,470]},
+ monitor:{n:"Monster Monitor inserts",c:1,s:[C(230,678,14),C(268,683,14),C(313,685,14),C(352,670,14)],a:[290,680],x:"TANKS, RAID, BRIDGE and POWER."},
+ cities:{n:"City inserts",c:1,s:[C(253,623,13),C(331,623,13),C(277,648,13),C(310,648,13)],a:[292,635],x:"New York, Tokyo, London and Paris."},
+ wiz_ins:{n:"Wizard mode inserts",c:1,s:[C(248,565,17),C(293,570,17),C(340,563,17),C(292,610,12)],a:[293,570],x:"Monster Zero, King of the Monsters, Terror of Mechagodzilla and Planet X."},
+ allies_ins:{n:"Ally inserts",c:1,s:[C(378,740,16),C(422,745,16),C(395,777,16)],a:[395,755],x:"Rodan, Mothra and Anguirus."},
+ scoop_lights:{n:"Kaiju Battle, Power-Up and Ally lights",c:1,s:[R(532,535,46,58)],a:[555,563],v:{premium:{s:[R(530,540,46,50)]}}},
+ select_ins:{n:"Select City insert",c:1,s:[C(540,650,18)],a:[540,650]},
+ back_panel:{n:"Bash Building, Light Battle and Bridge Out lights",c:1,s:[R(540,17,50,56)],a:[565,45]},
+ lock_lights:{n:"Lock and Godzilla Multiball lights",c:1,s:[R(358,10,35,52)],a:[375,36],v:{pro:{s:[]}}},
+ mothra_save:{n:"Mothra Save insert",c:1,s:[R(40,864,24,62)],a:[52,895]},
+ oxygen:{n:"Oxygen Destroyer insert",c:1,s:[R(557,864,22,64)],a:[568,895]},
+ skill_arrow:{n:"Skill Shot arrow",c:1,s:[C(122,491,17)],a:[122,491]},
+ fighter_ins:{n:"Advance Fighter and missile art",c:1,s:[B([[84,982],[162,1014]],14),B([[460,1014],[542,984]],14)],a:[122,998],x:"Printed by each slingshot. The rulesheet says missiles are collected at the inlanes."},
+ numbers:{n:"Numbered inserts",c:1,s:[C(358,325,10),C(363,303,10),C(368,287,10)],a:[363,303],x:"The rulesheet does not explain these."}
+};
+
+/* ---------- content ---------- */
+var UNK=function(s){return '<p class="fine">'+s+'</p>'};
+var MAJOR=["left_ramp","building","center_spinner","right_ramp","upper_loop"];
+var ALLS=["left_spinner","left_ramp","building","center_spinner","right_ramp","upper_loop","tail_whip","right_spinner","scoop"];
+var TANKS=["left_spinner","left_ramp","magna","center_spinner","right_ramp","scoop"];
+var SECTIONS=[
+/* ====== LAYOUT AND BASICS ====== */
+{g:"Layout and basics",id:"layout",title:"Playfield layout",steps:[
+ {t:"The goal",h:[["monitor",0,"alt"],["cities",0,"alt"]],b:'<p>Defeat the Xiliens on Planet X by starting, not necessarily completing, all four objectives shown on the Monster Monitor: RAID, POWER, BRIDGE and TANKS. They can be spread over several cities.</p>'},
+ {t:"Ramps",h:["left_ramp","right_ramp"],b:'<p>Either ramp twice lights your first Kaiju Battle at the scoop. Ramps also damage the upper and middle floors of the building.</p>'+UNK("The rulesheet has no layout text. These positions are my reading of the photo.")},
+ {t:"The building",h:["building",["damage",0,"alt"],["destruct_ins",0,"alt"],["building_toy",0,"alt"]],b:'<p>Shoot it to destroy floors, start Godzilla Multiball and collect a lit Destruction Jackpot.</p><p>A shot can also go through it. A strong shot to its exit that passes through its entrance is the Wallop shot.</p>'+UNK("The rulesheet does not say where the exit is, so it is not marked.")},
+ {t:"Spinners",h:["left_spinner","center_spinner","right_spinner"],b:'<ul><li><b>Left:</b> Advance Rampage when lit, and Imposter Battle after a Magna-Grab.</li><li><b>Center:</b> qualifies the Heat Ray and drives Tesla Strike.</li><li><b>Right:</b> brings Mechagodzilla online and lights inlanes for later Jet Fighter Attacks.</li></ul>'},
+ {t:"Upper flipper and loop",h:["upper_flipper","upper_loop","tail_whip",["destruct_arrow",0,"alt"]],b:'<p>Shoot the upper loop from the upper flipper. Loops build value and collect Destruction Jackpots. The tail whip shot follows the loop for a Super Tail Whip.</p>'+UNK("The rulesheet also says big loop and loop. I treat all three as one shot, which it does not state.")},
+ {t:"Magna-Grab captive ball",h:["magna",["magna_arrow",0,"alt"]],b:'<p>A full-strength plunge usually hits it. It scores Bridge Attack and catches the ball when lit from the right inlane.</p>'},
+ {t:"Scoop",h:["scoop",["scoop_lights",0,"alt"],["select_ins",0,"alt"]],b:'<p>Starts Kaiju Battles and Tank Attack Multiball, changes cities, collects Allies and cashes in Godzilla Power-Ups when the green light above it is on.</p>'},
+ {t:"Pop bumper",h:["pop",["rollover_r",0,"alt"],["rollover_b",0,"alt"]],b:'<p>A single saucer bumper at the far right. Hits light Saucer Attack. The switch below it does the same. The switch to its right qualifies mystery at the Maser Cannon.</p>'},
+ {t:"Standup targets",h:["powerline",["power_ins",0,"alt"],"maser","neo"],b:'<p>Three Powerline targets, the Maser Cannon target, and the three Neo Barrier targets that guard Mechagodzilla.</p>'+UNK("I could not pick out most of these standups in the photo. Treat the marks as approximate.")},
+ {t:"Bridge and building moves",ed:"premium",h:["left_ramp","building_toy","jump",["back_panel",0,"alt"],["lock_lights",0,"alt"]],b:'<p>On the Premium and LE the building changes position, which decides which ramp starts Bridge Attack Multiball. It also locks balls for Godzilla Multiball. A jump ramp rotates to the target bank side when Mechagodzilla is deployed.</p>'},
+ {t:"Fixed shots on the Pro",ed:"pro",h:["right_ramp",["back_panel",0,"alt"]],b:'<p>On the Pro, Bridge Attack Multiball always starts at the right ramp, and Godzilla Multiball uses a magnet lock.</p>'}
+]},
+{g:"Layout and basics",id:"skill",title:"Skill shots",steps:[
+ {t:"Regular skill shots",h:[["plunger",1],["rollover_b",2],["pop",3],["left_spinner",4],["skill_arrow",0,"alt"]],b:'<p>The plunger is player-controlled.</p><ul><li><b>Switch directly under the bumper:</b> short plunge. 250K x unique skill shots, 3 seconds of ball save. Boosts future #1 and #2 by 250K.</li><li><b>First switch out of the shooter lane:</b> short plunge. 500K x unique skill shots, 5 seconds of ball save. Same boost.</li><li><b>Bumper:</b> short plunge straight to it, or shoot it after failing to register another switch. 750K x unique skill shots, 5 seconds.</li><li><b>Left spinner lane, behind the upper flipper:</b> 5M + 1M x unique skill shots, 8 seconds.</li></ul>'+UNK("The rulesheet does not locate the first switch out of the shooter lane, so it is not marked.")},
+ {t:"Secret skill shots",h:[["upper_flipper",1],["upper_loop",2],["inlane_l",3]],b:'<ul><li>Plunge to the upper flipper and reflex shot the upper loop: 4M x unique skill shots, 5 seconds of ball save.</li><li>Plunge into the left inlane: 5M + 1M x unique skill shots, 5 seconds.</li></ul><p>Each boosts future secret skill shots by 2M.</p>'},
+ {t:"Super Secret skill shot",h:[["left_spinner",1],["scoop",2]],b:'<p>Make the left spinner lane skill shot, then immediately reflex shot the scoop. Scores 10M, +2 Power-Ups, and lights and collects an Ally. No added ball save, but it boosts future secret skill shots by 2M.</p>'}
+]},
+/* ====== CITY OBJECTIVES ====== */
+{g:"City objectives",id:"objectives",title:"How cities work",steps:[
+ {t:"Four objectives per city",h:[["monitor",0,"alt"],["cities",0,"alt"]],b:'<p>Each city offers Kaiju Battles (RAID), Tesla Strike (POWER), Bridge Attack Multiball (BRIDGE) and Tank Attack Multiball (TANKS). Each can only be accomplished once per city.</p><p>Completing any of them, or just attempting a battle, lights Destruction Jackpot at the building and lets you change cities at the scoop. The game always begins in Tokyo.</p>'},
+ {t:"Changing cities",h:["scoop",["select_ins",0,"alt"]],b:'<p>After playing a battle the scoop lights City Select. You can change city and collect the Carnage Bonus, or stay. If you stay, you must play one of the other three objectives to relight it.</p><p>Battles are locked to their city. Leaving before completing that battle permanently forfeits the city. Changing city also lights the left spinner to advance Rampage.</p>'},
+ {t:"Conquering a city",h:[["cities",0,"alt"]],b:'<p>Win its Kaiju Battle. Each city awards +1 Bonus X, +1x Super Spinner, and a perk:</p><ul><li><b>Tokyo:</b> +1% Annihilation Bonus</li><li><b>New York:</b> +2M Saucer Attack</li><li><b>Paris:</b> +500K Loops</li><li><b>London:</b> +4M Destruction Jackpot</li></ul><p>Totals also pay:</p><ul><li><b>1 city:</b> 5M and +3 Power-Ups</li><li><b>2 cities:</b> 10M and Extra Ball</li><li><b>3 cities:</b> 20M and a quicker Heat Ray cooldown</li><li><b>4 cities:</b> 40M and +15M Destruction Jackpot</li></ul>'},
+ {t:"Heading to Planet X",h:["scoop"],b:'<p>Once all four objectives have been played, City Select offers Planet X. Pick it and you score no more city perks and play no remaining battles. You cannot return to Earth.</p>'}
+]},
+{g:"City objectives",id:"power",title:"POWER: Tesla Strike",steps:[
+ {t:"Powerline Attack",h:["powerline",["power_ins",0,"alt"]],b:'<p>Complete all 3 Powerline targets twice (+1 per activation). This starts Powerline Attack: one insert roves between the targets. Shoot the flashing target 5 times (+2 per activation) for 500K each. The final shot starts Tesla Strike.</p>'},
+ {t:"Tesla Strike",h:[["center_spinner",1],["left_ramp",2],["building",2],["right_ramp",2],["upper_loop",2]],b:'<p>Untimed. Shoot the center spinner to raise the Tesla Value by 100K per spin. It starts at 2M, +2M per Tesla Strike started. Then shoot a blue flashing shot to collect.</p><p>Only one rip of the spinner is allowed before you must collect a unique blue shot to relight it. The amount per spin rises by 100K after each collect. Make 5 unique shots to win.</p>'+UNK("The rulesheet says major shots but does not list them. The numbered 2 marks are my reading.")},
+ {t:"After Tesla Strike",h:["powerline"],b:'<p>Power Annihilation Bonus lights for a base of 2% of the mode\'s points. Collect it at the strobing Powerline target, which moves from left to right with each collect.</p>'}
+]},
+{g:"City objectives",id:"bridge",title:"BRIDGE: Bridge Attack",steps:[
+ {t:"Destroying the bridge",h:[["magna",1],["magna_arrow",0,"alt"]],b:'<p>Score 50 switch hits (+25 per activation) to light Bridge Attack at the Magna-Grab captive ball. Each hit there removes 25% bridge integrity, so repeat four times.</p>'},
+ {t:"Starting the multiball",ed:"premium",h:["left_ramp","right_ramp",["back_panel",0,"alt"]],b:'<p>Shoot a ramp when Bridge Out! is flashing to start the 2-ball multiball. Which ramp depends on the building\'s position.</p>'},
+ {t:"Starting the multiball",ed:"pro",h:["right_ramp",["back_panel",0,"alt"]],b:'<p>Shoot the right ramp when Bridge Out! is flashing to start the 2-ball multiball.</p>'},
+ {t:"Jackpots",h:[["right_ramp",1],["magna",2],["left_ramp",0,"alt"],["building",0,"alt"],["center_spinner",0,"alt"]],b:'<p>All shots are lit for jackpots worth 1M + 250K per right ramp shot, +1M per time the multiball is started. Three jackpots light the captive ball for double jackpots.</p>'},
+ {t:"Super Jackpot round",h:["right_ramp"],b:'<p>After 2 double jackpots, a 15-second round begins. Each right ramp shot is a super jackpot worth 6x the base value, and the first two add a ball. It repeats for the rest of the multiball, with jackpots rising 750K per super. Jackpot value maxes at 4M + 1M per Bridge Attack Multiball started.</p>'},
+ {t:"After the multiball",h:["magna"],b:'<p>Bridge Annihilation Bonus lights at the captive ball after enough switches, for a base of 4% of the multiball\'s points.</p>'}
+]},
+{g:"City objectives",id:"tanks",title:"TANKS: Tank Attack",steps:[
+ {t:"Lighting it",h:TANKS.concat([["tank_ins",0,"alt"]]),b:'<p>Two TANK shots are lit at a time, at random. Defeat 10 tanks (+5 per activation) to light Tank Attack Multiball at the scoop. If qualified it overrides the Kaiju Battle selection, though you can start it during a battle.</p>'},
+ {t:"Jackpots",h:TANKS,b:'<p>2-ball. Shoot the flashing, roving tanks before they reach Godzilla at the captive ball. Tanks spawn at the left spinner and scoop, with one lit at the right ramp to start.</p><p>Each tank scores 2.5M + 1M per super collected, minus 500K per shot it has moved, and raises the super multiplier by 1x, to 3x.</p>'},
+ {t:"When a tank gets through",h:["magna"],b:'<p>Tanks advance every 8 seconds, 2 seconds less per super collected, down to 2 seconds. If one reaches Godzilla, the super multiplier drops by 1x.</p>'},
+ {t:"Super Jackpot",h:["maser"],b:'<p>Destroy 4 tanks, plus 1 per super collected up to a maximum of 8, to light Super Jackpot at the Maser Cannon. It is worth 50% of collected jackpots x the jackpot multiplier.</p>'},
+ {t:"After the multiball",h:TANKS,b:'<p>Tank Annihilation Bonus lights for a base of 2% of the multiball\'s points. Collect it at the random flashing tank shot.</p>'}
+]},
+{g:"City objectives",id:"destruction",title:"Destruction Jackpot",steps:[
+ {t:"Lighting it",h:["building",["destruct_ins",0,"alt"]],b:'<p>Lit at the building by:</p><ul><li>Starting any city objective (+1x for completed battles)</li><li>12, 20, 30, 40 etc. saucers (+1x)</li><li>Completing the Rage Combo (+1x)</li><li>25, 40, 80, 120 etc. loops (+1x)</li><li>7, 20, 33, 46 etc. tail whips</li><li>10 trains (+1x)</li><li>Mystery award</li></ul>'},
+ {t:"Collecting it",h:[["building",1],["upper_flipper",2],["upper_loop",3],["destruct_arrow",0,"alt"]],b:'<p>In single-ball play, shoot the building. The Magna-Grab post holds the ball, then drops it to the upper flipper after about 9 seconds. Shoot the upper loop to collect. A brief grace period follows a miss, and Power-Up #3 can extend it.</p><p>Each collect boosts all Annihilation Bonuses by 1% and lights the left spinner to advance Rampage.</p>'},
+ {t:"Value",h:[],b:'<p>5M (+1M per Monster Monitor insert) + Temporary Base Value, x Multiplier. London adds 4M, and all four cities adds 15M.</p><p>The Temporary Base Value is removed when you change cities. It takes 5% from city objectives, 5% from Jet Fighter Attack, 1% from Monster Rampage, 3% from Godzilla Multiball and 3% from Mechagodzilla Multiball.</p>'},
+ {t:"Multiplier",h:[],b:'<p>Starts at 1x. Besides the methods marked earlier, it also rises from:</p><ul><li>15 fighters destroyed</li><li>Imposter Battle #3</li><li>Monster Rampage cumulative shots (+2x)</li><li>Power-Up #9 (+2x)</li><li>Mystery award</li></ul>'+UNK("The rulesheet gives 24, 36, 48 Rampage shots here but 28, 44, 60 in the Rampage section. It does not say which is right.")}
+]},
+{g:"City objectives",id:"carnage",title:"Annihilation and Carnage",steps:[
+ {t:"Annihilation Bonuses",h:["powerline","magna","left_spinner","left_ramp","center_spinner","right_ramp","scoop"],b:'<p>Complete a mode in a city to light its bonus until you leave. Default percentages of that mode\'s points:</p><ul><li><b>Tesla Strike:</b> 2%, at a single pulsing Powerline target</li><li><b>Bridge Attack:</b> 4%, where switch hits pulse the Attack Bridge insert</li><li><b>Tank Attack:</b> 2%, at a single pulsing tank shot</li></ul><p>Each has a base value of 1M. With more than one lit, scoring gets +1x each, up to 3x. They rise 1% per Destruction Jackpot, 1% for conquering Tokyo, and 1% from the second Imposter Battle award.</p>'},
+ {t:"Carnage Bonus",h:["scoop"],b:'<p>Scored when you leave a city. It adds the current Destruction Jackpot without its multiplier, plus all Annihilation Bonus points.</p><p>It then gets +1x per Annihilation Bonus activated on the same ball, and +1x if all four objectives were played.</p>'}
+]},
+/* ====== KAIJU BATTLES ====== */
+{g:"Kaiju battles",id:"battles",title:"How battles work",steps:[
+ {t:"Lighting a battle",h:[["left_ramp",1],["right_ramp",1],["scoop",2],["back_panel",0,"alt"],["scoop_lights",0,"alt"]],b:'<p>First battle: shoot either ramp twice, then the scoop. After that, it takes a shot to both ramps. Pick with the flippers and action button.</p><p>Battles run 60 seconds. You cannot start one during a multiball, or when Tank Attack Multiball is lit at the scoop.</p>'},
+ {t:"Progress",h:["scoop"],b:'<p>Progress is saved between attempts, but the shot value resets. The final shot\'s timer bonus (500K x seconds left, or 2.5M x seconds left with Power-Up #2) drops to 1/10 if you did not win on the first try.</p><p>Halfway through a battle lights an Ally at the scoop. Finishing conquers the city and raises the Destruction Jackpot multiplier.</p>'},
+ {t:"Tiers",h:[],b:'<p>The first battle of a game must be Tier 1. Tier 2 battles need a change of city and at least half of a Tier 1 battle in that new city.</p><p>Jet Fighter Attack, Tesla Strike and any multiball can stack with Tier 1 battles. Tier 2 battles take priority over all other scoring.</p>'}
+]},
+{g:"Kaiju battles",id:"tier1",title:"Tier 1 battles",steps:[
+ {t:"Ebirah",h:[["left_spinner",1],["center_spinner",1],["right_spinner",1],["pop",2]],b:'<p>15 spins on the left and right spinners each, and 40 on the center. Each completed spinner scores 5M + 5M per spinner. Then shoot the pop bumper for the final blow, worth 25M.</p>'},
+ {t:"Titanosaurus",h:[["powerline",1],["maser",2],["magna",3],["neo",0,"alt"]],b:'<p>Five flashing targets in order: the Powerline targets from left to right, then the Maser Cannon, then the captive ball. They score 4M, 7M, 10M, 15M and 20M.</p><p>Each Mechagodzilla target hit scores 1M and adds 500K to the next shot.</p>'},
+ {t:"Gigan",h:["left_ramp","right_ramp"],b:'<p>Eight ramp shots in any mix. 1M + 500K per shot. The opposite ramp as a combo scores double, but looping one ramp is not a combo. The final blow scores 4x as a combo, or 2x otherwise.</p>'},
+ {t:"Megalon",h:ALLS,b:'<p>A random purple shot flashes for about 10 seconds. Hit it for 4M + points per switch hit, +1x per lit shot to 5x, and a new shot lights. Seven wins. The final blow is a normal shot + 10M.</p><p>Miss it and Megalon hides. Either ramp brings him back and lights a combo shot. If he times out while hiding, he spawns at a random shot.</p>'+UNK("The rulesheet does not list which shots are used, so all the main ones are marked.")}
+]},
+{g:"Kaiju battles",id:"tier2",title:"Tier 2 battles",steps:[
+ {t:"Godzilla, Rodan and Anguirus vs King Ghidorah",h:MAJOR,b:'<p>75 seconds. Shoot the left ramp, building, center spinner, right ramp and big loop three times each. Shots start at 400K, +150K per shot. They go green (1x), yellow (2x), then red (4x).</p><p>A red shot qualifies the scoop for Fight or Flee and adds to the flee jackpot multiplier. The jackpot starts at 16M.</p>'},
+ {t:"Fight or Flee",h:["scoop"],b:'<p><b>Left flipper, Fight:</b> adds 35 seconds, less on later picks, and resets shot colors but not values.</p><p><b>Right flipper, Flee:</b> collect the multiplied value + 200K x seconds left, and end the battle.</p><p>The mode also ends on a drain or at time out.</p>'},
+ {t:"Godzilla and Jet Jaguar vs Megalon and Gigan",h:[["building",1],["right_spinner",1],["left_ramp",2],["right_ramp",2],["upper_loop",3]],b:'<p>3-ball multiball. Two shots light for 30 seconds each, for jackpots from 3M, +500K per super:</p><ul><li>Building and right spinner</li><li>Left ramp and right ramp</li><li>Left ramp and upper loop, for the rest of the mode</li></ul><p>After each jackpot, the right spinner scores a super worth the jackpot + a multiplier that rises 1x per super, to 4x, until a jackpot times out. Each super also gives +1 Power-Up arrow.</p>'},
+ {t:"Godzilla and Anguirus vs King Ghidorah and Gigan",h:MAJOR,b:'<p>75 seconds. 40 switch hits light the major shots for 7.5M each. Shoot them again to raise each shot\'s jackpot multiplier. Each switch adds 35K to the jackpot, which starts at 1M, and each lit shot adds 350K.</p><p>Shoot the building at any time for Fight or Flee. Shots relight only after choosing Fight, and need another 40 switches.</p>'}
+]},
+/* ====== MULTIBALLS ====== */
+{g:"Multiballs",id:"godzillamb",title:"Godzilla Multiball",steps:[
+ {t:"Destroy the building",h:["left_ramp","right_ramp","building",["damage",0,"alt"]],b:'<p>Reduce building integrity to 0%. Upper and middle floors fall to ramps or the building. Lower floors fall only to the building.</p>'},
+ {t:"Start: Premium and LE",ed:"premium",h:["building",["building_toy",0,"alt"],["lock_lights",0,"alt"]],b:'<p>At 0%, shoot the building three times to lock balls. The third starts the multiball, releasing all three balls from the building toward the flippers.</p>'},
+ {t:"Start: Pro",ed:"pro",h:["building",["plunger",0,"alt"]],b:'<p>At 0%, shoot the building once. The multiball begins by plunging and releasing all three balls from the magnet lock.</p>'},
+ {t:"Music",h:[],b:'<p>Hold the action button during the initial buildup to change the music. Seven tracks are available.</p>'},
+ {t:"Jackpots",h:ALLS,b:'<p>Lit shots score 500K + 500K per Godzilla Multiball started. Each jackpot raises that shot\'s level up to three times: blue 1x, green 2x, yellow 3x, orange 4x, red 5x.</p>'+UNK("The rulesheet does not list the six jackpot shots, so the main shots are marked.")},
+ {t:"Super Jackpot",h:["building",["left_ramp",0,"alt"],["right_ramp",0,"alt"]],b:'<p>Six jackpots light the Super Jackpot at the building, worth the jackpot total. Completing all lit shots twice adds 1x, and three times unlights them for a 3x super. A Wallop shot adds 1x once per multiball, for up to 4x.</p><p>Scoring it relights the jackpots at +1x, to 3x at most. Lit shots drop from 6 to 4, then to 3. It also qualifies Monster Zero.</p>'},
+ {t:"Add-a-ball",h:[["neo",1],["right_spinner",2]],b:'<p>Shoot any three green Neo Barrier standups, then the right spinner.</p>'}
+]},
+{g:"Multiballs",id:"mechamb",title:"Mechagodzilla Multiball",steps:[
+ {t:"Bring him online",h:["right_spinner",["mecha_toy",0,"alt"]],b:'<p>Shoot the right spinner 20 times (+10 per activation), then once more to deploy Mechagodzilla.</p>'},
+ {t:"Start: Premium and LE",ed:"premium",h:[["neo",1],["right_spinner",2],["jump",2],["mecha_toy",0,"alt"]],b:'<p>Once deployed, the jump ramp rotates to the target bank side. Disable the Neo Barrier by shooting all three targets. Then shoot the right spinner or use the jump ramp.</p>'},
+ {t:"Start: Pro",ed:"pro",h:[["neo",1],["right_spinner",2]],b:'<p>Disable the Neo Barrier with the two standup targets and the right spinner. Then shoot the right spinner once more.</p>'},
+ {t:"Jackpots",h:[["left_ramp",1],["right_ramp",1],["building",1],["neo",2]],b:'<p>The ramps and building score jackpots worth 1M + 500K per Mechagodzilla Multiball started. After one, shoot the target bank for another and to relight the others. Third and fourth jackpots are 2x, fifth and sixth are 3x.</p>'},
+ {t:"Super Jackpot",h:[["left_spinner",1],["center_spinner",1],["right_spinner",1],["tail_whip",2]],b:'<p>After all six, spinners build the super by 500K per hit for 20 seconds. Then you have 20 seconds to collect it at either lane:</p><ul><li><b>Tail whip:</b> 3x and +3 Power-Ups</li><li><b>Right spinner:</b> 1x and +2 Power-Ups</li></ul><p>Draining to one ball while lit leaves 10 seconds to collect. Scoring it qualifies Terror of Mechagodzilla.</p>'+UNK("The rulesheet overview says the build lasts 15 seconds. Its detail section says 20, used here.")}
+]},
+{g:"Multiballs",id:"saucermb",title:"Saucer Attack Multiball",steps:[
+ {t:"Starting it",h:["pop"],b:'<p>Destroy 6 saucers to qualify it, then shoot the flashing bumper in normal play. The flippers die and the ball drains as the multiball begins. It can only be played once per game.</p>'},
+ {t:"Locking on",h:ALLS.concat([["maser",2]]),b:'<p>Three white inserts light for jackpots from 2.5M + 1M per Saucer Jackpot collected. Only 2 are needed at first, and each Saucer Jackpot requires 1 more. Complete them to light the Maser Cannon, which locks onto a saucer for 2x the jackpot value.</p>'+UNK("The rulesheet does not say which shots carry the white inserts.")},
+ {t:"Saucer Jackpot",h:[["maser",1],["pop",2]],b:'<p>Shoot the bumper within 15 seconds for 10x the jackpot value, +1x per Saucer Jackpot collected. Each one adds a ball.</p>'}
+]},
+/* ====== OTHER SCORING ====== */
+{g:"Other scoring",id:"powerups",title:"Godzilla Power-Ups",steps:[
+ {t:"Earning arrows",h:["scoop",["scoop_lights",0,"alt"]],b:'<p>Tasks add arrows to the meter. Cash out at the scoop. Each adds 300K to end-of-ball bonus.</p><ul><li><b>+1:</b> Start Powerline Attack, Bridge, Tank, Godzilla or Mechagodzilla Multiball, or Jet Fighter Attack. Repeat Tier 1 win. Destruction Jackpot. New city. Final Jet Fighter shot. Jets 27, 39, 51 etc. Super Spinner. 3 consecutive loops. Mystery award. City Combo. Super during Jet Jaguar battle.</li><li><b>+2:</b> Super Secret Skill Shot. First-try Tier 1 win. First conquered city. Win Tesla Strike. Mechagodzilla super. Start Saucer Multiball or Rampage. 3, 7, 20, 33 etc. tail whips. 3, 20, 30, 40 etc. trains. 5 Secret Combos.</li><li><b>+3:</b> 3x Mechagodzilla super at tail whip. 9 Saucers. 10 consecutive loops.</li><li><b>+6:</b> Win Planet X.</li></ul>'+UNK("The table gives +2 for conquering your first city, but the city list gives +3. Bonus values also differ: 300K here, 200K in the bonus list.")},
+ {t:"Rules for levels",h:["scoop"],b:'<p>Awards come in the same order every game. The first set is random from five options, shared across players. In competition mode it is always +250K Godzilla Jackpot or +500K Mechagodzilla Jackpot.</p><p>Levels 4 to 7 need a Super Jackpot in either main multiball. Level 8 and up need one in both.</p>'},
+ {t:"Levels 1 to 3",h:["scoop"],b:'<p>Left flipper or right flipper:</p><ul><li><b>#1 (2 arrows):</b> Left: Godzilla Jackpot +250K, light Heat Ray, 15M, Destroy Saucer, Saucer +3 seconds, or Jet values +250K. Right: Mechagodzilla Jackpot +500K, +1x Skill Shot, Loops +250K, spot a Rampage letter, Saucer +500K, or Collect 3x Bonus.</li><li><b>#2 (3):</b> Tier 1 timers +20 seconds, or Tier 1 Time Bonus 5x.</li><li><b>#3 (4):</b> Destruction Jackpot +3 seconds, or Tier 2 timers +20 seconds.</li></ul>'},
+ {t:"Levels 4 to 7",h:["scoop"],b:'<p>Each takes 6 arrows. Left flipper or right flipper:</p><ul><li><b>#4:</b> Light Monster Zero, or light Terror of Mechagodzilla, each if qualified.</li><li><b>#5:</b> Collect Imposter, or Rage Combo +3 seconds.</li><li><b>#6:</b> Rodan +15 seconds, or Magna-Grab 2x.</li><li><b>#7:</b> Super Spinner +2x, or Loops 2x.</li></ul>'},
+ {t:"Levels 8 to 11",h:["scoop"],b:'<p>Each takes 6 arrows. Left flipper or right flipper:</p><ul><li><b>#8:</b> The wizard option not taken at #4, or light King of the Monsters if Planet X was reached.</li><li><b>#9:</b> +2x Destruction Jackpot, or light all Allies.</li><li><b>#10:</b> Collect 10x Bonus, or Rampage +1x.</li><li><b>#11:</b> +3 Power-Ups, or light King of the Monsters if all three other wizard modes were played.</li></ul>'}
+]},
+{g:"Other scoring",id:"allies",title:"Allies",steps:[
+ {t:"Lighting Allies",h:["scoop",["allies_ins",0,"alt"],["scoop_lights",0,"alt"]],b:'<p>Mainly by making it halfway through a Kaiju Battle. Also:</p><ul><li>Super Secret Skill Shot (also collects it)</li><li>Fighters 5, 21, 33, 45 etc.</li><li>Imposter Battle #1</li><li>6 consecutive loops</li><li>Rage Combo</li><li data-ed="premium">Super Train Loops Train Jackpot</li><li>Power-Up #9 (all of them)</li><li>Mystery award</li></ul>'},
+ {t:"Choosing and collecting",h:[["flippers",1],["scoop",2],["left_spinner",0,"alt"]],b:'<p>Press the right flipper to cycle the unlit Allies. The rulesheet suggests holding the ball on the left flipper to set up the scoop shot. Lit Allies can be collected at any time, several in one shot. Each collected Ally lights the left spinner to advance Rampage.</p>'},
+ {t:"The three Allies",h:[["allies_ins",0,"alt"],"outlane_l",["mothra_save",0,"alt"]],b:'<ul><li><b>Rodan:</b> 2x playfield for 60 seconds, or 75 with Power-Up #6.</li><li><b>Mothra:</b> lights the left outlane for Mothra Save. Not qualified until an active ball saver ends.</li><li><b>Anguirus:</b> the action button adds a ball during any multiball. Activations stack over the game.</li></ul>'}
+]},
+{g:"Other scoring",id:"saucer",title:"Saucer Attack",steps:[
+ {t:"Lighting it",h:["pop",["rollover_b",0,"alt"]],b:'<p>Hit the bumper 5 times (+3 per saucer destroyed), or roll the switch directly below it. The bumper is then lit for 10 seconds, 2 seconds less per later saucer.</p>'},
+ {t:"Scoring",h:["pop",["inlane_r",0,"alt"]],b:'<p>At least 2M + 20,000 per bumper hit, rising 75% per saucer destroyed. +1x each time on a ball. An alley pass through the right return lane doubles it and counts as 2 saucers. Conquering New York adds 2M.</p>'},
+ {t:"Awards",h:["pop"],b:'<ul><li><b>3 saucers:</b> Extra Ball</li><li><b>6:</b> light Saucer Attack Multiball</li><li><b>9:</b> +3 Power-Ups</li><li><b>12, 20, 30, 40 etc.:</b> +1x and light Destruction Jackpot</li></ul>'}
+]},
+{g:"Other scoring",id:"jets",title:"Jet Fighter Attack",steps:[
+ {t:"Starting it",h:["inlanes",["fighter_ins",0,"alt"],["right_spinner",0,"alt"]],b:'<p>Collect 6 missiles at the flashing inlanes. Later attempts need the inlanes lit by shooting the right spinner lane. Only one may be lit at a time, toggled by slingshot hits.</p>'},
+ {t:"Playing it",h:ALLS.concat(["inlanes"]),b:'<p>Shoot roving red arrows for hurry-ups from 1M. Each adds 1M to the next, briefly pauses the timer and destroys jets. Jet value rises 500K per attack started. Rolling an inlane resets the hurry-up timer.</p>'+UNK("The rulesheet does not list which shots the red arrows use.")},
+ {t:"Final hurry-up",h:["left_spinner"],b:'<p>Make 5 shots in one attempt and the left spinner lights for a final hurry-up, starting at 5x the normal value, and destroys 1 more jet.</p>'},
+ {t:"Awards",h:[],b:'<ul><li><b>5 jets:</b> light Ally</li><li><b>10:</b> Extra Ball</li><li><b>15:</b> +1x Destruction Jackpot</li><li><b>21, 33, 45 etc.:</b> light Ally</li><li><b>27, 39, 51 etc.:</b> +1 Power-Up</li></ul>'}
+]},
+{g:"Other scoring",id:"magna",title:"Magna-Grab and Imposter",steps:[
+ {t:"Lighting Magna-Grab",h:[["powerline",1],["inlane_r",2],["magna",3]],b:'<p>Complete all 3 Powerline targets to light the right inlane. Pass through it lit to light the Magna-Grab, which scores and captures the ball.</p>'},
+ {t:"Releasing the ball",h:["magna","upper_loop"],b:'<p>Press both flippers to release at the right time. Every loop shot after a Magna-Grab is worth 5x.</p>'},
+ {t:"Imposter Battle",h:[["magna",1],["left_spinner",2]],b:'<p>Time the release into the left spinner, or quickly shoot the left spinner after it. Awards in order:</p><ol><li>15M and light Ally</li><li>20M and +1% Annihilation Bonus</li><li>30M and +1x Destruction Jackpot</li><li>250M</li></ol><p>Power-Up #5 can instantly collect the next one.</p>'}
+]},
+{g:"Other scoring",id:"rage",title:"Rage Combo",steps:[
+ {t:"Lighting it",h:["center_spinner",["inlane_l",0,"alt"]],b:'<p>Each time the Heat Ray reaches level 3 charge, the left inlane lights. Roll over it to light the right ramp and start the sequence.</p>'},
+ {t:"The sequence",h:[["right_ramp",1],["left_ramp",2],["center_spinner",3],["upper_loop",4],["tail_whip",5]],b:'<p>Each shot scores 3M (+1M per activation) x its number. The center spinner lights an Ally. The tail whip scores 20M, raises the Destruction Jackpot multiplier and lights the building to collect it.</p><p>After the first Ally, further Allies need the fourth shot, then the fifth. Only 3 Allies per game can come from Rage Combo.</p>'}
+]},
+{g:"Other scoring",id:"rampage",title:"Monster Rampage",steps:[
+ {t:"R-A-M-P-A-G-E",h:["left_spinner"],b:'<p>Collect letters at the left spinner when Adv. Rampage is lit. Two letters are spotted the first time. It lights by:</p><ul><li>Changing cities</li><li>Collecting a Destruction Jackpot or raising its multiplier</li><li>Collecting an Ally (first completion only)</li><li>Mystery award</li></ul>'},
+ {t:"The mode",h:[["left_ramp",1],["building",2],["center_spinner",3],["right_ramp",4],["upper_loop",5],["tail_whip",6],["left_spinner",7]],b:'<p>Single-ball, with a generous unlimited ball save at the start. One shot is lit, for 15 seconds, then it moves in this order and the mode ends. It starts at 3M, +1.25M per jackpot. Rodan and Rampage X multiply it.</p>'},
+ {t:"Cumulative awards",h:[],b:'<ul><li><b>12 shots:</b> Extra Ball and +1x to all shots</li><li><b>28, 44, 60 etc.:</b> +2x Destruction Jackpot and +1x to all shots</li></ul>'+UNK("The Destruction Jackpot section lists 24, 36, 48 instead. The rulesheet does not settle it.")}
+]},
+{g:"Other scoring",id:"heat",title:"Heat Ray and Super Spinner",steps:[
+ {t:"Qualifying",h:["center_spinner"],b:'<p>Spin the center spinner 60 times for the first Heat Ray, 120 for the second, and so on. When the action button flashes, hold it until the meter reaches 100% to collect all lit shots. It takes longer with each use, unless three cities are conquered.</p>'},
+ {t:"Limits",h:[],b:'<ul><li>Not usable on Destruction Jackpots.</li><li>Once only during Tier 2 battles and multiballs.</li><li>Disabled during Planet X Multiball.</li><li>Spinner modes get 5 spins spotted per spinner.</li><li>In Mechagodzilla Multiball it spots one of several lit shots at random.</li></ul>'},
+ {t:"Super Spinner",h:["left_spinner","center_spinner","right_spinner"],b:'<p>After a Heat Ray, the next spinner rip scores 2x per spin, +1x per conquered city, with no cap. Power-Up #7 can add +2x.</p>'}
+]},
+{g:"Other scoring",id:"loops",title:"Loops and Tail Whips",steps:[
+ {t:"Loops",h:[["upper_flipper",1],["upper_loop",2]],b:'<p>500K, +15K per loop, with a base maximum of 2M. Consecutive loops add 1x for that run, to 10x. Multiplied by 5x after a lit Magna-Grab release. Each loop adds 100K to end-of-ball bonus.</p>'},
+ {t:"Loop awards",h:["upper_loop"],b:'<p>First time in a game:</p><ul><li><b>3 consecutive:</b> +1 Power-Up</li><li><b>6:</b> light Ally</li><li><b>10:</b> +3 Power-Ups</li></ul><p>Over a game, 25, 40, 80, 120 etc. loops give +1x and light Destruction Jackpot.</p>'},
+ {t:"Tail Whips",h:[["magna",1],["upper_loop",2],["tail_whip",3]],b:'<p>Score a lit Magna-Grab to light the tail whip shot. Loop then tail whip is a Super Tail Whip, worth 2M x loops made before it, and collects 2.</p><ul><li><b>3 Tail Whips:</b> +2 Power-Ups</li><li><b>7, 20, 33, 46 etc.:</b> +2 Power-Ups and light Destruction Jackpot</li></ul>'}
+]},
+{g:"Other scoring",id:"trains",title:"Trains",steps:[
+ {t:"Advance Train",h:[["scoop",1],["magna",1],["left_ramp",2],["train_ins",0,"alt"]],b:'<p>Light it at the left ramp by shooting the scoop, the reverse building, or the captive ball when Attack Bridge is lit. Shoot the left ramp for 2M + 200K per train.</p>'},
+ {t:"Awards",h:["left_ramp"],b:'<ul><li><b>3 trains:</b> +2 Power-Ups</li><li data-ed="pro"><b>5:</b> 50M</li><li data-ed="premium"><b>5:</b> Super Train Loops</li><li><b>10:</b> +1x and light Destruction Jackpot</li><li><b>15, 25, 35 etc.:</b> 50M</li><li><b>20, 30, 40 etc.:</b> +2 Power-Ups</li></ul>'},
+ {t:"Super Train Loops",ed:"premium",h:["left_ramp","right_ramp",["building",0,"alt"]],b:'<p>Timed, takes priority over all other modes. Loop one ramp. Each shot made without hitting another switch adds multipliers, and a couple of seconds. The building sets one story lower. Shooting the building ends it.</p><ul><li>After 5 consecutive right ramps, the building diverts the ball to the other flipper.</li><li>After 5 consecutive left ramps, the bridge opens and diverts the ball.</li><li>After 4 consecutive right ramps, a left ramp bonus lights for the total so far, and an Ally.</li></ul>'}
+]},
+{g:"Other scoring",id:"wallop",title:"Godzilla Wallop",steps:[
+ {t:"Wallop",h:["building",["left_ramp",0,"alt"]],b:'<p>A strong shot into the building\'s exit that passes through its entrance. During a mode it awards one lit shot, favoring the left side. Further uses in that mode score 1M. The first two in single-ball play give a short ball save.</p><p>It always lights Advance Train at the left ramp.</p>'+UNK("The rulesheet does not say where the exit is, so only the entrance is marked.")}
+]},
+{g:"Other scoring",id:"mystery",title:"Mystery Award",steps:[
+ {t:"Qualifying",h:[["maser",1],["rollover_r",0,"alt"],["mystery_ins",0,"alt"]],b:'<p>Roll the switch directly right of the pop bumper, or hit the Maser Cannon target, 3 times (+1 per collection). Collect at the flashing target.</p>'},
+ {t:"Awards",h:["maser"],b:'<ul><li>5M</li><li>+1 Bonus X</li><li>+1 Tail Whip</li><li>Advance Fighter</li><li>Advance Train</li><li>Light Adv. RAMPAGE</li><li>Destroy Saucer</li><li>Light Ally</li><li>Light Destruction Jackpot</li><li>Light Inlanes</li><li>Light Kaiju Battle</li><li>Spot Powerline</li><li>Spot Bridge Attack</li><li>Spot Tank</li><li>Start Mechagodzilla Battle (once per game)</li><li>Start Hedorah</li></ul>'}
+]},
+{g:"Other scoring",id:"combos",title:"City and Secret Combos",steps:[
+ {t:"City Combos",h:[],b:'<p>Each city has 3 combos on the Premium and LE and 2 on the Pro. Worth 5M, with 10M for finishing a city\'s set. 5 City Combos award an Extra Ball. The status report shows those not yet collected.</p><p data-ed="premium">Premium and LE only combos need the building in Lock position.</p>'},
+ {t:"Tokyo",h:[["center_spinner",1],["upper_loop",2],["right_ramp",1],["building",2]],b:'<ol><li>Center spinner, big loop, Mecha side lane</li><li>Right ramp, through building, big loop</li><li data-ed="premium">Center spinner, pop bumper</li></ol>'+UNK("The rulesheet does not locate the Mecha side lane, so it is not marked.")},
+ {t:"New York",h:[["left_ramp",1],["right_ramp",1],["center_spinner",2],["pop",3]],b:'<ol><li>Left ramp, center spinner, Mecha side lane</li><li>Right ramp, left ramp, pop bumper</li><li data-ed="premium">Right ramp, center spinner, Mecha side lane</li></ol>'},
+ {t:"London",h:[["right_ramp",1],["left_ramp",2],["scoop",3],["building",2],["neo",3]],b:'<ol><li>Right ramp, left ramp, scoop</li><li>Right ramp, through building, any shield target</li><li data-ed="premium">Left ramp, captive ball</li></ol>'},
+ {t:"Paris",h:[["left_ramp",1],["right_ramp",2],["left_spinner",3],["building",3]],b:'<ol><li>Left ramp, right ramp, left spinner</li><li>Left ramp, right ramp, through building</li><li data-ed="premium">Left ramp, left spinner</li></ol>'},
+ {t:"Secret Combos",h:["center_spinner","maser","scoop","pop"],b:'<p>Ten combos worth 2.5M each.</p><ol><li>Center spinner, scoop</li><li>Center spinner, Mecha bottom rollover</li><li>Maser target, scoop</li><li>Under flipper, captive ball, Mecha side lane</li><li>Reverse Mecha side lane, skill shot (left spinner)</li><li>Maser target, pop bumper</li><li>Shield targets, building hit</li><li>Right ramp, Maser target</li><li>Left ramp, pop bumper</li><li>Building through, shield targets</li></ol><p>The rulesheet lists these as spoilers.</p>'},
+ {t:"Secret Combo awards",h:[],b:'<ul><li><b>2:</b> Hedorah is the next mystery award</li><li><b>5:</b> +2 Power-Ups</li><li><b>6:</b> Hedorah is the next mystery award</li><li><b>10:</b> no award, but counts as completing the Planet X Victory Challenge</li></ul>'}
+]},
+{g:"Other scoring",id:"hedorah",title:"Hedorah and Oxygen Destroyer",steps:[
+ {t:"Hedorah",h:ALLS,b:'<p>Collected as a mystery award. For the rest of the ball, one shot is light green. Shoot it to collect and raise the value, from 750K, +15K per switch. Another shot then lights. 100 switch hits make the shot flash, for a Hedorah Jackpot of 3x.</p>'+UNK("The rulesheet does not list which shots are used.")},
+ {t:"Oxygen Destroyer",h:["outlane_r",["oxygen",0,"alt"],["building",1]],b:'<p>On the last ball, the right outlane lights. It is a one-time ball save. A new ball is plunged, and it must go all the way through the building within 12 seconds. That also collects anything lit at the building, but will not start Godzilla Multiball.</p><p>If time runs out or the ball drains, the flippers die and the ball is gone.</p>'}
+]},
+{g:"Other scoring",id:"bonus",title:"Extra balls and bonus",steps:[
+ {t:"Extra balls",h:[],b:'<p>Awarded instantly:</p><ul><li>Win 2 Kaiju Battles</li><li>Destroy 3 saucers</li><li>Destroy 10 fighters</li><li>12 shots in the first Monster Rampage</li><li>Collect 5 City Combos</li></ul>'},
+ {t:"End-of-ball bonus",h:[],b:'<ul><li>Cities: 750K</li><li>Tail Whips: 250K</li><li>Power-Ups: 200K</li><li>Fighters: 350K</li><li>Loops: 150K</li><li>Bonus X from conquered cities or a mystery award</li></ul>'+UNK("Other sections say a Power-Up adds 300K and a loop adds 100K. The rulesheet does not settle it.")}
+]},
+/* ====== WIZARD MODES ====== */
+{g:"Wizard modes",id:"zero",title:"Monster Zero",steps:[
+ {t:"Starting it",h:[["scoop",1],["building",2],["wiz_ins",0,"alt"]],b:'<p>Score a Godzilla Multiball Super Jackpot, then pick Light Monster Zero at Power-Up 4 or 8. The next building shot starts it.</p>'},
+ {t:"Locks",h:ALLS,b:'<p>Lock up to 3 balls in single-ball play. Ball save starts at 30 seconds, and drops to 10 after each lock.</p><p>Green arrows qualify a lock: 2 shots, then 3, then 4. That lights the building lock and red inserts on all major shots for 30 seconds, which add to the jackpot value. Each lock raises the super multiplier to 3x, 5x, then 8x.</p><p>Draining before the first lock ends the mode, and it counts as a ball-ending drain.</p>'},
+ {t:"Victory Multiball",h:ALLS,b:'<p>Starts after locking all 3, or after at least 1 lock and a drain. 3 shots at a time score the built jackpot: 1x with 2 balls, 2x with 3, 4x with 4 or more.</p><p>10 jackpots light the reverse building for the Super Jackpot, and the first adds a ball. The mode ends at one ball.</p>'}
+]},
+{g:"Wizard modes",id:"terror",title:"Terror of Mechagodzilla",steps:[
+ {t:"Starting it",h:[["scoop",1],["building",2],["wiz_ins",0,"alt"]],b:'<p>Score a Mechagodzilla Multiball Super Jackpot, then pick Light Terror of Mechagodzilla at Power-Up 4 or 8. The next building shot starts it.</p><p>Flips are the clock. Ball save is on throughout. Drains only subtract flips, and the ball is auto-plunged. Completing a goal adds flips and resets it.</p>'},
+ {t:"Phase 1: targets",h:["powerline","neo","maser"],b:'<p>30 flips, single-ball. Standups score 1M + 200K per hit, and each hit refunds a flip. Complete all for +15, +10, then +5 flips. Drains cost 6 flips.</p>'},
+ {t:"Phase 2: spinners",h:["left_spinner","center_spinner","right_spinner"],b:'<p>45 flips, 2-ball. Left: 75K + 10K per spin. Center and right share 25K + 5K per spin, capped at the left value. 100 spins add +30, +20, then +10 flips. Drains cost 5 flips.</p><p>If a spinner is still going when flips run out, the game waits and you can flip free, which can extend the phase.</p>'},
+ {t:"Phase 3: ramps",h:["left_ramp","right_ramp"],b:'<p>50 flips, 3-ball. Ramps score 10M + 1M per shot. 8 ramps add +50 flips. Both are lit for the first round, then they alternate. Drains cost 4 flips.</p>'},
+ {t:"Phase 4: everything",h:ALLS.concat(["pop","magna"]),b:'<p>100 flips, no way to add more, 4-ball. All shots are lit at values locked in earlier. The bumper and captive ball are lit for 3M. Drains cost 3 flips. At the end the flippers die, all balls drain, and a new ball is served.</p>'}
+]},
+{g:"Wizard modes",id:"planetx",title:"Planet X Multiball",steps:[
+ {t:"Qualifying",h:[["monitor",0,"alt"],"scoop"],b:'<p>Start a Tier 2 battle, Tesla Strike, Bridge Attack Multiball and Tank Attack Multiball, even across cities. Then pick Planet X at City Select.</p><p>This scores the Earth Bonus: 25% of total Carnage Bonus x cities visited, up to 4x. It is 3-ball with balls added per phase, and can be played single-ball, but ends on a drain.</p>'},
+ {t:"Wave 1: blue",h:[["powerline",1],["center_spinner",2]],b:'<p>3 Powerline targets, then the center spinner for 10M.</p>'},
+ {t:"Wave 2: green",h:TANKS.concat([["maser",2]]),b:'<p>All Tank shots, then the Maser Cannon for 15M.</p>'},
+ {t:"Wave 3: orange",h:[["magna",1],["right_ramp",2]],b:'<p>5 Magna-Grab shots, then the right ramp for 20M.</p><p>The last shot of each of these three waves scores up to 5x, +1x per conquered city.</p>'},
+ {t:"Final shots",h:MAJOR.concat([["scoop",2]]),b:'<p>All yellow major shots, then the scoop within 20 seconds. It is a hurry-up from 50% of the Earth Bonus, minimum 175M, counting down. Then +6 Power-Ups.</p>'},
+ {t:"Victory Challenge",h:[],b:'<p>140 seconds, all four waves again at double Super Jackpot values. The final shot is double the first hurry-up. It does not continue in single-ball play. Winning it, or collecting all 10 Secret Combos, is one of two tasks needed for Monster Island Madness.</p>'},
+ {t:"Afterward",h:["scoop"],b:'<p>Power, Bridge and Tank objectives qualify again. Complete all three to light the scoop for a Planet X Bonus, worth 19% of the mode\'s total score. The Heat Ray is disabled during Planet X Multiball.</p>'}
+]},
+{g:"Wizard modes",id:"kotm",title:"King of the Monsters",steps:[
+ {t:"Requirements",h:[["scoop",1],["building",2],["wiz_ins",0,"alt"]],b:'<ul><li>Monster Zero or Terror of Mechagodzilla played</li><li>Planet X Multiball played, not necessarily completed</li><li>Power-Up #8 or #11, choosing Light King of the Monsters</li></ul><p>Then shoot the building.</p>'+UNK("The Power-Up table says #11 needs all three other wizard modes played. This section says either of two is enough. It does not settle it.")},
+ {t:"Part 1: all Tier 1 monsters",h:ALLS,b:'<p>60 seconds + 5 per conquered city, with shots for all four monsters lit. Each defeated monster adds time and +1x to the bounty, which grows by each shot\'s value. It ends when all four are beaten, time runs out or you drain.</p>'},
+ {t:"Part 2: King Ghidorah",h:[["left_spinner",3],["left_ramp",3],["building",5],["center_spinner",7],["right_ramp",2],["upper_loop",2],["scoop",0,"alt"]],b:'<p>4-ball with Mothra and Anguirus active. Light every flashing insert. The badges show shots needed at each. The scoop then lights for the bounty, multiplied by balls in play, up to 4x.</p><p>If Anguirus is unused when you drain to one ball, it is qualified for a last 2x chance. The game ends after the bounty, with one last bonus.</p>'}
+]},
+{g:"Wizard modes",id:"mim",title:"Monster Island Madness",steps:[
+ {t:"Ultra wizard mode",h:ALLS,b:'<p>Win the Planet X Victory Challenge, or make all 10 Secret Combos, then defeat King Ghidorah in King of the Monsters.</p><p>75 seconds, 6-ball, with unlimited ball save. Switches start at 25,000, +2,500 per hit. 7 yellow arrows start at 10M, +5M each. Completing them lights them red for double scoring. Completing again relights them. When time runs out, all balls drain and the game ends.</p>'+UNK("The rulesheet does not list the seven arrows. The main shots are marked.")}
+]}
+];
