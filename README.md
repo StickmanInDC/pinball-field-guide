@@ -17,6 +17,7 @@ address that name a section still redirect to the Star Wars guide.
 - *James Bond 007*: `james-bond-007/index.html` (Pro / Premium / LE switch)
 - *Jurassic Park*: `jurassic-park/index.html` (Pro / Premium / LE switch)
 - *Pokémon*: `pokemon/index.html` (Pro / Premium / LE switch)
+- *Rush*: `rush/index.html` (Pro / Premium / LE switch)
 - *Star Wars: Fall of the Empire*: `star-wars-fall-of-the-empire/index.html`
 - *Transformers: More Than Meets the Eye*: `transformers-more-than-meets-the-eye/index.html` (Pro / Premium / LE switch)
 
@@ -79,6 +80,11 @@ Each guide is a single static page, so no build tools are needed to host it.
 - Rules come from the supplied rulesheet (code 0.87). It treats Premium and LE as one game, so they share rules, but each has its own photo.
 - The photos are Stern's 1319x2560 top views, aligned on the printed art and cropped to 1002x1901. Coordinates use a 640x1214 grid.
 - Printed inserts, the Poké Ball, Meowth balloon, Pikachu, town scoop and Premium whirlpool are clear, but shot paths are estimated, and the rulesheet has no layout text. The bumpers, spinner, top lanes, berry targets, town targets, training targets, BATTLE targets, Psyduck sneak-in and captive ball are the least certain. The Center Playfield X Target is not marked. The Pokémon Master step comes from Stern's apron card, not the rulesheet. Verify them on a real machine.
+
+## Accuracy (Rush)
+- Rules come from the supplied rulesheet (code 1.14). It treats Premium and LE as one game, so they share rules, but each has its own photo.
+- The photos are Stern's 1474x2500, 1494x2500 and 1475x2500 top views, aligned on the printed art and cropped to 990x1880. Coordinates use a 640x1215 grid.
+- Printed inserts, the Time Machine and the right ramp are clear. The 1-2-3 inserts on each lane fit the rulesheet's combo table, but shot paths are estimated, and the rulesheet has no layout text. The side ramp and side loop may be swapped. The scoops, dead end, spinner, pop bumpers, instrument standup, Lite and Lock standups and under-flipper shot are the least certain. The RUSH standups, Premium and LE captive ball and ramp diverter are not marked. Verify them on a real machine.
 
 ## Add a machine
 Create `Machines/<name>/` with:
