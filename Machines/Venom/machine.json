@@ -1,0 +1,18 @@
+{
+  "name": "Venom",
+  "manufacturer": "Stern",
+  "year": 2023,
+  "code_rev": "1.06",
+  "title": "Venom Field Guide",
+  "heading": "Venom",
+  "aria": "Venom playfield with the current step's shots highlighted",
+  "width": 640,
+  "height": 1228,
+  "label_split": 320,
+  "output": "venom/index.html",
+  "editions": [
+    {"id": "pro", "label": "Pro", "image": "playfield-pro.jpg"},
+    {"id": "premium", "label": "Premium", "image": "playfield-premium.jpg"},
+    {"id": "le", "label": "LE", "like": "premium", "image": "playfield-le.jpg"}
+  ]
+}

@@ -23,6 +23,7 @@ address that name a section still redirect to the Star Wars guide.
 - *Star Wars: Fall of the Empire*: `star-wars-fall-of-the-empire/index.html`
 - *Teenage Mutant Ninja Turtles*: `teenage-mutant-ninja-turtles/index.html` (Pro / Premium / LE switch)
 - *Transformers: More Than Meets the Eye*: `transformers-more-than-meets-the-eye/index.html` (Pro / Premium / LE switch)
+- *Venom*: `venom/index.html` (Pro / Premium / LE switch)
 
 Each guide is a single static page, so no build tools are needed to host it.
 
@@ -104,6 +105,11 @@ Each guide is a single static page, so no build tools are needed to host it.
 - Rules come from the supplied rulesheet (code 1.50, though it also mentions 1.54 and 1.55). It treats Premium and LE as one game, so they share rules, but each has its own photo. Its Layout section is only pictures, Cowabunga Multiball is not described, and it gives two places for starting Final Battle.
 - The photos are Stern's 1476x2500 top views. Premium and LE were aligned to the Pro's printed art by a perspective fit, under 1 pixel error, and all were cropped to 970x1800 of the Pro and scaled to 1280x2376. Coordinates use a 640x1188 grid. Raised toys do not line up.
 - Printed inserts, the turtle arrows, the left ramp, right ramp entrance and Dimension X targets are clear, but shot paths are estimated. The center ramp and Krang Loop may be swapped. The Pizza Parlor path, LAIR Lane, LAIR Target, APRIL Target, 2X Target, orbits, pop bumpers and top lanes are the least certain. The Pizza Targets, spinner and slingshots are not marked. Lines from the apron card are labelled. Verify them on a real machine.
+
+## Accuracy (Venom)
+- Rules come from the supplied rulesheet (code 1.06). It treats Premium and LE as one game and notes where the Pro differs, and each model has its own photo. It has no layout text, gives no third mini-mode for Venomized Wolverine, and leaves most of Venomized Ghost Rider's table blank.
+- The photos are Stern's 1476x2500 top views. Premium and LE were aligned to the Pro's printed art by a perspective fit, under 1 pixel error, and all were cropped to 980x1880 of the Pro and scaled to 1280x2456. Coordinates use a 640x1228 grid. Raised toys do not line up.
+- Printed inserts, the captive ball, Carnage track and Bell Tower toy are clear. Stern's apron card fixes the center ramp and scoop, and the Choose Host insert fixes the left ramp, but paths past the arrows are estimated. The left orbit, left loop, right loop, right orbit, bell tower target, canisters, bottom lanes, and the Premium and LE U-turn ramp and flyaway targets are the least certain. Only two of the five red targets are placed. Top lanes, rollover lanes, the Secret Hideout saucer, sinkhole, pop bumpers, spinners and slingshots are not marked. Verify them on a real machine.
 
 ## Add a machine
 Create `Machines/<name>/` with:
