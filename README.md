@@ -11,6 +11,7 @@ address that name a section still redirect to the Star Wars guide.
 - *Avengers: Infinity Quest*: `avengers-infinity-quest/index.html` (Pro / Premium / LE switch)
 - *Fallout Pro*: `fallout-pro/index.html`
 - *Star Wars: Fall of the Empire*: `star-wars-fall-of-the-empire/index.html`
+- *Transformers: More Than Meets the Eye*: `transformers-more-than-meets-the-eye/index.html` (Pro / Premium / LE switch)
 
 Each guide is a single static page, so no build tools are needed to host it.
 
@@ -31,6 +32,11 @@ Each guide is a single static page, so no build tools are needed to host it.
 - Rules come from the supplied rulesheet (code 1.08). It only separates Pro from Premium/LE, so Premium and LE show the same rules and art.
 - The photos are 2255x4217 originals, cropped to the playfield and scaled to 1280x2380 for the page. Coordinates use a 640x1190 grid.
 - Most shot paths are estimated from the photos and tagged Estimated. Verify them on a real machine.
+
+## Accuracy (Transformers)
+- Rules come from the supplied rulesheet (code 0.96), which is unfinished. It treats Premium and LE as one game, so they share rules, but each has its own photo.
+- The photos are Stern's 1319x2560 images, the largest it publishes, cropped to 1010x2083. Coordinates use a 640x1320 grid.
+- Most shot paths are estimated from the inserts along each lane and tagged Estimated. Verify them on a real machine.
 
 ## Add a machine
 Create `Machines/<name>/` with:
