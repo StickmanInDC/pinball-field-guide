@@ -47,6 +47,8 @@ Create `Machines/<name>/` with:
 
 Copy `Machines/Fallout Pro/` as a starting point. Shared CSS and app code live in `src/template.html`.
 
+To find a photo, start with `reference/stern-playfield-contact-sheet.jpg` and the image links in `reference/stern-playfield-images.md`.
+
 For a machine with several versions, list them in `machine.json` under `editions` (see `Machines/Avengers Infinity Quest/`). Each has an `id`, `label`, `image` and optional `like`, which names the version it shares rules with. Then:
 - Tag a section, step or `home.html` element for certain versions: `ed:"pro"` on a section or step, `data-ed="pro"` in HTML.
 - Override a feature for a version with `v:{premium:{s:[...],a:[...]}}`. An empty `s` hides it on that version.
