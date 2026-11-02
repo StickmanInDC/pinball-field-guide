@@ -126,6 +126,9 @@ a.back{display:inline-block;text-decoration:none}
 .stagebox{flex:1 1 0;min-width:0;min-height:0;container-type:size;display:flex;justify-content:center;align-items:flex-start}
 .stage{width:min(100cqw,100cqh*590/1097);height:min(100cqh,100cqw*1097/590);border-radius:10px;overflow:hidden;border:1px solid var(--line);background:#05080d}
 .stage svg{display:block;width:100%;height:100%}
+.stage{cursor:zoom-in;-webkit-user-select:none;user-select:none}
+.stage.zoomed{cursor:grab;touch-action:pinch-zoom}
+.stage.panning{cursor:grabbing}
 .ring{fill:rgba(255,194,51,.14);stroke:var(--hl);stroke-width:3;animation:pulse 1.7s ease-in-out infinite}
 .ring.alt{fill:rgba(92,200,255,.14);stroke:var(--hl-alt)}
 .bfill{fill:none;stroke:rgba(255,194,51,.3);stroke-linecap:round;stroke-linejoin:round}
@@ -233,6 +236,7 @@ html.js #static{display:none}
     <div class="tools">
       <button class="tgl" id="tz" type="button" aria-pressed="false"><span class="sw"></span>Zoom to highlights</button>
       <button class="tgl" id="tl" type="button" aria-pressed="true"><span class="sw"></span>Labels</button>
+      <span class="hint">Click the playfield to zoom, drag to move around</span>
     </div>
     <div class="stagewrap">
       <div class="stagebox"><div class="stage">
@@ -499,7 +503,7 @@ function applyFeatures(){
   });
 }
 buildIndex();
-var S={sec:null,step:0,zoom:false,labels:true};try{if(window.matchMedia("(max-width:760px)").matches)S.zoom=true}catch(e){}
+var S={sec:null,step:0,zoom:false,labels:true,view:null};try{if(window.matchMedia("(max-width:760px)").matches)S.zoom=true}catch(e){}
 
 /* nav */
 function buildNav(){
@@ -548,7 +552,7 @@ function fit(bb){
   var x=Math.min(Math.max(cx-w/2,0),VBW-w),y=Math.min(Math.max(cy-h/2,0),VBH-h);
   return[x,y,w,h];
 }
-var curVB=[0,0,VBW,VBH],anim=null;
+var curVB=[0,0,VBW,VBH],baseVB=curVB,curItems=[],anim=null;
 var reduce=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 function setVB(v){curVB=v;$("#pf").setAttribute("viewBox",v.map(function(n){return n.toFixed(2)}).join(" "))}
 function animateVB(to){
@@ -570,8 +574,10 @@ function drawStage(list){
   var bb=null;
   items.forEach(function(it){F[it.f].s.forEach(function(sh){var b=bounds(sh);bb=bb?[Math.min(bb[0],b[0]),Math.min(bb[1],b[1]),Math.max(bb[2],b[2]),Math.max(bb[3],b[3])]:b})});
   var st=$("#pf").parentNode;if(st.clientWidth>0&&st.clientHeight>0)ASP=st.clientWidth/st.clientHeight;
-  var vb=(S.zoom&&bb)?fit(bb):[0,0,VBW,VBH];
-  var k=vb[2]/VBW;
+  baseVB=(S.zoom&&bb)?fit(bb):[0,0,VBW,VBH];
+  if(S.view)S.view=placeView(S.view[0]+S.view[2]/2,S.view[1]+S.view[3]/2,S.view[2],S.view[2]/ASP);
+  st.classList.toggle("zoomed",!!S.view);
+  var vb=S.view||baseVB;
   $("#dim").style.display=items.length?"":"none";
   items.forEach(function(it){
     var f=F[it.f],alt=it.k==="alt"?" alt":"";
@@ -593,7 +599,14 @@ function drawStage(list){
       }
     });
   });
-  items.forEach(function(it){
+  curItems=items;drawLabels(vb);
+  animateVB(vb);
+}
+/* Labels keep a steady on-screen size and stay inside the view, so they are redrawn as the view moves. */
+function drawLabels(vb){
+  var lb=$("#lbls"),k=vb[2]/VBW;
+  while(lb.firstChild)lb.removeChild(lb.firstChild);
+  curItems.forEach(function(it){
     var f=F[it.f],alt=it.k==="alt"?" alt":"",ax=f.a[0],ay=f.a[1];
     var bx=ax,by=ay,r=13*k,has=it.ns.length>0,btxt=it.ns.join(","),bw=r*2;
     if(has){
@@ -616,8 +629,47 @@ function drawStage(list){
       var pt=se("text",{x:px+8*k,y:py+h/2+5*k,"font-size":fs},pg);pt.textContent=txt;
     }
   });
-  animateVB(vb);
 }
+
+/* Click zoom: S.view is the view the reader chose by clicking and dragging. null means the step's own view. */
+function placeView(cx,cy,w,h){
+  function at(c,size,max){return size>=max?(max-size)/2:Math.min(Math.max(c-size/2,0),max-size)}
+  return[at(cx,w,VBW),at(cy,h,VBH),w,h];
+}
+function setView(v){S.view=v;redraw()}
+function zoomAt(e){
+  var st=$(".stage"),m=$("#pf").getScreenCTM(),cw=st.clientWidth,ch=st.clientHeight;
+  var s=Math.min(cw/baseVB[2],ch/baseVB[3]);
+  /* 2.5x, held to 3 screen pixels per photo unit where the photo would blur, but always a visible step. */
+  var to=Math.max(Math.min(s*2.5,3),s*1.5);
+  setView(placeView((e.clientX-m.e)/m.a,(e.clientY-m.f)/m.d,cw/to,ch/to));
+}
+(function(){
+  var st=$(".stage"),press=null;
+  st.addEventListener("pointerdown",function(e){
+    if(e.button!==0)return;
+    press={id:e.pointerId,x:e.clientX,y:e.clientY,lx:e.clientX,ly:e.clientY,moved:false};
+    try{st.setPointerCapture(e.pointerId)}catch(err){}
+  });
+  st.addEventListener("pointermove",function(e){
+    if(!press||e.pointerId!==press.id)return;
+    if(!press.moved&&Math.abs(e.clientX-press.x)+Math.abs(e.clientY-press.y)<6)return;
+    if(!press.moved){press.moved=true;if(S.view)st.classList.add("panning")}
+    if(S.view){
+      if(anim){cancelAnimationFrame(anim);anim=null}
+      var u=S.view[2]/st.clientWidth;
+      S.view=placeView(S.view[0]+S.view[2]/2-(e.clientX-press.lx)*u,S.view[1]+S.view[3]/2-(e.clientY-press.ly)*u,S.view[2],S.view[3]);
+      setVB(S.view);drawLabels(S.view);
+    }
+    press.lx=e.clientX;press.ly=e.clientY;
+  });
+  st.addEventListener("pointerup",function(e){
+    if(!press||e.pointerId!==press.id)return;
+    var tap=!press.moved;press=null;st.classList.remove("panning");
+    if(tap){if(S.view)setView(null);else zoomAt(e)}
+  });
+  st.addEventListener("pointercancel",function(){press=null;st.classList.remove("panning")});
+})();
 
 /* drill view */
 function renderLegend(list){
@@ -672,7 +724,7 @@ function renderDrill(sec){
   });
 }
 function render(){
-  var sec=S.sec?byId[S.sec]:null;
+  var sec=S.sec?byId[S.sec]:null;S.view=null;
   $("#home").hidden=!!sec;$("#drill").hidden=!sec;document.body.classList.toggle("drilling",!!sec);
   if(sec)renderDrill(sec);else $("#legend").textContent="";
   drawStage(sec?(sec.steps[S.step].h||[]):[]);
@@ -717,6 +769,7 @@ $("#next").addEventListener("click",function(){move(1)});
 function tog(btn,key){
   btn.addEventListener("click",function(){
     S[key]=!S[key];btn.setAttribute("aria-pressed",S[key]?"true":"false");
+    if(key==="zoom")S.view=null;
     var sec=S.sec?byId[S.sec]:null;drawStage(sec?(sec.steps[S.step].h||[]):[]);
   });
 }
@@ -725,7 +778,7 @@ document.addEventListener("keydown",function(e){
   var t=e.target&&e.target.tagName;if(t==="INPUT"||t==="TEXTAREA"||e.metaKey||e.ctrlKey||e.altKey)return;
   if(e.key==="ArrowRight"){move(1);e.preventDefault()}
   else if(e.key==="ArrowLeft"){move(-1);e.preventDefault()}
-  else if(e.key==="Escape"){home()}
+  else if(e.key==="Escape"){if(S.view)setView(null);else home()}
 });
 function setEdition(id,keepUrl){
   var e=EDITIONS.filter(function(x){return x.id===id})[0];if(!e)return;
