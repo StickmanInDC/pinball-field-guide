@@ -1,0 +1,18 @@
+{
+  "name": "Guardians of the Galaxy",
+  "manufacturer": "Stern",
+  "year": 2017,
+  "code_rev": "0.87 or later",
+  "title": "Guardians of the Galaxy Field Guide",
+  "heading": "Guardians of the Galaxy",
+  "aria": "Guardians of the Galaxy playfield with the current step's shots highlighted",
+  "width": 640,
+  "height": 1240,
+  "label_split": 320,
+  "output": "guardians-of-the-galaxy/index.html",
+  "editions": [
+    {"id": "pro", "label": "Pro", "image": "playfield-pro.jpg"},
+    {"id": "premium", "label": "Premium", "image": "playfield-premium.jpg"},
+    {"id": "le", "label": "LE", "like": "premium", "image": "playfield-le.jpg"}
+  ]
+}
