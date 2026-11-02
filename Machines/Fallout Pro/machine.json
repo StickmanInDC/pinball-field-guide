@@ -1,0 +1,10 @@
+{
+  "title": "Fallout Pro Field Guide",
+  "kicker": "Stern · Fallout Pro · Field guide",
+  "heading": "Fallout Pro",
+  "aria": "Fallout Pro playfield with the current step's shots highlighted",
+  "width": 700,
+  "height": 1340,
+  "label_split": 350,
+  "output": "fallout-pro/index.html"
+}
