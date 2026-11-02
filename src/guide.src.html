@@ -1,0 +1,700 @@
+<title>Fall of the Empire Field Guide</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@600;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: two panes. Left = rulesheet headers that drill into paged steps. Right = playfield photo with spotlight highlights. */
+:root{
+  --bg:#0c1117; --panel:#121920; --panel2:#18212b; --line:#26323f;
+  --fg:#e7edf3; --muted:#93a2b3;
+  --accent:#ffc233; --accent-ink:#1b1400; --accent-text:#ffc233;
+  --ok:#6fd3a0; --bad:#ff7a70; --pl:#5cc8ff;
+  --hl:#ffc233; --hl-alt:#5cc8ff;
+  --f-display:'Barlow Condensed','Arial Narrow',Arial,sans-serif;
+  --f-body:'Barlow',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --f-mono:'IBM Plex Mono',ui-monospace,Consolas,monospace;
+  color-scheme:dark;
+}
+@media (prefers-color-scheme:light){
+  :root:not([data-theme="dark"]){
+    --bg:#e8ecf0; --panel:#f6f8fa; --panel2:#ffffff; --line:#c9d3dd;
+    --fg:#121c27; --muted:#55657a;
+    --accent:#f0a800; --accent-ink:#1a1200; --accent-text:#8a5700;
+    --ok:#17784a; --bad:#b3261e; --pl:#0a6a9a; color-scheme:light;
+  }
+}
+:root[data-theme="light"]{
+  --bg:#e8ecf0; --panel:#f6f8fa; --panel2:#ffffff; --line:#c9d3dd;
+  --fg:#121c27; --muted:#55657a;
+  --accent:#f0a800; --accent-ink:#1a1200; --accent-text:#8a5700;
+  --ok:#17784a; --bad:#b3261e; --pl:#0a6a9a; color-scheme:light;
+}
+html,body{height:100%}
+body{background:var(--bg);color:var(--fg);font:15px/1.5 var(--f-body);
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
+  padding-block:0;overflow-x:hidden}
+*{box-sizing:border-box}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible,summary:focus-visible,a:focus-visible{outline:2px solid var(--accent-text);outline-offset:2px}
+.app{display:grid;grid-template-columns:minmax(340px,430px) minmax(0,1fr);gap:24px;height:100%}
+.side{display:flex;flex-direction:column;min-height:0;min-width:0;padding-block:14px}
+.brand{padding-bottom:12px;border-bottom:1px solid var(--line);margin-bottom:12px}
+.kicker{font:500 11px var(--f-mono);letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.brand h1{margin:2px 0 0;font:700 34px/1 var(--f-display);letter-spacing:.01em;text-transform:uppercase;text-wrap:balance}
+.sidebody{flex:1;min-height:0;overflow:auto;padding-right:6px;scrollbar-width:thin}
+.intro{color:var(--muted);margin:0 0 10px;max-width:60ch}
+details.about{background:var(--panel);border:1px solid var(--line);border-radius:8px;margin-bottom:16px}
+details.about summary{padding:9px 12px;cursor:pointer;font-weight:600}
+details.about .in{padding:0 12px 12px;color:var(--muted);font-size:14px}
+details.about ul{margin:6px 0;padding-left:18px}
+details.about a{color:var(--accent-text)}
+.group{margin:0 0 16px}
+.group h2{margin:0 0 6px;font:500 11px var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.list{display:flex;flex-direction:column;gap:4px}
+.item{display:flex;justify-content:space-between;align-items:baseline;gap:10px;text-align:left;width:100%;
+  background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:9px 12px}
+.item:hover{border-color:var(--accent-text)}
+.item .nm{font-weight:600;min-width:0}
+.item .ct{font:500 11px var(--f-mono);color:var(--muted);white-space:nowrap}
+.item.sub{margin-left:16px;width:calc(100% - 16px)}
+.back{background:none;border:0;padding:4px 0;color:var(--accent-text);font-weight:600}
+.drill h2.title{margin:6px 0 2px;font:700 30px/1.05 var(--f-display);text-transform:uppercase;text-wrap:balance}
+.drill .grp{margin:0}
+.dots{display:flex;gap:4px;margin:12px 0 4px}
+.dots button{flex:1;min-width:8px;height:8px;padding:0;border:0;border-radius:3px;background:var(--line)}
+.dots button.done{background:color-mix(in srgb,var(--accent) 45%,var(--line))}
+.dots button[aria-current="step"]{background:var(--accent)}
+.count{font:500 12px var(--f-mono);color:var(--muted);margin:0 0 8px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.card h3{margin:0 0 8px;font:700 24px/1.1 var(--f-display);text-transform:uppercase;letter-spacing:.01em;text-wrap:balance}
+.card p{margin:0 0 9px}
+.card p:last-child{margin-bottom:0}
+.card ul,.card ol{margin:0 0 9px;padding-left:20px}
+.card li{margin:2px 0}
+.fine{color:var(--muted);font-size:13.5px}
+.card table{border-collapse:collapse;width:100%;margin:2px 0 9px;font-size:14px}
+.card td,.card th{padding:4px 8px 4px 0;border-bottom:1px solid var(--line);vertical-align:top;text-align:left}
+.card th{font:500 11px var(--f-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.card dl{margin:0 0 6px}
+.card dt{font-weight:600;margin-top:8px}
+.card dd{margin:0;color:var(--muted);font-size:14px}
+.card dd b{color:var(--fg);font-weight:600}
+.chip{display:inline-block;font:500 10.5px var(--f-mono);letter-spacing:.05em;text-transform:uppercase;padding:1px 6px;border:1px solid var(--line);border-radius:4px;color:var(--muted);vertical-align:1px}
+.chip.clear{color:var(--ok)}
+.chip.est{color:var(--accent-text)}
+.chip.pl{color:var(--pl)}
+.nav{display:flex;gap:8px;margin:12px 0}
+.btn{flex:1;padding:10px 12px;border-radius:8px;border:1px solid var(--line);background:var(--panel2);font-weight:600}
+.btn:hover:not(:disabled){border-color:var(--accent-text)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn:disabled{opacity:.4;cursor:default}
+.legend{margin:6px 0 14px}
+.legend h4,.outline summary{margin:0 0 6px;font:500 11px var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.legend ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.legend li{display:flex;gap:9px;align-items:flex-start;font-size:14px}
+.bdg{flex:none;min-width:22px;height:22px;padding:0 6px;border-radius:11px;background:var(--accent);color:var(--accent-ink);font:700 12px/22px var(--f-mono);text-align:center;white-space:nowrap}
+.bdg.dot{background:transparent;border:2px solid var(--accent);box-sizing:border-box;padding:0;width:22px}
+.bdg.alt{background:var(--hl-alt);color:#04202c}
+.bdg.alt.dot{background:transparent;border-color:var(--hl-alt)}
+.legend .why{color:var(--muted);font-size:13px}
+.outline{margin-top:6px}
+.outline summary{cursor:pointer}
+.outline ol{margin:6px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:2px}
+.outline li button{width:100%;text-align:left;background:none;border:0;padding:5px 8px;border-radius:6px;font-size:14px;color:var(--muted)}
+.outline li button:hover{background:var(--panel2);color:var(--fg)}
+.outline li button.on{color:var(--fg);background:var(--panel2);font-weight:600}
+.stagepane{display:flex;flex-direction:column;min-height:0;min-width:0;padding-block:14px}
+.tools{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:10px}
+.tgl{display:inline-flex;align-items:center;gap:7px;background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:5px 12px;font-size:13px;font-weight:600}
+.tgl[aria-pressed="true"]{border-color:var(--accent-text);color:var(--accent-text)}
+.tgl .sw{width:8px;height:8px;border-radius:50%;background:var(--line)}
+.tgl[aria-pressed="true"] .sw{background:var(--accent)}
+.tools .hint{margin-left:auto;color:var(--muted);font-size:12.5px}
+.stagewrap{flex:1;min-height:0;display:flex;justify-content:center;gap:20px}
+.lgslot{display:none;flex:0 1 280px;min-width:200px;overflow:auto;scrollbar-width:thin;align-self:flex-start;max-height:100%}
+.lgslot .legend{margin:0}
+@media (min-width:1200px){.lgslot{display:block}}
+.stagebox{flex:1 1 0;min-width:0;min-height:0;container-type:size;display:flex;justify-content:center;align-items:flex-start}
+.stage{width:min(100cqw,100cqh*590/1097);height:min(100cqh,100cqw*1097/590);border-radius:10px;overflow:hidden;border:1px solid var(--line);background:#05080d}
+.stage svg{display:block;width:100%;height:100%}
+.ring{fill:rgba(255,194,51,.14);stroke:var(--hl);stroke-width:3;animation:pulse 1.7s ease-in-out infinite}
+.ring.alt{fill:rgba(92,200,255,.14);stroke:var(--hl-alt)}
+.bfill{fill:none;stroke:rgba(255,194,51,.3);stroke-linecap:round;stroke-linejoin:round}
+.bfill.alt{stroke:rgba(92,200,255,.3)}
+.bline{fill:none;stroke:var(--hl);stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:9 9;animation:march 1s linear infinite}
+.bline.alt{stroke:var(--hl-alt)}
+@keyframes pulse{0%,100%{stroke-opacity:.6}50%{stroke-opacity:1}}
+@keyframes march{to{stroke-dashoffset:-18}}
+@media (prefers-reduced-motion:reduce){.ring,.bline{animation:none}}
+.pill rect{fill:rgba(6,10,16,.9);stroke:var(--hl);stroke-width:1}
+.pill.alt rect{stroke:var(--hl-alt)}
+.pill text{fill:#f4f7fa;font-family:var(--f-body);font-weight:600}
+.num circle,.num rect{fill:var(--hl);stroke:#0b0f14;stroke-width:1.5}
+.num.alt circle,.num.alt rect{fill:var(--hl-alt)}
+.num text{fill:#1b1400;font-family:var(--f-mono);font-weight:700;text-anchor:middle}
+.num.alt text{fill:#04202c}
+@media (max-width:760px){
+  body{height:auto}
+  html{height:auto}
+  .app{display:flex;flex-direction:column;height:auto;gap:0}
+  .side{padding-block:10px 24px;order:1}
+  .sidebody{overflow:visible;padding-right:0}
+  .stagepane{order:0;position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);
+    height:clamp(250px,42vh,420px);height:clamp(250px,42dvh,420px);padding-block:8px 6px}
+  body:not(.drilling) .stagepane{display:none}
+  .tools .hint{display:none}
+  .tools{margin-bottom:6px;flex-wrap:nowrap;overflow-x:auto}
+  .tgl{white-space:nowrap;padding:4px 10px;font-size:12.5px}
+  .stagewrap{gap:0}
+  .stage{width:100cqw;height:100cqh}
+  .brand h1{font-size:28px}
+  body.drilling .brand{display:none}
+  .drill .title{font-size:24px}
+  body.drilling .nav{position:sticky;bottom:0;z-index:4;background:var(--bg);padding:10px 0 max(10px,env(safe-area-inset-bottom,0px));margin:12px 0 0;border-top:1px solid var(--line)}
+  .btn{min-height:44px}
+}
+@media (min-width:761px) and (max-width:1000px){
+  .app{grid-template-columns:minmax(290px,340px) minmax(0,1fr);gap:16px}
+  .brand h1{font-size:28px}
+  .tools .hint{display:none}
+}
+
+html:not(.js) .app{display:none}
+html.js #static{display:none}
+#static{padding-block:18px 40px;max-width:760px;margin:0 auto}
+#static h1{margin:2px 0 8px;font:700 30px/1 var(--f-display);text-transform:uppercase}
+.sgrp{font:500 11px var(--f-mono);letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin:22px 0 8px}
+.ssec{background:var(--panel);border:1px solid var(--line);border-radius:8px;margin-bottom:8px}
+.ssec>summary{cursor:pointer;padding:12px 14px;font-weight:600;display:flex;justify-content:space-between;gap:10px}
+.ssec>summary span{font:12px var(--f-mono);color:var(--muted);white-space:nowrap}
+.sstep{padding:12px 14px;border-top:1px solid var(--line)}
+.sstep h4{margin:0 0 6px;font:700 18px/1.2 var(--f-display);text-transform:uppercase;display:flex;gap:8px}
+.sstep h4 span{color:var(--accent-text)}
+.sstep img{display:block;width:100%;max-width:420px;height:auto;border-radius:8px;border:1px solid var(--line);margin:8px 0}
+.sleg{margin:0;padding-left:18px;font-size:13.5px;color:var(--muted)}
+.sleg em{font:11px var(--f-mono);font-style:normal;border:1px solid var(--line);border-radius:4px;padding:0 4px}
+#errbox{display:none;background:var(--panel2);border:1px solid var(--bad);border-radius:8px;padding:10px 12px;margin:10px 0;font:12px var(--f-mono);word-break:break-word}
+</style>
+
+<div id="errbox"></div>
+<!--STATIC-->
+<div class="app">
+  <section class="side" aria-label="Rulesheet sections">
+    <header class="brand">
+      <div class="kicker">Stern · Star Wars · Field guide</div>
+      <h1>Fall of the Empire</h1>
+    </header>
+    <div class="sidebody" id="sidebody">
+      <div id="home">
+        <p class="intro">Pick a rulesheet section. Each one is a short run of steps, and the playfield on the right highlights the shots for the step you are on. Use the arrow keys to move between steps.</p>
+        <details class="about">
+          <summary>How far to trust the highlights</summary>
+          <div class="in">
+            <ul>
+              <li>Rules come from the Pinball Rule Sheets wiki page (code 0.97). Its Layout section and its Jedi Master section are both blank, so shot positions are my reading of your photo, checked against shot names in the Kineticist tutorial and review and the Retro Refurbs reveal.</li>
+              <li>Each highlighted feature carries a tag. <span class="chip clear">Clear</span> means a label or toy identifies it in the photo. <span class="chip est">Estimated</span> means I placed it from context and it is worth confirming on the machine.</li>
+              <li>I can't tell which edition the photo shows. Where Pro and Prem/LE differ, the step says so.</li>
+              <li>Spinners and slingshots are described in the steps but not highlighted, because I could not locate them in the photo.</li>
+            </ul>
+            <p>Sources: <a href="https://pinballrulesheets.com/stern/star-wars-fall-of-the-empire-rulesheet" target="_blank" rel="noopener">Pinball Rule Sheets</a>, <a href="https://kineticist.com/post/star-wars-fote-tutorial" target="_blank" rel="noopener">Kineticist tutorial</a>, <a href="https://www.kineticist.com/post/fall-of-the-empire-review" target="_blank" rel="noopener">Kineticist review</a>, <a href="https://www.retrorefurbs.com/star-wars-fall-of-the-empire-revealed/" target="_blank" rel="noopener">Retro Refurbs</a>.</p>
+          </div>
+        </details>
+        <nav id="nav" aria-label="Sections"></nav>
+      </div>
+      <div id="drill" class="drill" hidden>
+        <button class="back" id="back" type="button">← All sections</button>
+        <p class="kicker grp" id="dgrp"></p>
+        <h2 class="title" id="dtitle"></h2>
+        <div class="dots" id="dots" role="group" aria-label="Steps"></div>
+        <p class="count" id="dcount"></p>
+        <article class="card" id="card" aria-live="polite"></article>
+        <div class="nav">
+          <button class="btn" id="prev" type="button">← Back</button>
+          <button class="btn primary" id="next" type="button">Next →</button>
+        </div>
+        <div class="legend" id="legend"></div>
+        <details class="outline" id="outline"><summary>All steps in this section</summary><ol id="olist"></ol></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="stagepane" aria-label="Playfield">
+    <div class="tools">
+      <button class="tgl" id="tz" type="button" aria-pressed="false"><span class="sw"></span>Zoom to highlights</button>
+      <button class="tgl" id="tl" type="button" aria-pressed="true"><span class="sw"></span>Labels</button>
+      <span class="hint">Photo: Stern playfield, as supplied</span>
+    </div>
+    <div class="stagewrap">
+      <div class="stagebox"><div class="stage">
+        <svg id="pf" viewBox="0 0 590 1097" role="img" aria-label="Star Wars Fall of the Empire playfield with the current step's shots highlighted">
+          <defs>
+            <filter id="soft" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation="3"/></filter>
+            <mask id="cutmask" maskUnits="userSpaceOnUse" x="0" y="0" width="590" height="1097">
+              <rect x="0" y="0" width="590" height="1097" fill="#fff"/>
+              <g id="cuts" fill="#000" stroke="#000" stroke-linecap="round" stroke-linejoin="round" filter="url(#soft)"></g>
+            </mask>
+          </defs>
+          <image href="data:image/jpeg;base64,__IMG__" x="0" y="0" width="590" height="1097"/>
+          <rect id="dim" x="0" y="0" width="590" height="1097" fill="#030710" fill-opacity=".66" mask="url(#cutmask)" style="display:none"/>
+          <g id="outl"></g>
+          <g id="lbls"></g>
+        </svg>
+      </div></div>
+      <aside class="lgslot" id="lgslot" aria-label="Highlighted shots"></aside>
+    </div>
+  </section>
+</div>
+
+<script>
+window.onerror=function(m,u,l,c){var e=document.getElementById("errbox");if(e){e.style.display="block";e.textContent="Script error: "+m+" (line "+l+")"}};
+</script>
+<script>
+(function(){
+"use strict";
+/* ---------- playfield features (coordinates in the 590x1097 photo) ---------- */
+var C=function(x,y,r){return{t:"c",x:x,y:y,r:r}};
+var E=function(x,y,rx,ry){return{t:"e",x:x,y:y,rx:rx,ry:ry}};
+var B=function(p,w){return{t:"b",p:p,w:w}};
+var R=function(x,y,w,h){return{t:"r",x:x,y:y,w:w,h:h}};
+var F={
+ deathstar:{n:"Death Star toy",c:1,s:[C(200,132,52)],a:[200,132]},
+ ds_ramp:{n:"Death Star ramp (Lando)",c:0,s:[B([[212,205],[222,250],[240,300],[262,360],[262,425]],24)],a:[262,420],x:"Ramp with the yellow lights under the Death Star. The entry point is estimated."},
+ falcon:{n:"Millennium Falcon",c:1,s:[E(318,172,52,46)],a:[318,172]},
+ engines:{n:"Falcon engine lights",c:0,s:[E(343,231,26,12)],a:[343,231],x:"The blue glow under the Falcon."},
+ center_ramp:{n:"Center ramp (Han)",c:1,s:[B([[305,378],[306,215],[308,105]],50)],a:[305,352]},
+ luke_vuk:{n:"Luke VUK and AT-AT",c:0,s:[E(170,300,95,88)],a:[170,300],x:"The kicker hole is not clearly visible, so this circles the AT-AT assembly it feeds."},
+ droids:{n:"Droids target",c:0,s:[C(122,345,18)],a:[122,345],x:"The round orange-ringed target left of the AT-AT."},
+ force_F:{n:"F target",c:0,s:[C(148,511,12)],a:[148,511]},
+ force_O:{n:"O target",c:0,s:[C(275,376,12)],a:[275,376]},
+ force_R:{n:"R target",c:0,s:[C(332,380,12)],a:[332,380]},
+ force_C:{n:"C target",c:0,s:[C(396,444,12)],a:[396,444]},
+ force_E:{n:"E target",c:0,s:[C(449,457,12)],a:[449,457]},
+ force:{n:"FORCE targets",c:0,s:[C(148,511,12),C(275,376,12),C(332,380,12),C(396,444,12),C(449,457,12)],a:[148,511],x:"Five small standups: F far left, O and R beside the Han portrait, C and E on the right."},
+ sarlacc:{n:"Sarlacc Pit ramp",c:0,s:[B([[372,365],[388,320],[413,258],[430,215]],46)],a:[380,340],x:"My best read: the translucent pink ramp right of the center ramp. Estimated."},
+  crumb:{n:"Salacious Crumb drop target",c:0,s:[R(344,413,46,22)],a:[367,424],x:"My best read: the black slot below the pink ramp. Estimated."},
+ jabba_ins:{n:"Jabba event inserts",c:0,s:[C(421,227,11),C(413,258,11),C(405,288,11),C(395,320,11)],a:[421,227],x:"The round inserts along the clear ramp above the pit."},
+ right_ramp:{n:"Right ramp (Leia)",c:0,s:[B([[432,400],[452,350],[476,300],[492,250],[504,200],[508,150],[511,100],[512,55]],50)],a:[436,395],x:"The thick chrome ramp. The entry point is estimated."},
+ right_orbit:{n:"Right orbit (Obi-Wan)",c:0,s:[B([[350,50],[366,150],[380,225],[430,300],[497,353],[537,403],[550,455],[551,600]],14)],a:[545,585],x:"The wire loop down the right side."},
+ left_orbit:{n:"Left orbit (Yoda)",c:0,s:[B([[70,60],[62,200],[55,350],[50,500],[60,640]],22)],a:[56,560],x:"The wire loop up the left side."},
+ bumper_L:{n:"Left bumper",c:0,s:[C(80,690,38)],a:[80,690]},
+ bumper_R:{n:"Right bumper",c:0,s:[C(472,697,38)],a:[472,697]},
+ bumpers:{n:"Pop bumpers",c:0,s:[C(80,690,38),C(472,697,38)],a:[80,690],x:"The two round, chrome-ringed caps with Empire and Rebel logos."},
+ vader_scoop:{n:"Left (Vader) scoop",c:0,s:[R(118,663,68,42)],a:[150,684],x:"Marked DARTH VADER, beside the left bumper."},
+ stormtrooper:{n:"Stormtrooper target",c:1,s:[C(488,612,18)],a:[488,612]},
+ rebel_icons:{n:"Rebel icons (shot markers)",c:1,s:[C(141,585,13),C(207,595,13),C(259,592,13),C(271,516,13),C(304,517,13),C(302,645,13),C(366,630,13),C(431,623,13)],a:[141,585]},
+ char_labels:{n:"Character labels",c:1,s:[E(138,553,26,13),E(197,563,26,13),E(250,562,28,13),E(265,485,26,13),C(305,483,15),E(310,613,28,13),E(375,598,24,13),E(440,592,28,13)],a:[138,553]},
+ ins_rebel:{n:"Rebel Missions emblem",c:1,s:[C(257,747,22)],a:[257,747]},
+ ins_falcon:{n:"Falcon Features emblem",c:1,s:[C(322,747,22)],a:[322,747]},
+ ins_jedi:{n:"Jedi Master emblem",c:1,s:[C(290,815,22)],a:[290,815]},
+ ins_vader:{n:"Vader Modes emblem",c:1,s:[C(227,875,22)],a:[227,875]},
+ ins_jabba:{n:"Jabba Events emblem",c:1,s:[C(349,872,22)],a:[349,872]},
+ mode_inserts:{n:"Mode emblems",c:1,s:[C(257,747,22),C(322,747,22),C(290,815,22),C(227,875,22),C(349,872,22)],a:[257,747]},
+ return_lanes:{n:"Return lanes (Empire logos)",c:0,s:[C(92,791,12),C(128,798,12),C(450,790,12)],a:[92,791],x:"Located by the three Empire logo inserts."},
+ outlanes:{n:"Outlane lights",c:0,s:[C(55,837,12),C(492,815,12)],a:[55,837],x:"The orange lights at each outer lane."},
+ flippers:{n:"Flippers",c:1,s:[B([[188,1003],[252,1030]],18),B([[388,1003],[325,1030]],18)],a:[222,1018]},
+ magnet:{n:"Force magnet (Prem/LE)",c:0,s:[C(292,1078,22)],a:[292,1078],x:"Assumed to be the glowing disc under the flippers."}
+};
+
+/* ---------- content ---------- */
+var PL=function(s){return '<span class="chip pl">'+s+'</span>'};
+var SECTIONS=[
+/* ====== START HERE ====== */
+{g:"Layout and basics",id:"layout",title:"Playfield layout",steps:[
+ {t:"The eight major shots",h:["char_labels","rebel_icons"],b:'<p>The yellow character labels and red Rebel icons mark the eight major shots. Each character owns one shot, and every mode in the rulesheet uses these names.</p><table><tr><th>Character</th><th>Shot</th></tr><tr><td>Yoda</td><td>Left orbit</td></tr><tr><td>Luke</td><td>Luke VUK</td></tr><tr><td>Droids</td><td>Droids target</td></tr><tr><td>Lando</td><td>Death Star ramp</td></tr><tr><td>Han</td><td>Center ramp</td></tr><tr><td>Chewie</td><td>Sarlacc Pit</td></tr><tr><td>Leia</td><td>Right ramp</td></tr><tr><td>Obi-Wan</td><td>Right orbit</td></tr></table><p class="fine">The next steps visit each one. Step through the rest of this section to learn where things are.</p>'},
+ {t:"Left orbit",h:["left_orbit"],b:'<p>Yoda\'s orbit. A wire loop up the far left side and the easiest place to earn spinner hits. Spinner hits fill the JEDI letters that light your ball save.</p><p>Skill shot perk: adds 2 JEDI letters.</p><p class="fine">The rulesheet mentions left and right spinners. I could not pin them in the photo, so the whole orbit is highlighted.</p>'},
+ {t:"Luke VUK and the AT-AT",h:["luke_vuk"],b:'<p>A vertical up-kicker that sends the ball spiraling around the AT-AT toy. You can reach it from either flipper.</p><p>Battle of Hoth locks are scored here, it is the final shot of most Rebel missions, and it is the default extra-ball shot.</p><p>Skill shot perk: spots 3 FORCE letters.</p>'},
+ {t:"Droids target",h:["droids"],b:'<p>A standup target in front of the AT-AT. Each hit lights a Battle of Hoth lock. During modes and combos it is the Droids shot.</p><p>Skill shot perk: spots 1 Hoth lock. It never starts the multiball by itself.</p>'},
+ {t:"Death Star ramp",h:["ds_ramp","deathstar"],b:'<p>Lando\'s shot. The ramp climbs to the Death Star toy, and a target at the top lowers to reveal the lock for Death Star Multiball.</p><p>The Kineticist review calls this the hardest shot to hit and says a miss can drain, so pick your moments.</p><p>Skill shot perk: spots 1 Death Star lock.</p>'},
+ {t:"FORCE targets",h:["force"],b:'<p>Five small standups spell F-O-R-C-E. F is on the far left, O and R flank the Han portrait above the center ramp, and C and E sit on the right.</p><p>Spelling FORCE lights the Rebel mission shots. They also drive Luke\'s super mode and a few other features.</p>'},
+ {t:"Center ramp and Falcon",h:[["center_ramp",1],["engines",0,"alt"],["falcon",0,"alt"]],b:'<p>Han\'s shot is the jump ramp up to the Millennium Falcon and into the backboard. The engine lights under the Falcon must be lit before ramp shots advance Falcon Features.</p><p>'+PL("Prem/LE")+' The ramp can lower and acts as a bridge or target. '+PL("Pro")+' It is a fixed ramp.</p><p>Skill shot perk: spots 2 shots of Falcon progress.</p>'},
+ {t:"Sarlacc Pit and drop target",h:[["crumb",1],["sarlacc",2],["jabba_ins",0,"alt"]],b:'<p>Chewie\'s shot, right of the center ramp. A Salacious Crumb drop target guards it. Knock it down to open the pit.</p><p>The ball spins in the pit. Each spin cycles the Jabba event shown, and during a multiball, 10 spins light add-a-ball.</p><p>Skill shot perk: spots 2 shots of Jabba progress.</p>'},
+ {t:"Right ramp",h:["right_ramp"],b:'<p>Leia\'s shot, the steeper chrome ramp on the right. Every shot earns a TIE fighter, and TIE thresholds start Hyperspace Loops and light extra ball.</p><p>Skill shot perk: adds 3 TIE fighters.</p>'},
+ {t:"Right orbit",h:["right_orbit"],b:'<p>Obi-Wan\'s orbit loops down the right side and is reliable from the left flipper.</p><p>Skill shot perk: relights all skill shots so their awards can be collected again.</p>'},
+ {t:"Stormtrooper target",h:["stormtrooper"],b:'<p>The round standup on the far right, labeled STORMTROOPER WHEN LIT. Hits collect Stormtroopers toward the hurry-up. During Rebel missions, hits also change the lit mission colors.</p><p>Skill shot perk: starts the Stormtrooper hurry-up.</p>'},
+ {t:"Pop bumpers",h:["bumpers"],b:'<p>Two bumpers sit low on each side, with an Empire logo on the left and a Rebel logo on the right. Hits charge the ion cannons that lay down 2x shot multipliers.</p><p>Skill shot perk: 3 hits toward the next shot multiplier.</p>'},
+ {t:"Vader scoop",h:["vader_scoop"],b:'<p>The left scoop by the left bumper, marked DARTH VADER. It starts Vader Modes and Dark Side Mystery, completes Vader modes, and starts Dark Side Multiball.</p><p class="fine">The Kineticist tutorial adds that it feeds the ball quickly toward the right flipper.</p>'},
+ {t:"Lanes, flippers and magnet",h:["return_lanes",["outlanes",0,"alt"],"flippers","magnet"],b:'<p>The return lanes (Empire logos) cycle with the flippers. Completing them lights the left scoop for Vader Modes or Dark Side Mystery.</p><p>The outlanes light for JEDI ball save. The slingshots sit above the flippers and also decide which shot carries the extra-ball light.</p><p>'+PL("Prem/LE")+' A Force magnet between the flippers helps with ball save.</p>'},
+ {t:"Mode emblems",h:["mode_inserts"],b:'<p>The five emblems on the center disc track progress: Rebel Missions, Falcon Features, Jabba Events, Vader Modes and Jedi Master. Check them to see which mode is close.</p>'}
+]},
+{g:"Layout and basics",id:"skill",title:"Skill shots",steps:[
+ {t:"How the skill shot works",h:["flippers"],b:'<p>Plunge the ball and hit any flashing shot. Make it within 3 switch hits for a Super Skill Shot worth 2x. After 6 switch hits the skill shot turns off.</p><p>The award starts at 1M and grows by 1M each time you score one. You get a skill shot at the start of every ball, after locking balls for Death Star Multiball (with physical locks enabled), and after a JEDI ball save that returns the ball to the plunger ('+PL("Prem/LE")+').</p><p>Every shot also gives its own perk. The next three steps list them.</p>'},
+ {t:"Perks: orbit, VUK, droids, bumpers",h:[["left_orbit",1],["luke_vuk",2],["droids",3],["bumpers",4]],b:'<ol><li>Left orbit: adds 2 JEDI letters.</li><li>Luke VUK: spots 3 FORCE letters.</li><li>Droids target: spots 1 Hoth lock (will not start it).</li><li>Either bumper: 3 hits toward the next shot multiplier.</li></ol>'},
+ {t:"Perks: Death Star, ramps, Sarlacc",h:[["ds_ramp",1],["center_ramp",2],["sarlacc",3],["right_ramp",4]],b:'<ol><li>Death Star: spots 1 lock (will not start it).</li><li>Center ramp: spots 2 shots of Falcon progress.</li><li>Sarlacc Pit or drop target: spots 2 shots of Jabba progress.</li><li>Right ramp: adds 3 TIE fighters.</li></ol>'},
+ {t:"Perks: right orbit and Stormtrooper",h:[["right_orbit",1],["stormtrooper",2]],b:'<ol><li>Right orbit: relights all skill shots so you can collect their awards again.</li><li>Stormtrooper target: starts the Stormtrooper hurry-up.</li></ol>'}
+]},
+{g:"Layout and basics",id:"plan",title:"Opening game plan",steps:[
+ {t:"First ball: start the locks",h:[["droids",1],["ds_ramp",2,"alt"]],b:'<p>The Kineticist tutorial suggests using the starting ball save to go for the droids target or the Death Star ramp, which begins qualifying locks. Be careful with the Death Star shot because a miss can drain.</p><p class="fine">This step and the next four are advice from that tutorial, not rules.</p>'},
+ {t:"Second shot: a ramp",h:[["right_ramp",1],["center_ramp",2]],b:'<p>Follow up with a ramp to start qualifying the first Falcon feature. Right ramp, then center ramp, is the combo that adds extra Falcon progress.</p>'},
+ {t:"Keep the orbits going",h:["left_orbit","right_orbit"],b:'<p>Orbit shots keep the spinners busy, which fills JEDI and keeps your ball save in reach.</p>'},
+ {t:"Use the bumpers",h:["bumpers"],b:'<p>Build shot multipliers with bumper hits, then cash them in on high-value shots such as the center ramp or Luke VUK.</p>'},
+ {t:"Save big awards for multiball",h:["vader_scoop"],b:'<p>Dark Side Scoring and Dark Side Mystery are worth the most during a multiball, so time them there when you can.</p>'}
+]},
+/* ====== MAIN MODES ====== */
+{g:"Main modes",id:"rebel",title:"Rebel Missions (FORCE targets)",steps:[
+ {t:"Light the character shots",h:["force",["stormtrooper",0,"alt"]],b:'<p>Hit the flashing FORCE targets to light all eight character shots. Only one mission runs at a time.</p><p>Difficulty starts at 1 and rises by 1 each time you play or complete a mission, up to 8. It drops by 1 whenever you score a multiball super jackpot or complete a Falcon, Jabba or Vader mode.</p><p>Stormtrooper target hits change the lit mission colors.</p>'},
+ {t:"Pick a shot and a level",h:["char_labels","rebel_icons"],b:'<p>Shoot a lit character shot to start that character\'s mission. The color sets the level:</p><ul><li><b>Green:</b> easiest, 4 shots lit, starts at 3M.</li><li><b>Yellow:</b> medium, shifting pairs, starts at 4M.</li><li><b>Orange:</b> hardest, one shot at a time, starts at 5M.</li></ul><p>Starting a mission at a character who already has a completed mission multiplies its shot values by 2x.</p>'},
+ {t:"Play and complete it",h:["luke_vuk",["char_labels",0,"alt"]],b:'<p>Hit four blue shots. The last one is always the Luke VUK, and it completes the mission.</p><p>White shots raise the value of each mission shot but do not count toward completion. Fast-flashing blue shots are worth double the normal blue shots.</p><ul><li>Green: hitting a shot unlights it for one shot, then it relights after you hit a different one.</li><li>Yellow: a pair of shots is lit. Hit one and a new pair lights.</li><li>Orange: a single shot is lit at a time.</li></ul>'},
+ {t:"Each character's twist",h:["char_labels"],b:'<dl><dt>Yoda <span class="chip">left orbit</span></dt><dd>Meeting Yoda, Jedi Training, Seeing the Future. <b>Spinners add 10k per spin.</b></dd><dt>Luke <span class="chip">Luke VUK</span></dt><dd>Discovering the Force, Escaping the Death Star, Leaving Dagobah. <b>Luke VUK and right ramp score 2x.</b> The VUK is always a possible blue shot.</dd><dt>Droids <span class="chip">droids target</span></dt><dd>Rebel Ship, Welcome to Tatooine, Ewok Deity. <b>Slingshots and bumpers move the shot lit for 2x.</b></dd><dt>Lando <span class="chip">Death Star ramp</span></dt><dd>Lando Calrissian, The Sellout, Lando\'s Redemption. <b>Blue shots start at 2x and fall to 1x after enough slingshot or bumper hits.</b></dd><dt>Han <span class="chip">center ramp</span></dt><dd>Han Vs Greedo, Where\'s Luke, Frozen in Carbonite. <b>Every shot is a hurry-up.</b></dd><dt>Chewie <span class="chip">Sarlacc Pit</span></dt><dd>Dejarik, Find C-3PO, Fix C-3PO. <b>Pit spins add 50k per spin. Center ramp scores 2x.</b></dd><dt>Leia <span class="chip">right ramp</span></dt><dd>Jailbreak, Trash Compactor, Rescuing Han. <b>Luke VUK and center ramp are the build shots. Right ramp scores 2x.</b></dd><dt>Obi-Wan <span class="chip">right orbit</span></dt><dd>Ben Meets Luke, The Message, Duel with Darth Vader. <b>Luke VUK and right orbit score 2x when lit blue.</b></dd></dl>'},
+ {t:"Bonus Missions",h:["char_labels"],b:'<p>Complete one of a character\'s missions, then shoot that character\'s shot again while no other mode is running. That starts their Bonus Mission, which plays by different rules. Multiballs and mini-wizard modes take priority if they are lit at the same shot.</p><p>The Rebel Bonus Missions section walks through all eight.</p>'},
+ {t:"Rewards",h:[["ins_rebel",0],"char_labels"],b:'<ul><li><b>Force Boost:</b> playing or completing a mission multiplies that character\'s jackpot shots in most multiballs for the rest of the game. A pulsing portrait is 2x, a solid portrait 3x, and a flashing portrait (Bonus Mission done) 4x.</li><li><b>Extra ball:</b> complete 2 missions, then 6.</li><li><b>Not a Jedi Yet:</b> play missions for four different characters to light the left scoop blue. Each completed Bonus Mission cuts that requirement by 1.</li></ul>'}
+]},
+{g:"Main modes",id:"bonusm",sub:1,title:"Rebel Bonus Missions",steps:[
+ {t:"Yoda: The Final Lesson",h:[["luke_vuk",1],["left_orbit",2,"alt"],["right_orbit",2,"alt"],["vader_scoop",3]],b:'<p>A long mode with ball-save checkpoints at each Luke shot. Shoot the Luke VUK to start.</p><ol><li><b>Phase 1:</b> shoot lit shots to raise the per-spin value of the left and right spinners by 50k (left pays double the right). Then shoot the Luke VUK once you have made enough spins. Repeat three times, needing 25 more spins each time.</li><li><b>Phase 2:</b> shoot the Luke VUK again, then hit 10 lit shots.</li><li>Finish at the Vader scoop before Yoda fades away.</li></ol>'},
+ {t:"Luke: Dark Side Cave, part 1",h:[["luke_vuk",1],["left_orbit",2],["force_F",3,"alt"]],b:'<p>Shoot the Luke VUK, then the left orbit twice to advance toward the cave. While the left orbit is lit for 2x, the F target scores single value. Repeat the process a second time.</p>'},
+ {t:"Luke: Dark Side Cave, part 2",h:[["vader_scoop",1],["force",2,"alt"]],b:'<ol><li>Shoot the Vader scoop to enter the cave.</li><li>Hit the FORCE targets from left to right to advance the fight. Targets you already hit relight for unlimited extra points.</li></ol><p>Spelling FORCE lights the Vader scoop. Shooting it completes the mode and re-scores 50% of your mode points.</p>'},
+ {t:"Droids: Find R2-D2",h:[["droids",1],["vader_scoop",2,"alt"],["luke_vuk",2,"alt"],["sarlacc",2,"alt"]],b:'<p>A shot is lit and roving around the playfield. Shoot the droids target to lock it in or unlock it, then repeat after each roving shot you collect. Six roving shots complete the mode.</p><p>The first and last roving shots are limited to the Vader scoop, Luke VUK or Sarlacc Pit. The four in between can be anywhere except the droids target. Value rises by 1x for every unique roving shot you make.</p>'},
+ {t:"Lando: Rescue Luke, combo 1",h:[["right_ramp",1,"alt"],["luke_vuk",2],["center_ramp",3],["right_ramp",4],["vader_scoop",5]],b:'<p>A combo mode. Shoot the pink-flashing shots in a row to advance the scene. Keeping the chain going before the combo timer runs out adds 1x to each shot.</p><p>Combo 1: [right ramp] → Luke VUK → center ramp (2x) → right ramp → Vader scoop. The bracketed shot is the white starter that multiplies the first real shot.</p><p>If the timer runs out you lose your combo multiplier, and the previous pink shot relights as a white starter.</p>'},
+ {t:"Lando: Rescue Luke, combos 2 and 3",h:[["luke_vuk",1],["center_ramp",2],["right_ramp",3],["ds_ramp",4]],b:'<p>Combo 2: [Luke VUK] → center ramp → right ramp → Death Star ramp.</p><p>Combo 3: Luke VUK → right ramp → Luke VUK.</p><p>The multiplier resets to 1x after each combo is completed. The last two shots of combo 3 are hurry-ups worth 25% of the first two combos\' total, and they can be multiplied if both are made as combos.</p>'},
+ {t:"Han: Han and Leia",h:[["left_orbit",1,"alt"],["ds_ramp",1,"alt"],["right_orbit",2,"alt"],["stormtrooper",2,"alt"],["center_ramp",3]],b:'<p>Make 6 shots that alternate between the left and right sides of the playfield. The harder shots score double: left orbit and Death Star ramp on the left, right orbit and Stormtrooper target on the right.</p><p>The final shot is the center ramp, worth 50% of the points you scored in the mode.</p>'},
+ {t:"Chewie: Reunion",h:[["sarlacc",1],["center_ramp",2],["sarlacc",3],["luke_vuk",4],["sarlacc",5]],b:'<p>Each Pit shot resets the timer. Shoot the center ramp to raise the per-spin value of the Pit.</p><ol><li>Sarlacc Pit</li><li>Center ramp</li><li>Sarlacc Pit</li><li>Luke VUK</li><li>Sarlacc Pit</li></ol><p>The final shot is the center ramp, and you can boost it with Pit spins before you score it.</p>'},
+ {t:"Leia: Speeder Bikes",h:[["luke_vuk",1],["left_orbit",2,"alt"],["right_orbit",2,"alt"],["center_ramp",2,"alt"],["right_ramp",3]],b:'<ol><li>Shoot the Luke VUK to light the orbits and ramps for hurry-up awards starting at 12.5M.</li><li>Make 8 shots to lock in the hurry-up value and start a 2-ball multiball where each lit shot scores that value.</li><li>Once all 8 major shots are made, the right ramp scores their combined value as a super jackpot and completes the mode.</li></ol>'},
+ {t:"Obi-Wan: Revealing the Truth",h:[["vader_scoop",1],["luke_vuk",1],["right_ramp",1,"alt"],["right_orbit",1,"alt"]],b:'<p>A very long mode with ball-save checkpoints at each threshold. Advance by hitting any of the Vader scoop, Luke VUK, right ramp or right orbit. A shot you have not made yet scores double.</p><p>At 7, 14, 21 and 28 shots only the Vader scoop and Luke VUK are lit. Make 28 lit shots in total to complete it.</p>'}
+]},
+{g:"Main modes",id:"jabba",title:"Jabba Events",steps:[
+ {t:"Open the Sarlacc Pit",h:["crumb"],b:'<p>Shoot the Salacious Crumb drop target twice to get him out of the way. That opens access to the Sarlacc Pit ramp.</p><p class="fine">The rulesheet adds a "+1" after "twice". I read that as one more hit on each repeat, but I have not confirmed it.</p>'},
+ {t:"Choose an event",h:[["sarlacc",1],["jabba_ins",0,"alt"]],b:'<p>Shoot the pit. While the ball spins, each spin cycles the selection among the three events. The selected event starts when the ball exits.</p><p>Press the action button while the ball is still spinning to lock the current choice.</p>'},
+ {t:"Luke's Gift",h:[["droids",1],["crumb",2],["center_ramp",3],["right_ramp",3],["luke_vuk",4],["sarlacc",5]],b:'<p>Timed at 30 seconds, reset by every shot.</p><ol><li>The droids target and the Sarlacc drop target start lit. Hit both, then shoot the Sarlacc pit to enter the palace.</li><li>Shoot the center and right ramps to escape Jabba.</li><li>Shoot the Luke VUK to plan the rescue.</li><li>The droids target now scores 2x. The Sarlacc shot moves one to the right with each spin. Hit the lit shot or the pit 4 times to trick Jabba. The last shot is always the Sarlacc Pit ramp.</li></ol>'},
+ {t:"Jabba's Palace",h:[["crumb",1],["jabba_ins",0,"alt"]],b:'<p>A drop-target mode. Shoot the flashing shots to light the Salacious Crumb drop target for more points. Each award resets the timer and requires more shots to relight it.</p><p>Three drop target hits light the Sarlacc Pit for 5x the current award and finish the mode. You can also keep hitting shots to relight the drop target for more points.</p>'},
+ {t:"Rancor Battle",h:[["luke_vuk",1],["right_orbit",2],["right_ramp",3],["center_ramp",4],["center_ramp",5],["luke_vuk",6],["sarlacc",7]],b:'<p>Untimed. Complete this sequence of lit shots: Luke VUK, right orbit, right ramp, center ramp twice, Luke VUK, then the Sarlacc Pit.</p><p>The mode only ends if you drain or finish every shot. Making shots within about 10 seconds of each other raises the next award\'s multiplier, up to 3x.</p>'},
+ {t:"Rewards",h:["ins_jabba"],b:'<ul><li>Completing the first Jabba Event of a game lights extra ball.</li><li>Playing all three Jabba Events qualifies Sarlacc Escape as the fourth event. See Wizard Modes.</li></ul>'}
+]},
+{g:"Main modes",id:"falcon",title:"Falcon Features and Lightspeed Escape",steps:[
+ {t:"Light the engines",h:[["right_ramp",1],["center_ramp",2],["engines",0,"alt"]],b:'<p>Shoot the center ramp while the engines under the Falcon are lit to start Falcon Features.</p><p>The first feature always gets progress from the center ramp. After that you need to qualify the center ramp. '+PL("Pro")+' Shoot the right ramp. '+PL("Prem/LE")+' Hit the target under the center ramp to raise it.</p><p>A right ramp followed by a center ramp combo awards 2 advances when the engines are lit.</p>'},
+ {t:"The five features, in order",h:["ins_falcon"],b:'<ol><li>Lightspeed Escape and Lightspeed Multiball</li><li>That\'s No Moon</li><li>Dogfight</li><li>Never Tell Me The Odds (mini-wizard)</li><li>Welcome to Cloud City</li></ol>'},
+ {t:"Lightspeed Escape",h:[["center_ramp",1],["right_ramp",2,"alt"],["luke_vuk",2,"alt"]],b:'<p>The center ramp starts Escape and lights other shots, each of which raises the jackpot before the multiball starts. Then shoot the timed center ramp to begin Lightspeed Multiball. If you drain or run out of time during Escape, the multiball is gone.</p><p>The jackpot starts at 500k, plus 250k for each Escape build shot and 50k for each multiball jackpot. The super jackpot is 5x the jackpot value.</p>'},
+ {t:"Lightspeed Multiball",h:[["center_ramp",1]],b:'<p>A 2-ball multiball. Hit 3 lit shots to score jackpots, which lights a looping super jackpot at the center jump ramp on a timer. After the timer ends, the jackpot phase repeats.</p><p class="fine">The rulesheet writes the 3 as "3 lit shots (+1)". I am not certain whether the +1 means the count rises each round.</p><p>Lightspeed can stack with Battle of Hoth. No other multiballs stack.</p>'},
+ {t:"That's No Moon",h:[["right_ramp",1],["luke_vuk",2],["sarlacc",3],["ds_ramp",4]],b:'<p>Search for Alderaan. Shots light three at a time in close proximity, in this order: right ramp, Luke VUK, Sarlacc Pit, Death Star ramp. The center shot of each trio scores 2x and the outer shots 1x.</p><p>A time bonus of 500k times the seconds remaining is scored with the last shot.</p>'},
+ {t:"Dogfight",h:[["center_ramp",1],["right_ramp",2]],b:'<p>Shoot the center ramp to start, then the right ramp to score a TIE fighter award. Keep alternating the two ramps before time runs out. A right ramp made as a combo scores 2x the TIE award.</p>'},
+ {t:"Welcome to Cloud City",h:[["left_orbit",1],["right_orbit",2],["center_ramp",3]],b:'<p>An orbit-looping mode. Hitting the left and right orbits starts timers on each. Shoot them again for multiplied values. After both orbits are lit, the center ramp collects their combined total and completes the mode.</p>'},
+ {t:"Never Tell Me The Odds",h:["ins_falcon"],b:'<p>The fourth feature is a mini-wizard multiball. Play the first three Falcon features to qualify it. See Wizard Modes.</p>'}
+]},
+{g:"Main modes",id:"vader",title:"Vader Modes and Dark Side Scoring",steps:[
+ {t:"Qualify the scoop",h:[["return_lanes",1],["vader_scoop",2]],b:'<p>The return lanes alternate between lighting Dark Side Mystery and qualifying the left scoop for a Vader mode. You can qualify during single-ball play, but a Vader mode only starts at the left scoop while no other mode is running.</p>'},
+ {t:"Pick a mode",h:["vader_scoop","bumpers","left_orbit","right_orbit","luke_vuk","ds_ramp","sarlacc","stormtrooper","return_lanes"],b:'<p>After the scoop, several shots light. The shot you hit picks the mode. Each can be played once per game.</p><table><tr><th>Shot</th><th>Mode</th><th>Shots</th></tr><tr><td>Either bumper</td><td>Grand Moff Tarkin</td><td>6</td></tr><tr><td>Left scoop</td><td>Lord Vader Arrives</td><td>3</td></tr><tr><td>Either orbit</td><td>Emperor\'s Guidance</td><td>3</td></tr><tr><td>Luke VUK</td><td>Family Reunion</td><td>4</td></tr><tr><td>Death Star ramp</td><td>Death Star II Plans</td><td>6</td></tr><tr><td>Sarlacc Pit</td><td>Bounty Hunters</td><td>4</td></tr><tr><td>Stormtrooper</td><td>Lack of Faith</td><td>3</td></tr><tr><td>Return lanes</td><td>Emperor\'s Orders</td><td>4</td></tr></table>'},
+ {t:"Play and finish it",h:["vader_scoop"],b:'<p>Vader modes are untimed. Hit enough shots to complete the scene, then hit the Vader scoop to finish.</p><p>The shot that started the mode blinks faster and adds 1x to shot values, but it only relights after you make another shot. Take easy shots to finish quickly, or chase the starter shot for more points.</p><p>The base value per shot rises 500k with every Vader mode you complete.</p>'},
+ {t:"Dark Side Scoring",h:["vader_scoop"],b:'<p>After you complete any Vader mode, Dark Side Scoring runs for the rest of the ball. One purple shot is lit at a time, worth 5% of the points from your completed Vader modes, and it moves to a random shot each time.</p><ul><li><b>5 shots:</b> lights extra ball.</li><li><b>10 shots:</b> lights the Vader scoop for Dark Side Multiball.</li></ul>'}
+]},
+/* ====== MULTIBALLS ====== */
+{g:"Multiballs",id:"mbbasics",title:"Multiball basics",steps:[
+ {t:"Stacking",h:[],b:'<p>Most main modes can run during a multiball if they were already running or start with it. Bonus Missions and Vader modes cannot.</p><p>The only multiballs that stack are Lightspeed with Battle of Hoth. Everything else plays alone, and multiballs block most other features, though you can keep progressing toward them.</p>'},
+ {t:"Force Boost",h:["char_labels"],b:'<p>Rebel missions you played or completed raise that character\'s jackpot shots in a multiball. A pulsing portrait is 2x, solid is 3x, and flashing is 4x. These multipliers generally do not apply to super jackpots or the AT-AT jackpots in Hoth.</p>'},
+ {t:"Rebel Assistance",h:["char_labels"],b:'<p>Rebel Combos made earlier in the ball speed up jackpot progress. A pulsing character name insert collects 2 jackpots in one shot, and a solid one collects 3. This applies only in multiball modes.</p>'},
+ {t:"Add-a-ball",h:["sarlacc"],b:'<p>During any multiball, collect 10 Sarlacc Pit spins to light the action button for a one-time add-a-ball. Only one is available in a stacked multiball.</p><p>The next one in the same game needs 10 more spins, up to a cap of 40. If you do not use it, the requirement stays where it was.</p>'}
+]},
+{g:"Multiballs",id:"hoth",title:"Battle of Hoth",steps:[
+ {t:"Light the locks",h:["droids"],b:'<p>Hit the droids target to light a lock. Hits can stack. Later multiballs need more target hits, and the lock must be scored before the next one can light.</p>'},
+ {t:"Lock three balls",h:["luke_vuk"],b:'<p>Shoot the lit locks at the Luke VUK. The locks are virtual. Locking the third ball starts Battle of Hoth.</p>'},
+ {t:"Score jackpots and spell AT-AT",h:[["luke_vuk",0,"alt"],["droids",1]],b:'<p>Score a jackpot at any lit shot, worth 500k plus 250k for each jackpot already scored. Then shoot the droids target to cash a letter jackpot worth the total of all jackpots before it, and light a letter of AT-AT.</p><p>After a letter jackpot, the jackpot value resets, and you need more jackpots to relight it, up to four for the last letter.</p>'},
+ {t:"Super jackpot",h:["luke_vuk"],b:'<p>Once AT-AT is spelled, all jackpots turn off. Shoot the Luke VUK for a super jackpot worth 5M plus all your letter jackpots. Scoring it resets progress and raises the base jackpot by 500k.</p>'},
+ {t:"Last chance",h:["luke_vuk"],b:'<p>After the multiball ends, you get 10 seconds for one more Luke VUK shot to bring down the AT-AT for a super jackpot calculated the same way. This is disabled on competition installs.</p>'}
+]},
+{g:"Multiballs",id:"deathstar",title:"Death Star and Death Star II",steps:[
+ {t:"Lock three balls",h:["ds_ramp","deathstar"],b:'<p>Shoot the Death Star ramp to open the lock at the toy, then shoot the ramp again to lock a ball. When three are locked, Death Star Multiball starts by releasing them toward the flippers.</p>'},
+ {t:"Jackpots",h:["ds_ramp","luke_vuk","center_ramp","right_ramp","left_orbit","right_orbit","sarlacc","droids"],b:'<p>Every shot is lit for a jackpot. A shot you score goes dark until you hit a different one. After 15 jackpots, all jackpots turn off and only the Death Star ramp is lit.</p>'},
+ {t:"Super jackpot and victory laps",h:["ds_ramp","deathstar"],b:'<p>Shoot the ramp to open the toy and light a 20M super jackpot, which also adds a ball. When you make the ramp, the other jackpots relight for 30 seconds. Making 3 of them raises the super jackpot to 2x, and 7 raises it to 3x. If the timer ends, the phase restarts at the base value and 1x.</p><p>After you score it, ball save restarts, another ball is added and victory laps begin. Hit the flashing shots, then the Death Star, for a victory super jackpot that also relights the other shots at higher values.</p>'},
+ {t:"Death Star II",h:["ds_ramp","center_ramp"],b:'<p>Scoring the first multiball\'s super jackpot counts as destroying the first Death Star. Lock progress then applies to the Death Star II.</p><p>Jackpots here do not relight after you hit a different shot. Score them to light a 2x jackpot at the Death Star, then a roving 3x jackpot that moves left to right. After that, the center ramp lights for a 12x super jackpot, which needs two balls through the ramp in quick succession. Scoring it completes the multiball and starts victory laps.</p>'}
+]},
+/* ====== OTHER SCORING ====== */
+{g:"Other scoring",id:"ion",title:"Ion cannons (shot multipliers)",steps:[
+ {t:"Charge the cannons",h:["bumpers"],b:'<p>Bumper hits in single-ball play charge the ion cannons, which eventually light the pulsing Rebel icons at all the major shots.</p>'},
+ {t:"Lock in a 2x",h:["rebel_icons"],b:'<p>The next time you make a pulsing shot, it is worth 2x for the rest of the ball. You cannot light new multipliers during a multiball, but you can keep charging for later. Pulsing multipliers you have not locked in carry over to the next ball.</p>'},
+ {t:"All shots to 2x",h:["rebel_icons"],b:'<p>If every major shot has a multiplier, the next ion cannon activation creates a 3x multiplier that moves across the playfield, left to right, with every bumper hit.</p>'}
+]},
+{g:"Other scoring",id:"combos",title:"Rebel Combos and super modes",steps:[
+ {t:"Make a combo",h:["char_labels"],b:'<p>In single-ball play, shoot any shot to light natural combo opportunities from it, then make a flashing yellow name insert shot to finish the combo.</p><p>Your first combo at a character pulses its name insert, and the second makes it solid and starts a super mode. Combos reset every ball, and points depend on how many different combos you have made this game.</p>'},
+ {t:"Super modes",h:["char_labels"],b:'<p>Super modes are untimed and stack with everything else. Each shot scores the super mode value divided by the number of shots it needs. The value starts at 10M and rises 2.5M with each super mode you complete. Each completed super mode also adds its full value to that ball\'s bonus.</p><table><tr><th>Character</th><th>Goal</th></tr><tr><td>Yoda</td><td>200 spinner spins</td></tr><tr><td>Luke</td><td>10 FORCE target hits, left to right</td></tr><tr><td>Droids</td><td>10 droids target hits</td></tr><tr><td>Lando</td><td>20 slingshot hits</td></tr><tr><td>Han</td><td>10 lit inlanes, not the same one twice in a row</td></tr><tr><td>Chewie</td><td>40 Sarlacc spins</td></tr><tr><td>Leia</td><td>10 ramps (both relight once both are made)</td></tr><tr><td>Obi-Wan</td><td>20 bumper hits</td></tr></table>'}
+]},
+{g:"Other scoring",id:"mystery",title:"Dark Side Mystery",steps:[
+ {t:"Light it",h:[["return_lanes",1],["vader_scoop",2]],b:'<p>Complete the return lanes, which cycle with the flippers, to light the left scoop for Dark Side Mystery. The lanes alternate between mystery and qualifying a Vader mode, and neither lights during a multiball.</p><p>Each completion of the return lanes also adds 250k to the Stormtrooper hurry-up base value until the ball drains.</p>'},
+ {t:"Possible awards",h:["vader_scoop"],b:'<ul><li>15M points</li><li>Light Rebel missions</li><li>Advance Falcon, Hoth or Death Star</li><li>Add ion cannon charges</li><li>Advance JEDI (2 letters)</li><li>Start the Stormtrooper hurry-up</li><li>Light extra ball (percentage based, once per game)</li></ul>'},
+ {t:"Mynock Multiball",h:[["center_ramp",1]],b:'<p>'+PL("Prem/LE")+' Available after two mystery awards and only when no multiball is running. Shoot the lowered center ramp 10 times to light extra ball. Each shot is worth 10M, and the 10th is 25M if extra ball is already lit in the mode.</p>'}
+]},
+{g:"Other scoring",id:"tie",title:"TIE fighter ramps and Hyperspace Loops",steps:[
+ {t:"Collect TIE fighters",h:["right_ramp"],b:'<p>Each right ramp shot collects 1 TIE fighter. '+PL("Prem/LE")+' A shot made as a combo from the center ramp collects 2.</p>'},
+ {t:"Hyperspace Loops",h:[["center_ramp",1],["right_ramp",2]],b:'<p>At 5, 15 and 45 TIE fighters, Hyperspace Loops starts. Shoot the center ramp as many times as you can to build a hyperspace jackpot, then cash it out at the right ramp before time runs out. Shot multipliers can boost both.</p>'},
+ {t:"Extra ball",h:["luke_vuk","right_ramp"],b:'<p>At 10, 30 and 60 TIE fighters, extra ball lights. It defaults to the Luke VUK and alternates with the right ramp when you hit the slingshots.</p>'}
+]},
+{g:"Other scoring",id:"trooper",title:"Stormtrooper hurry-up and Bonus X",steps:[
+ {t:"Collect Stormtroopers",h:["stormtrooper"],b:'<p>Shoot the far right standup to collect Stormtroopers. After 2 (plus 1 more for each hurry-up you complete), a hurry-up starts at the same target.</p>'},
+ {t:"The hurry-up",h:["stormtrooper"],b:'<p>It starts at 10M, plus 250k for every return-lane completion, and counts down to 1M. You cannot start it during a multiball, but you can collect Stormtroopers to have it ready when the multiball ends.</p>'},
+ {t:"Rewards",h:["stormtrooper"],b:'<p>Completing a hurry-up adds 1x to the end-of-ball bonus and multiplies the next Stormtrooper hurry-up award by 1x more.</p>'}
+]},
+{g:"Other scoring",id:"jedi",title:"JEDI ball save",steps:[
+ {t:"Fill the letters",h:["left_orbit","right_orbit"],b:'<p>Spinner hits add letters to JEDI and light both outlanes for ball save. Spinners only count in single-ball play.</p><p class="fine">Spinners sit on the orbits as far as I can tell, but I could not confirm that in the photo.</p>'},
+ {t:"Using the save",h:["outlanes"],b:'<p>'+PL("Pro")+' The save only lights when JEDI is fully spelled and works only in single-ball play. After you roll over a lit outlane, press the action button before the drain registers.</p><p>'+PL("Prem/LE")+' With 2 or 3 letters lit, the action button pulses the magnet once per letter after you roll over an outlane. With all of JEDI spelled, the magnet grabs the ball and tosses it back into play from between the flippers.</p>'},
+ {t:"It gets harder",h:["magnet"],b:'<p>Every time you complete JEDI, the next one needs 20 more spins per letter.</p>'}
+]},
+{g:"Other scoring",id:"eb",title:"Extra balls",steps:[
+ {t:"How to light one",h:[],b:'<ul><li>Complete 2, then 6 Rebel missions.</li><li>Complete the first Jabba Event of a game.</li><li>Make 5 lit shots in Dark Side Scoring.</li><li>Reach 10, 30 and 60 TIE fighters.</li><li>Win it from a mystery award (percentage based).</li><li>'+PL("Prem/LE")+' Hit the lowered center ramp 10 times in Mynock Multiball.</li></ul>'},
+ {t:"Where to collect it",h:["luke_vuk","right_ramp"],b:'<p>Extra ball is collected at the Luke VUK or the right ramp. The slingshots alternate which one is lit. If two extra balls are lit, both shots light for the first.</p><p>The default limit is 5 per game. After that you get 25M instead, which ion cannon multipliers can boost.</p>'}
+]},
+{g:"Other scoring",id:"eob",title:"End-of-ball bonus",steps:[
+ {t:"What counts",h:[],b:'<table><tr><th>Item</th><th>Started</th><th>Completed</th></tr><tr><td>Rebel mission</td><td>200k</td><td>1M</td></tr><tr><td>Jabba Event</td><td>300k</td><td>1M</td></tr><tr><td>Falcon Feature</td><td>300k</td><td>1M</td></tr><tr><td>Vader mode</td><td>300k</td><td>1M</td></tr></table><p>Also: 150k per Rebel Combo, 1.5M per super jackpot in Battle of Hoth or Death Star, and the full value of each completed super mode.</p>'},
+ {t:"The multiplier",h:["stormtrooper"],b:'<p>The total is multiplied by a bonus multiplier that rises by 1x for each completed Stormtrooper hurry-up, up to 15x.</p>'}
+]},
+/* ====== WIZARD MODES ====== */
+{g:"Wizard modes",id:"najy",title:"Not a Jedi Yet",steps:[
+ {t:"Qualify",h:[["char_labels",0],["vader_scoop",1]],b:'<p>Play (completing is not required) Rebel missions for four different characters to light the left scoop blue. Each completed Bonus Mission lowers the requirement by 1.</p><p>If you qualify with the fourth unique character, no more missions can be lit. If a Bonus Mission helped you qualify, you can keep qualifying and playing missions until you reach a fourth character.</p>'},
+ {t:"Play the waves",h:["rebel_icons"],b:'<p>A single-ball mini-wizard mode. Scoring is a percentage of your earlier mission scores. Shots start white (1x). Hitting the same shot again makes it blue (2x), then red (3x).</p><p>Any 3 shots light the left scoop, Luke VUK and Sarlacc Pit blue as a checkpoint to advance. The next stage restarts a 15-second ball save. A shot you have taken to red can no longer be made again, except at the blue checkpoints.</p>'},
+ {t:"Finish",h:["vader_scoop"],b:'<p>After 6 waves (24 shots, including 6 checkpoint shots), the left scoop lights for a final hurry-up based on the value of the shots still available. Collecting it completes the mode.</p>'}
+]},
+{g:"Wizard modes",id:"sesc",title:"Sarlacc Escape",steps:[
+ {t:"Qualify and start",h:[["sarlacc",1]],b:'<p>Play all three Jabba Events. Sarlacc Escape is then the fourth event and starts the same way: repeated drop target hits, then the Sarlacc Pit ramp.</p>'},
+ {t:"Build and score jackpots",h:["sarlacc"],b:'<p>Collect switch hits to light the jackpot at the Sarlacc Pit ramp. When it is lit, shoot the flashing arrow shots to raise the multiplier. The jackpot scores once per spin in the ramp, and caps at 50 spins in competition mode. Scoring it adds a ball and returns to the switch phase.</p>'},
+ {t:"Finish",h:["vader_scoop"],b:'<p>After four jackpots, shoot the left scoop for a hurry-up super jackpot worth the jackpot total, which completes the mode.</p>'}
+]},
+{g:"Wizard modes",id:"ntmto",title:"Never Tell Me The Odds",steps:[
+ {t:"Qualify and start",h:[["right_ramp",1],["center_ramp",2],["engines",0,"alt"]],b:'<p>Play the first three Falcon features. This is the fourth. Right ramp shots eventually light the engines, then each center ramp shot awards a Falcon advance, and enough of them start the mode. It only starts when no other mode is running.</p>'},
+ {t:"Phase 1: asteroid field",h:["rebel_icons",["force",0,"alt"]],b:'<p>A 3-ball multiball with scoring multiplied by balls in play. All shots start white and raise the jackpot value and the value per white shot. Hitting the first white shot lights that same shot for the jackpot. After that, further white shots you hit turn red (asteroids). Hitting a red shot resets the white value and jackpot.</p><p>Lit shots rotate one to the right each time you hit a FORCE target. Balls are added for each of your first three jackpots. The fourth jackpot drains the balls and starts phase 2.</p>'},
+ {t:"Phase 2: escape",h:["rebel_icons",["center_ramp",1]],b:'<p>After the cutscene, your earlier balls return plus one. Light all shots red by hitting each once (hitting a red shot again turns it back to white). When 6 of the 8 major shots are red, the other two light for a jackpot based on your phase 1 white value.</p><p>Scoring either lights the center ramp for a last-ditch escape. '+PL("Pro")+' The shot is available in 5-second windows. '+PL("Prem/LE")+' The ramp raises and lowers, and you must shoot it while it is up.</p>'},
+ {t:"Running low",h:[],b:'<p>If you drain to 1 ball at any point, you get 10 seconds to add a ball (phase 1) or complete the mode (phase 2). Adding a ball keeps the mode going. The mode ends when time runs out or you make the final center ramp shot.</p>'}
+]},
+{g:"Wizard modes",id:"dsmb",title:"Dark Side Multiball",steps:[
+ {t:"Qualify",h:["vader_scoop"],b:'<p>Collect 10 shots in Dark Side Scoring to light the left scoop purple. To start Dark Side Scoring, complete any Vader mode first.</p>'},
+ {t:"Start it, or hold off",h:["vader_scoop"],b:'<p>During the starting cutscene, press the action button to cancel the multiball and play another Vader mode first. That raises the multiball\'s value before you start it.</p>'},
+ {t:"Play it",h:["bumpers","luke_vuk","center_ramp","right_ramp","left_orbit","right_orbit","ds_ramp","sarlacc"],b:'<p>A 3-ball multiball where every shot scores the current Dark Side Scoring value (5% of your accumulated Vader mode points). Hit all eight major shots, or hit the left scoop, to relight every shot.</p>'},
+ {t:"Finish",h:["vader_scoop"],b:'<p>When the multiball ends, the left scoop lights for a final hurry-up that starts at the total value of Dark Side Multiball and counts down to 10% of it. Shooting the scoop collects the award and completes the mode.</p>'}
+]},
+{g:"Wizard modes",id:"master",title:"Jedi Master",steps:[
+ {t:"Not documented yet",h:["ins_jedi"],b:'<p>The wiki rulesheet lists Jedi Master as the wizard mode but its section is empty (code 0.97), so I have no qualification or play rules to give you.</p><p class="fine">The Jedi Master emblem sits at the center of the disc, with the other mode emblems around it. The official Stern rulesheet PDF may cover it, but I could not read that file from here.</p>'}
+]}
+];
+
+/* ---------- app ---------- */
+var $=function(s){return document.querySelector(s)};
+var NS="http://www.w3.org/2000/svg";
+var VBW=590,VBH=1097,ASP=VBW/VBH;
+function se(tag,attrs,parent){var e=document.createElementNS(NS,tag);for(var k in attrs)e.setAttribute(k,attrs[k]);if(parent)parent.appendChild(e);return e}
+var byId={},order=[];
+SECTIONS.forEach(function(s){byId[s.id]=s;order.push(s.id)});
+var S={sec:null,step:0,zoom:false,labels:true};try{if(window.matchMedia("(max-width:760px)").matches)S.zoom=true}catch(e){}
+
+/* nav */
+(function buildNav(){
+  var nav=$("#nav"),cur=null,list=null;
+  SECTIONS.forEach(function(s){
+    if(s.g!==cur){cur=s.g;var gd=document.createElement("div");gd.className="group";var h=document.createElement("h2");h.textContent=cur;gd.appendChild(h);list=document.createElement("div");list.className="list";gd.appendChild(list);nav.appendChild(gd)}
+    var b=document.createElement("button");b.type="button";b.className="item"+(s.sub?" sub":"");
+    var n=document.createElement("span");n.className="nm";n.textContent=s.title;
+    var c=document.createElement("span");c.className="ct";c.textContent=s.steps.length+" steps";
+    b.appendChild(n);b.appendChild(c);
+    b.addEventListener("click",function(){go(s.id,0)});
+    list.appendChild(b);
+  });
+})();
+
+function norm(x){
+  if(typeof x==="string")return{f:x,n:0,k:""};
+  return{f:x[0],n:x[1]||0,k:x[2]||""};
+}
+function merge(list){
+  var map={},out=[];
+  list.map(norm).forEach(function(i){
+    if(!F[i.f])return;
+    var m=map[i.f];
+    if(!m){m=map[i.f]={f:i.f,ns:[],k:i.k};out.push(m)}
+    if(i.n>0&&m.ns.indexOf(i.n)<0)m.ns.push(i.n);
+    if(i.k!=="alt")m.k="";
+  });
+  return out;
+}
+function bounds(sh){
+  if(sh.t==="c")return[sh.x-sh.r,sh.y-sh.r,sh.x+sh.r,sh.y+sh.r];
+  if(sh.t==="e")return[sh.x-sh.rx,sh.y-sh.ry,sh.x+sh.rx,sh.y+sh.ry];
+  if(sh.t==="r")return[sh.x,sh.y,sh.x+sh.w,sh.y+sh.h];
+  var xs=sh.p.map(function(q){return q[0]}),ys=sh.p.map(function(q){return q[1]}),h=sh.w/2;
+  return[Math.min.apply(null,xs)-h,Math.min.apply(null,ys)-h,Math.max.apply(null,xs)+h,Math.max.apply(null,ys)+h];
+}
+function fit(bb){
+  var pad=70,w=bb[2]-bb[0]+pad*2,h=bb[3]-bb[1]+pad*2;
+  w=Math.max(w,300);h=Math.max(h,300/ASP*0.6);
+  if(w/h>ASP)h=w/ASP;else w=h*ASP;
+  if(w>VBW){w=VBW;h=VBH}
+  var cx=(bb[0]+bb[2])/2,cy=(bb[1]+bb[3])/2;
+  var x=Math.min(Math.max(cx-w/2,0),VBW-w),y=Math.min(Math.max(cy-h/2,0),VBH-h);
+  return[x,y,w,h];
+}
+var curVB=[0,0,VBW,VBH],anim=null;
+var reduce=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+function setVB(v){curVB=v;$("#pf").setAttribute("viewBox",v.map(function(n){return n.toFixed(2)}).join(" "))}
+function animateVB(to){
+  if(anim)cancelAnimationFrame(anim);
+  if(reduce){setVB(to);return}
+  var from=curVB.slice(),t0=null,dur=320;
+  function tick(t){
+    if(t0===null)t0=t;var p=Math.min((t-t0)/dur,1),e=1-Math.pow(1-p,3);
+    setVB(from.map(function(a,i){return a+(to[i]-a)*e}));
+    if(p<1)anim=requestAnimationFrame(tick);
+  }
+  anim=requestAnimationFrame(tick);
+}
+
+function drawStage(list){
+  var cuts=$("#cuts"),out=$("#outl"),lb=$("#lbls");
+  [cuts,out,lb].forEach(function(g){while(g.firstChild)g.removeChild(g.firstChild)});
+  var items=merge(list);
+  var bb=null;
+  items.forEach(function(it){F[it.f].s.forEach(function(sh){var b=bounds(sh);bb=bb?[Math.min(bb[0],b[0]),Math.min(bb[1],b[1]),Math.max(bb[2],b[2]),Math.max(bb[3],b[3])]:b})});
+  var st=$("#pf").parentNode;if(st.clientWidth>0&&st.clientHeight>0)ASP=st.clientWidth/st.clientHeight;
+  var vb=(S.zoom&&bb)?fit(bb):[0,0,VBW,VBH];
+  var k=vb[2]/VBW;
+  $("#dim").style.display=items.length?"":"none";
+  items.forEach(function(it){
+    var f=F[it.f],alt=it.k==="alt"?" alt":"";
+    f.s.forEach(function(sh){
+      if(sh.t==="c"){
+        se("circle",{cx:sh.x,cy:sh.y,r:sh.r+7,stroke:"none"},cuts);
+        se("circle",{cx:sh.x,cy:sh.y,r:sh.r,"class":"ring"+alt},out);
+      }else if(sh.t==="e"){
+        se("ellipse",{cx:sh.x,cy:sh.y,rx:sh.rx+7,ry:sh.ry+7,stroke:"none"},cuts);
+        se("ellipse",{cx:sh.x,cy:sh.y,rx:sh.rx,ry:sh.ry,"class":"ring"+alt},out);
+      }else if(sh.t==="r"){
+        se("rect",{x:sh.x-6,y:sh.y-6,width:sh.w+12,height:sh.h+12,rx:8,stroke:"none"},cuts);
+        se("rect",{x:sh.x,y:sh.y,width:sh.w,height:sh.h,rx:5,"class":"ring"+alt},out);
+      }else{
+        var pts=sh.p.map(function(q){return q[0]+","+q[1]}).join(" ");
+        se("polyline",{points:pts,fill:"none","stroke-width":sh.w+12},cuts);
+        se("polyline",{points:pts,"stroke-width":sh.w,"class":"bfill"+alt},out);
+        se("polyline",{points:pts,"class":"bline"+alt},out);
+      }
+    });
+  });
+  items.forEach(function(it){
+    var f=F[it.f],alt=it.k==="alt"?" alt":"",ax=f.a[0],ay=f.a[1];
+    var bx=ax,by=ay,r=13*k,has=it.ns.length>0,btxt=it.ns.join(","),bw=r*2;
+    if(has){
+      var g=se("g",{"class":"num"+alt},lb);
+      if(it.ns.length>1){
+        bw=(btxt.length*8.4+14)*k;
+        se("rect",{x:bx-bw/2,y:by-r,width:bw,height:r*2,rx:r},g);
+      }else{
+        se("circle",{cx:bx,cy:by,r:r},g);
+      }
+      var tx=se("text",{x:bx,y:by+5*k,"font-size":15*k},g);tx.textContent=btxt;
+    }
+    if(S.labels){
+      var txt=f.n,fs=15*k,w=txt.length*7.7*k+16*k,h=24*k,off=(has?bw/2+5*k:12*k);
+      var px=ax>300?ax-off-w:ax+off;
+      px=Math.min(Math.max(px,vb[0]+4*k),vb[0]+vb[2]-w-4*k);
+      var py=Math.min(Math.max(ay-h/2,vb[1]+4*k),vb[1]+vb[3]-h-4*k);
+      var pg=se("g",{"class":"pill"+alt},lb);
+      se("rect",{x:px,y:py,width:w,height:h,rx:4*k},pg);
+      var pt=se("text",{x:px+8*k,y:py+h/2+5*k,"font-size":fs},pg);pt.textContent=txt;
+    }
+  });
+  animateVB(vb);
+}
+
+/* drill view */
+function renderLegend(list){
+  var rows=merge(list);
+  var box=$("#legend");box.textContent="";
+  if(!rows.length){var p=document.createElement("p");p.className="fine";p.textContent="No playfield highlight for this step.";box.appendChild(p);return}
+  var h=document.createElement("h4");h.textContent="On the playfield";box.appendChild(h);
+  var ul=document.createElement("ul");
+  rows.forEach(function(i){
+    var f=F[i.f],li=document.createElement("li");
+    var b=document.createElement("span");b.className="bdg"+(i.ns.length?"":" dot")+(i.k==="alt"?" alt":"");b.textContent=i.ns.join(",");
+    var d=document.createElement("div");
+    var nm=document.createElement("span");nm.textContent=f.n+" ";
+    var chip=document.createElement("span");chip.className="chip "+(f.c?"clear":"est");chip.textContent=f.c?"Clear":"Estimated";
+    d.appendChild(nm);d.appendChild(chip);
+    if(f.x){var w=document.createElement("div");w.className="why";w.textContent=f.x;d.appendChild(w)}
+    li.appendChild(b);li.appendChild(d);ul.appendChild(li);
+  });
+  box.appendChild(ul);
+}
+function renderDrill(sec){
+  var st=sec.steps[S.step];
+  $("#dgrp").textContent=sec.g;
+  $("#dtitle").textContent=sec.title;
+  var dots=$("#dots");dots.textContent="";
+  sec.steps.forEach(function(s,i){
+    var b=document.createElement("button");b.type="button";
+    b.setAttribute("aria-label","Step "+(i+1)+": "+s.t);
+    if(i<S.step)b.className="done";
+    if(i===S.step)b.setAttribute("aria-current","step");
+    b.addEventListener("click",function(){go(sec.id,i)});
+    dots.appendChild(b);
+  });
+  $("#dcount").textContent="Step "+(S.step+1)+" of "+sec.steps.length;
+  var card=$("#card");card.innerHTML="";
+  var h=document.createElement("h3");h.textContent=st.t;card.appendChild(h);
+  var body=document.createElement("div");body.innerHTML=st.b;card.appendChild(body);
+  var prev=$("#prev"),next=$("#next");
+  prev.disabled=S.step===0;
+  var last=S.step===sec.steps.length-1,idx=order.indexOf(sec.id),nx=order[idx+1];
+  if(last){
+    if(nx){next.textContent="Next section: "+byId[nx].title+" →";next.disabled=false}
+    else{next.textContent="Done";next.disabled=true}
+  }else{next.textContent="Next →";next.disabled=false}
+  renderLegend(st.h||[]);
+  var ol=$("#olist");ol.textContent="";
+  sec.steps.forEach(function(s,i){
+    var li=document.createElement("li"),b=document.createElement("button");b.type="button";
+    b.textContent=(i+1)+". "+s.t;if(i===S.step)b.className="on";
+    b.addEventListener("click",function(){go(sec.id,i)});
+    li.appendChild(b);ol.appendChild(li);
+  });
+}
+function render(){
+  var sec=S.sec?byId[S.sec]:null;
+  $("#home").hidden=!!sec;$("#drill").hidden=!sec;document.body.classList.toggle("drilling",!!sec);
+  if(sec)renderDrill(sec);else $("#legend").textContent="";
+  drawStage(sec?(sec.steps[S.step].h||[]):[]);
+  $("#sidebody").scrollTop=0;try{window.scrollTo(0,0)}catch(e){}
+}
+var wideMQ=window.matchMedia("(min-width:1200px)");
+function placeLegend(){
+  var lg=$("#legend"),slot=$("#lgslot");
+  if(wideMQ.matches){if(lg.parentNode!==slot)slot.appendChild(lg)}
+  else if(lg.parentNode===slot){$("#drill").insertBefore(lg,$("#outline"))}
+}
+function redraw(){var sec=S.sec?byId[S.sec]:null;drawStage(sec?(sec.steps[S.step].h||[]):[])}
+window.addEventListener("resize",function(){placeLegend();redraw()});
+window.addEventListener("load",redraw);
+try{if(window.ResizeObserver)new ResizeObserver(function(){redraw()}).observe($(".stagebox"))}catch(e){}
+placeLegend();
+function hashFor(){return S.sec?(S.step?S.sec+"-s"+(S.step+1):S.sec):""}
+function go(id,step){
+  S.sec=id;S.step=step||0;render();
+  try{var h=hashFor();if(location.hash.slice(1)!==h)location.hash=h}catch(e){}
+}
+function home(){S.sec=null;S.step=0;render();try{if(location.hash)location.hash=""}catch(e){}}
+function fromHash(){
+  var h="";try{h=location.hash.slice(1)}catch(e){}
+  var id=h,step=0,m=h.match(/^(.+)-s(\d+)$/);
+  if(m){id=m[1];step=parseInt(m[2],10)-1}
+  if(!byId[id]){if(S.sec){S.sec=null;S.step=0;render()}return}
+  if(step<0||step>=byId[id].steps.length)step=0;
+  if(S.sec===id&&S.step===step)return;
+  S.sec=id;S.step=step;render();
+}
+function move(d){
+  if(!S.sec)return;
+  var sec=byId[S.sec],n=S.step+d;
+  if(n<0)return;
+  if(n>=sec.steps.length){var nx=order[order.indexOf(sec.id)+1];if(nx&&d>0)go(nx,0);return}
+  go(S.sec,n);
+}
+$("#back").addEventListener("click",home);
+$("#prev").addEventListener("click",function(){move(-1)});
+$("#next").addEventListener("click",function(){move(1)});
+function tog(btn,key){
+  btn.addEventListener("click",function(){
+    S[key]=!S[key];btn.setAttribute("aria-pressed",S[key]?"true":"false");
+    var sec=S.sec?byId[S.sec]:null;drawStage(sec?(sec.steps[S.step].h||[]):[]);
+  });
+}
+tog($("#tz"),"zoom");tog($("#tl"),"labels");$("#tz").setAttribute("aria-pressed",S.zoom?"true":"false");
+document.addEventListener("keydown",function(e){
+  var t=e.target&&e.target.tagName;if(t==="INPUT"||t==="TEXTAREA"||e.metaKey||e.ctrlKey||e.altKey)return;
+  if(e.key==="ArrowRight"){move(1);e.preventDefault()}
+  else if(e.key==="ArrowLeft"){move(-1);e.preventDefault()}
+  else if(e.key==="Escape"){home()}
+});
+window.addEventListener("hashchange",fromHash);
+fromHash();
+if(!S.sec)render();
+document.documentElement.className+=" js";
+})();
+</script>
