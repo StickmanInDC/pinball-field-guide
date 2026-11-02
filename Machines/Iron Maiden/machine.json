@@ -1,0 +1,18 @@
+{
+  "name": "Iron Maiden: Legacy of the Beast",
+  "manufacturer": "Stern",
+  "year": 2018,
+  "code_rev": "1.10",
+  "title": "Iron Maiden: Legacy of the Beast Field Guide",
+  "heading": "Iron Maiden: Legacy of the Beast",
+  "aria": "Iron Maiden: Legacy of the Beast playfield with the current step's shots highlighted",
+  "width": 640,
+  "height": 1092,
+  "label_split": 320,
+  "output": "iron-maiden-legacy-of-the-beast/index.html",
+  "editions": [
+    {"id": "pro", "label": "Pro", "image": "playfield-pro.jpg"},
+    {"id": "premium", "label": "Premium", "image": "playfield-premium.jpg"},
+    {"id": "le", "label": "LE", "like": "premium", "image": "playfield-premium.jpg"}
+  ]
+}
