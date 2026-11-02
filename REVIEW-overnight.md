@@ -43,3 +43,18 @@ Status: built, live at james-bond-007/index.html
 - [ ] Premium: jetpack figure, jetpack track and Bird One lock ring are my reading of the toys. Mark them against a real Premium.
 - [ ] LE photo: Stern's LE page returns 404, so the LE reuses the Premium photo. Sources: https://www.sternpinball.com/game/james-bond-007/pro/ and /premium/
 - [ ] My choices: left out the rulesheet's story text. I listed the final wizard details, which the rulesheet hides behind a spoiler tag, and the guide warns first. Year 2022 comes from the rulesheet's November 2022 release date. The rulesheet's own wording "Pussy Galore" is kept as the character name.
+
+## Jurassic Park
+Status: built, live at jurassic-park/index.html
+
+- [ ] Arrow-to-shot match is my reading, from the printed labels, arrow directions and wire returns. Check on a machine first: upper loop and side ramp may be swapped.
+- [ ] CHAOS letters: the rulesheet never says which shots carry them. I read C = Control Room lane, H = left ramp, A = right ramp, O = right orbit, S = helipad ramp. The H and C readings are the weakest. The rulesheet calls Control Room both a "left target" and a lane, and I treated it as the C lane.
+- [ ] Verify estimated shots on a machine: Control Room lane, upper loop, side ramp, center spinner, right orbit, helipad ramp, plunger lane, outlanes.
+- [ ] Verify guessed targets: spinner (not visible), pops standup (gold object between the bumpers), both Set Trap targets and the three purple standups (marked at their inserts), Supply Drop target, Light 2x Scoring standup, Light Escape standup (brass disc, a guess). The blue-roofed building as Raptor Tower and the blue-rotor toy as a helicopter are also my reading.
+- [ ] Paddock map: only the T-Rex insert is matched by clear art. The other dinosaurs are matched by level and left or right position.
+- [ ] Not marked because I could not place them: rollover above the pops, Raptor Pen's three targets, center target and dead-end lane (the whole pen is marked), slingshots.
+- [ ] Rulesheet gaps: no layout text. It leaves the 22 rescue award unknown, gives no Trifecta values, and does not list "major shots" (King of the Island, Restore Power), where I marked the eight arrows. Rest of the competition Amber order is also unknown.
+- [ ] Rulesheet conflicts, shown or noted: four skill shots vs three multipliers (noted, no first-shot value given); truck hit counts in Basics not repeated under T-Rex Events; Extra Ball as "5th" Super Supply Drop vs 6th in the table; "three purple standups" vs "flashing blue targets".
+- [ ] Museum Mayhem and Visitor's Center move shots "left". My layout puts the helipad at the far right, which fits the wire returns and the DNA combo flow, but the rulesheet's "Control Room moves to the Helipad" could also mean the helipad is on the left. If so, the arrow match needs redoing.
+- [ ] LE photo: Stern's LE page returns 404, so the LE reuses the Premium photo. Sources: https://www.sternpinball.com/game/jurassic-park/pro/ and /premium/
+- [ ] My choices: left out the rulesheet's credits. I listed When Dinosaurs Ruled the Earth, which it calls a secret mode. Year 2019 comes from the rulesheet's July 2019 release date. The Pro has no apron Mission Brief in Stern's photo, and neither does the Premium, so no card helped name shots.

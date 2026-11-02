@@ -1,0 +1,18 @@
+{
+  "name": "Jurassic Park",
+  "manufacturer": "Stern",
+  "year": 2019,
+  "code_rev": "1.10",
+  "title": "Jurassic Park Field Guide",
+  "heading": "Jurassic Park",
+  "aria": "Jurassic Park playfield with the current step's shots highlighted",
+  "width": 640,
+  "height": 1120,
+  "label_split": 320,
+  "output": "jurassic-park/index.html",
+  "editions": [
+    {"id": "pro", "label": "Pro", "image": "playfield-pro.jpg"},
+    {"id": "premium", "label": "Premium", "image": "playfield-premium.jpg"},
+    {"id": "le", "label": "LE", "like": "premium", "image": "playfield-premium.jpg"}
+  ]
+}
