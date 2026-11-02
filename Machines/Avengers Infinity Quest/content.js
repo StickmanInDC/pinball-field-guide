@@ -17,11 +17,13 @@ var F={
  portal:{n:"Portal",c:0,s:[],a:[0,0],x:"Placed at the disc because a retailer lists a motorized pop-up disc scoop. The rulesheet does not locate it.",v:P([C(218,440,48)],[218,440])},
  disc:{n:"Doctor Strange disc",c:1,s:[C(215,433,50)],a:[215,433],v:P([C(218,440,48)],[218,440])},
  sanctum:{n:"Sanctum target",c:0,s:[C(215,372,16)],a:[215,372],x:"The rulesheet puts it behind the disc. Exact spot estimated.",v:P([C(218,385,16)],[218,385])},
- upper_loop:{n:"Upper loop",c:0,s:[B([[348,442],[385,400],[430,330]],20)],a:[348,436],x:"Placed from the arrow beside the Hawkeye eye inserts. Only the entrance is drawn. Estimated.",v:P([B([[352,452],[390,405],[430,340]],20)],[352,446])},
+ upper_loop:{n:"Upper loop",c:0,s:[B([[348,442],[385,400],[430,330]],20)],a:[348,436],x:"Placed from the arrow beside the center Bullseye target. Only the entrance is drawn. Estimated.",v:P([B([[352,452],[390,405],[430,340]],20)],[352,446])},
  captive:{n:"Captive ball",c:1,s:[C(462,555,22)],a:[462,555],v:P([C(462,567,22)],[462,567])},
  thor_ins:{n:"Thor Multiball insert",c:1,s:[C(428,628,20)],a:[428,628],v:P([C(438,637,20)],[438,637])},
  marvel:{n:"Captain Marvel spinner shot",c:0,s:[B([[403,590],[415,520],[445,420],[460,380]],24)],a:[403,584],x:"Placed from the arrows beside the Captain Marvel art and hardware up the lane. Estimated.",v:{premium:{n:"Captain Marvel ramp",c:1,s:[B([[410,600],[420,530],[450,430],[465,395]],28)],a:[410,594],x:"The ramp entrance is clear. It continues on the wire form above."}}},
  right_orbit:{n:"Right orbit",c:0,s:[B([[488,608],[515,523],[540,420],[560,290],[520,190]],22)],a:[488,602],x:"Placed from the two arrows beside the Black Panther art. Estimated.",v:P([B([[492,618],[520,535],[545,420],[565,290],[520,195]],22)],[492,612])},
+ antman:{n:"Ant-Man shot",c:1,s:[C(540,766,15),B([[538,745],[533,715]],26)],a:[540,766],x:"Located by the site owner: the shot is below Black Panther, with the large yellow light just below its entrance. The lane above the light is drawn approximately.",v:P([C(541,766,15),B([[539,745],[535,720]],26)],[541,766])},
+ bullseyes:{n:"Bullseye targets",c:1,s:[C(340,365,14),C(356,467,16),C(471,747,14)],a:[356,467],x:"Located by the site owner: purple circles with a shield icon, at the top between the ramps, at center, and by the Ant-Man lane.",v:P([C(345,382,14),C(370,478,16),C(475,754,14)],[370,478])},
  drops:{n:"Drop targets",c:0,s:[B([[265,612],[465,680]],26)],a:[365,646],x:"The row of dark slots across mid-playfield. I read these as the drop targets, but no source confirms it.",v:P([B([[275,625],[470,690]],26)],[372,658])},
  grid:{n:"Computer grid",c:1,s:[R(95,672,140,128)],a:[165,735],v:P([R(92,680,148,130)],[166,745])},
  avengers:{n:"Avenger inserts",c:1,s:[R(188,822,240,62)],a:[308,853],v:P([R(192,828,240,62)],[312,859])},
@@ -55,6 +57,8 @@ var SECTIONS=[
  {t:"Upper loop",h:["upper_loop"],b:'<p>Hawkeye\'s shot. It collects Hawkeye Combos and lights Captain America to collect the Shield Bonus. Pop bumper lane and upper loop often score double in multiball modes.</p>'},
  {t:"Drop targets and computer grid",h:[["drops",1],["grid",2]],b:'<p>Any drop target hit locks in the lit grid award. Complete the bank to collect it. Three awards in a line start a Super Mode or award a feature.</p>'},
  {t:"Return lanes",h:["iron",["left_inlane",0,"alt"],["right_inlane",0,"alt"]],b:'<p>These spell I-R-O-N. Lit letters only move when the disc spins, not with the flippers. After a right inlane roll, the next disc hit doubles STRANGE progress.</p>'},
+ {t:"Ant-Man shot",h:["antman"],b:'<p>On the right side, below Black Panther, with a large yellow light just below the entrance. It collects Mystery when lit.</p>'},
+ {t:"Bullseye targets",h:["bullseyes"],b:'<p>Three targets marked by purple circles with a shield icon: one at the top between the left and gauntlet ramps, one in the center, and one on the right by the Ant-Man lane. Completing them lights Hawkeye Challenge and, at 3 completions, Extra Ball.</p>'},
  {t:"Portal",ed:"premium",h:["portal"],b:'<p>The rulesheet says the portal starts Gem Quests on Premium and LE.</p>'+UNK("It does not say where the portal is. I placed it at the disc from a retailer listing that mentions a pop-up disc scoop.")}
 ]},
 {g:"Layout and basics",id:"basics",title:"Rules overview",steps:[
@@ -119,7 +123,7 @@ var SECTIONS=[
 ]},
 {g:"Avengers Assemble",id:"royale",title:"Black Order Battle Royale",sub:1,steps:[
  {t:"Your six lives",h:["avengers"],b:'<p>Each insert is a life, and each Avenger has a health bar that falls with flips used, the timer running out and draining (a big hit). The longer an Avenger lasts, the more you score.</p><p>All shots are lit. Clear waves to defeat members of the Black Order.</p>'},
- {t:"Helpers",h:["drops","disc","marvel","upper_loop"],b:'<ul><li><b>Drop targets:</b> Vision adds 8 flips.</li><li><b>Disc:</b> STRANGE lights a moving Power-Up for 3x damage, 4x on an arrow, for 10 seconds.</li><li><b>Captain Marvel:</b> freezes the timer briefly.</li><li><b>Upper loop:</b> Hawkeye lights the three left shots for an attack, double on an arrow already lit.</li><li><b>Ant-Man:</b> a normal shot first, then Wasp adds a ball and 2x.</li></ul>'+UNK("I could not locate the Ant-Man shot, so it is not highlighted.")},
+ {t:"Helpers",h:["drops","disc","marvel","upper_loop","antman"],b:'<ul><li><b>Drop targets:</b> Vision adds 8 flips.</li><li><b>Disc:</b> STRANGE lights a moving Power-Up for 3x damage, 4x on an arrow, for 10 seconds.</li><li><b>Captain Marvel:</b> freezes the timer briefly.</li><li><b>Upper loop:</b> Hawkeye lights the three left shots for an attack, double on an arrow already lit.</li><li><b>Ant-Man:</b> a normal shot first, then Wasp adds a ball and 2x.</li></ul>'},
  {t:"Winning",h:[],b:'<p>Win for 20M per Avenger left, 1M per flip left and 1M per second left.</p>'}
 ]},
 /* ====== THANOS ====== */
@@ -171,7 +175,7 @@ var SECTIONS=[
  {t:"Hulk Rampage",h:["spinner"],b:'<p>All shots are lit green from 800K, rising 50K per shot and 5K per spin. Complete them to relight. Level 1 Hulk gives 2x.</p>'},
  {t:"Super Arc Reactor",h:["tower"],b:'<p>The Arc Reactor stays lit. Each hit pays up to 4x depending on shot strength, from a base of 600K rising 50K per hit.</p>'},
  {t:"Super Gauntlet",h:["right_ramp"],b:'<p>Loop the right ramp. The value starts at 800K, and the amount added doubles each shot from 50K. Flank Attack collects the latest value once.</p>'},
- {t:"Super Targets",h:[],b:'<p>Targets score 4M a hit. All three Hawkeye targets add 250K to all of them. Complete 2 sets to light an Extra Ball.</p>'+UNK("I could not locate these targets.")},
+ {t:"Super Targets",h:["bullseyes"],b:'<p>Targets score 4M a hit. All three Hawkeye targets add 250K to all of them. Complete 2 sets to light an Extra Ball.</p>'},
  {t:"Super Combos",h:[],b:'<p>Each combo adds 300K + 50K per combo, multiplied for each successive shot, and counts 2x toward combo awards.</p>'},
  {t:"Super Disc",h:["disc"],b:'<p>Spin the disc one way for points, then the other way to raise the multiplier, up to 5x per spin.</p>'}
 ]},
@@ -181,8 +185,8 @@ var SECTIONS=[
  {t:"Hawkeye Combos",h:[["right_ramp",1],["upper_loop",2]],b:'<p>Repeat right ramp shots raise the multiplier, up to 3x, then the upper loop collects. Scoring 3, 8, 13 and so on spots the grid square. 10, 20 and 30 earn Trophies. These do not count toward the combo awards above.</p>'}
 ]},
 {g:"Other scoring",id:"hawkeye",title:"Hawkeye Challenge",steps:[
- {t:"Lighting it",h:["tower"],b:'<p>Complete the 3 Bullseye targets, then shoot the Tower.</p><ul><li>1 completion: lights it.</li><li>3 completions: lights Extra Ball.</li><li>7, then every 4 more: lights it, or adds 2M if already lit.</li></ul>'+UNK("I could not locate the Bullseye targets.")},
- {t:"The levels",h:["tower"],b:'<p>The level rises with each success, and the action button jumps to level 3 when available.</p><ul><li><b>Amateur:</b> timed release. Hit the inner loop or bullseye target for a Portal Lock and 3M.</li><li><b>Pro:</b> timed release. Hit the inner loop for an Extra Ball.</li><li><b>Marksman:</b> random release once three lock inserts light. Hit the inner loop for an uncollected Gem and 10M.</li></ul>'+UNK("I could not tell which shot the inner loop is.")}
+ {t:"Lighting it",h:[["bullseyes",1],["tower",2]],b:'<p>Complete the 3 Bullseye targets, then shoot the Tower.</p><ul><li>1 completion: lights it.</li><li>3 completions: lights Extra Ball.</li><li>7, then every 4 more: lights it, or adds 2M if already lit.</li></ul>'},
+ {t:"The levels",h:["tower",["bullseyes",0,"alt"]],b:'<p>The level rises with each success, and the action button jumps to level 3 when available.</p><ul><li><b>Amateur:</b> timed release. Hit the inner loop or bullseye target for a Portal Lock and 3M.</li><li><b>Pro:</b> timed release. Hit the inner loop for an Extra Ball.</li><li><b>Marksman:</b> random release once three lock inserts light. Hit the inner loop for an uncollected Gem and 10M.</li></ul>'+UNK("I could not tell which shot the inner loop is.")}
 ]},
 {g:"Other scoring",id:"marvel",title:"Captain Marvel",steps:[
  {t:"Count-up awards",h:["marvel"],b:'<p>'+PRO("Spins are")+PREM("Ramps are")+' counted across the game.</p><table><tr><th>'+PRO("Spins")+PREM("Ramps")+'</th><th>Award</th></tr><tr><td>'+PRO("90")+PREM("3")+'</td><td>Binary Hurry-Up, Mystery</td></tr><tr><td>'+PRO("180")+PREM("6")+'</td><td>Binary Hurry-Up, Mystery</td></tr><tr><td>'+PRO("300")+PREM("10")+'</td><td>Mystery</td></tr><tr><td>'+PRO("360")+PREM("12")+'</td><td>Mystery</td></tr><tr><td>'+PRO("450")+PREM("15")+'</td><td>Binary Hurry-Up, Mystery</td></tr><tr><td>'+PRO("540")+PREM("18")+'</td><td>Bronze Trophy</td></tr><tr><td>'+PRO("960")+PREM("32")+'</td><td>Silver Trophy</td></tr><tr><td>'+PRO("1440")+PREM("48")+'</td><td>Gold Trophy</td></tr><tr><td>'+PRO("1500")+PREM("50")+'</td><td>Extra Ball</td></tr></table>'},
@@ -191,8 +195,8 @@ var SECTIONS=[
 {g:"Other scoring",id:"bonuses",title:"Bonuses and awards",steps:[
  {t:"Arc Reactor Bonus",h:["drops","tower"],b:'<p>Completing the drop targets lights the Tower. It pays up to 4x depending on shot strength. Unlit IRON letters raise the 75K base, and it carries between balls until collected.</p>'},
  {t:"Shield Bonus",h:["pops","upper_loop"],b:'<p>Pop hits build it from a 6M base. The upper loop lights Captain America for 15 seconds to collect it with a Trophy, then it resets. It doubles with the grid\'s 2x Shield, level 2 Cap or the Reality Gem.</p>'},
- {t:"Mystery",h:[],b:'<p>Lit at the Ant-Man shot, by Captain Marvel awards or your first Super Skill Shot. Awards include add-a-ball, spot 3 STRANGE letters, 10M, a Super Mode, +5x Bonus and Change Gems.</p><p>Spot Captain Marvel gives '+PRO("+45 spins")+PREM("+3 ramps")+'.</p>'+UNK("I could not locate the Ant-Man shot.")},
- {t:"Extra Balls",h:["sanctum"],b:'<p>Lit at the Sanctum target by:</p><ul><li>3 Bullseye completions</li><li>2 waves of Super Targets</li><li>8 Trophies</li><li>2nd Hawkeye Challenge</li><li>A late grid award</li><li>50 combos</li></ul><p>If unavailable, it scores 25M.</p>'},
+ {t:"Mystery",h:["antman"],b:'<p>Lit at the Ant-Man shot, by Captain Marvel awards or your first Super Skill Shot. Awards include add-a-ball, spot 3 STRANGE letters, 10M, a Super Mode, +5x Bonus and Change Gems.</p><p>Spot Captain Marvel gives '+PRO("+45 spins")+PREM("+3 ramps")+'.</p>'},
+ {t:"Extra Balls",h:["sanctum",["bullseyes",0,"alt"]],b:'<p>Lit at the Sanctum target by:</p><ul><li>3 Bullseye completions</li><li>2 waves of Super Targets</li><li>8 Trophies</li><li>2nd Hawkeye Challenge</li><li>A late grid award</li><li>50 combos</li></ul><p>If unavailable, it scores 25M.</p>'},
  {t:"End-of-ball bonus",h:[],b:'<p>This ball: switches x 250, and grid squares, Arc Reactors, upper loops and combos x 25K each.</p><p>Whole game: Bronze x 100K, Silver x 250K, Gold x 500K, Gems x 250K.</p><p>All multiply by bonus X, up to 25x, raised at the pop bumper lane or the grid.</p>'}
 ]},
 /* ====== TROPHIES ====== */
@@ -203,7 +207,7 @@ var SECTIONS=[
 {g:"Trophies",id:"trophy-mania",title:"Trophy Mania",steps:[
  {t:"Starting",h:["right_ramp"],b:'<p>The true wizard mode. Shoot the right ramp after 24 trophies. The 8 RGB shots light in proportion to your Bronze, Silver and Gold counts.</p>'},
  {t:"Trophy Jackpots",h:["disc","captive"],b:'<p>Base 1M, raised at the disc. Silver is 2x and Gold is 4x. The captive ball moves all trophies right, and a jackpot swaps its trophy with the next different color to the right.</p>'},
- {t:"Super Jackpot",h:["drops"],b:'<p>Balls are added at 12 and 24 trophies. 24 also lights Super Jackpot at Ant-Man, worth all Trophy Jackpots so far. Drop target bingos multiply it by 2x, 3x or 5x.</p>'+UNK("I could not locate the Ant-Man shot.")},
+ {t:"Super Jackpot",h:["antman","drops"],b:'<p>Balls are added at 12 and 24 trophies. 24 also lights Super Jackpot at Ant-Man, worth all Trophy Jackpots so far. Drop target bingos multiply it by 2x, 3x or 5x.</p>'},
  {t:"Afterward",h:[],b:'<p>You return to square one and the trophy case resets. With all six Gems, quests stay disabled, but mini-wizard modes remain.</p>'}
 ]}
 ];
