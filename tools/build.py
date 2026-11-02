@@ -36,7 +36,7 @@ def build(folder):
     ]
     body = template
     for token, value in [
-        ("__TITLE__", cfg["title"]), ("__KICKER__", cfg["kicker"]), ("__HEADING__", cfg["heading"]),
+        ("__TITLE__", cfg["title"]), ("__KICKER__", f'{cfg["manufacturer"]} · {cfg["name"]} · {cfg["year"]} · Code Rev {cfg["code_rev"]}'), ("__HEADING__", cfg["heading"]),
         ("__ARIA__", cfg["aria"]), ("__W__", str(cfg["width"])), ("__H__", str(cfg["height"])),
         ("__LABEL_SPLIT__", str(cfg["label_split"])),
         ("__HOME__", (folder / "home.html").read_text(encoding="utf-8")),

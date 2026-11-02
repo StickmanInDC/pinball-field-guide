@@ -22,7 +22,6 @@ Each guide is a single static page, so no build tools are needed to host it.
 ## Sources (Star Wars)
 - https://pinballrulesheets.com/stern/star-wars-fall-of-the-empire-rulesheet
 - Kineticist tutorial and review; Retro Refurbs
-- Playfield photo: pinballcards.net (Stern artwork; not owned by this project)
 
 ## Accuracy (Fallout Pro)
 - Rules come from the supplied rulesheet (code 0.81). Its wizard modes and some other items are TBD.
@@ -30,12 +29,12 @@ Each guide is a single static page, so no build tools are needed to host it.
 
 ## Accuracy (Avengers)
 - Rules come from the supplied rulesheet (code 1.08). It only separates Pro from Premium/LE, so Premium and LE show the same rules and art.
-- The photos are Stern's 2255x4217 originals, cropped to the playfield and scaled to 1280x2380 for the page. Coordinates use a 640x1190 grid.
+- The photos are 2255x4217 originals, cropped to the playfield and scaled to 1280x2380 for the page. Coordinates use a 640x1190 grid.
 - Most shot paths are estimated from the photos and tagged Estimated. Verify them on a real machine.
 
 ## Add a machine
 Create `Machines/<name>/` with:
-- `machine.json`: listing `name`, `manufacturer` and `year`, page names, photo width and height, `label_split` (half the width), and `output` path
+- `machine.json`: listing `name`, `manufacturer`, `year` and `code_rev` (these also form the line above the page heading), page names, photo width and height, `label_split` (half the width), and `output` path
 - `playfield.jpg`: the cropped photo, whose pixel size matches the coordinates you use
 - `home.html`: intro text and trust notes
 - `content.js`: features `F` and steps `SECTIONS`
