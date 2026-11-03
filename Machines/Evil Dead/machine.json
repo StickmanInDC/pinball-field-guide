@@ -1,0 +1,13 @@
+{
+  "name": "Evil Dead",
+  "manufacturer": "Spooky Pinball",
+  "year": 2025,
+  "code_rev": "not stated",
+  "title": "Evil Dead Field Guide",
+  "heading": "Evil Dead",
+  "aria": "Evil Dead playfield with the current step's shots highlighted",
+  "width": 1100,
+  "height": 2300,
+  "label_split": 550,
+  "output": "evil-dead/index.html"
+}
