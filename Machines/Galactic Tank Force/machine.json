@@ -7,7 +7,7 @@
   "heading": "Galactic Tank Force",
   "aria": "Galactic Tank Force playfield with the current step's shots highlighted",
   "width": 640,
-  "height": 1300,
+  "height": 1124,
   "label_split": 320,
   "output": "galactic-tank-force/index.html"
 }
