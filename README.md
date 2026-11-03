@@ -28,6 +28,7 @@ address that name a section still redirect to the Star Wars guide.
 - *Stranger Things*: `stranger-things/index.html` (Pro / Premium / LE switch)
 - *Teenage Mutant Ninja Turtles*: `teenage-mutant-ninja-turtles/index.html` (Pro / Premium / LE switch)
 - *Transformers: More Than Meets the Eye*: `transformers-more-than-meets-the-eye/index.html` (Pro / Premium / LE switch)
+- *The Uncanny X-Men*: `the-uncanny-x-men/index.html` (Pro / Premium / LE switch)
 - *Venom*: `venom/index.html` (Pro / Premium / LE switch)
 
 Each guide is a single static page, so no build tools are needed to host it.
@@ -140,6 +141,11 @@ Each guide is a single static page, so no build tools are needed to host it.
 - Rules come from the supplied rulesheet (code 1.09). It treats Premium and LE as one game and gives them a magnetic Telekinesis lock that holds up to two balls for a 2x or 3x super jackpot and a swipe-a-ball, where the Pro holds one ball behind an up-post, and each model has its own photo. Its Layout section is only photos, it does not describe the Final Showdown, it uses saucer, left saucer and kicker for what I take to be one shot, and it gives two Burn It Back extra ball ranges.
 - The photos are Stern's 2500x4233 top views. Premium and LE were aligned to the Pro's printed art by a perspective fit, about 1 pixel error, and all were cropped to 1660x3112 of the Pro and scaled to 1280x2400. Coordinates use a 640x1200 grid. Raised toys do not line up. In the Pro photo the center ramp covers the drop targets and the M and O letters.
 - Printed inserts, the Demogorgon, the center ramp, the Premium and LE drop targets, the saucer and the Lite Lock targets are clear. The Lock Ball, Extra Ball and Mystery, Demogorgon mode and Burn It Back inserts fix the left ramp, left standup lane, center and Burn It Back loop; paths past the entrances are estimated. The left orbit, right ramp and right orbit are my reading of the chapter arrows. The left standup target, center scoop, second pop bumper and DEMODOG standups are the least certain. The spinner, slingshots, right ramp standups and the Premium and LE magnet are not marked. Verify them on a real machine.
+
+## Accuracy (The Uncanny X-Men)
+- Rules come from the supplied rulesheet (code 0.98), which is unfinished. Its only edition note is that a Sentinel Attack can also start at any shot feeding the Sentinel hands on the Premium and LE, and each model has its own photo. Its Layout section is blank, Master Mold is a placeholder for a later code update, and it gives two sets of Sentinel Attack shots and two limits on Rogue's add-a-ball.
+- The photos are Stern's top views (Pro 1287x2560, Premium 3094x6154, LE 1287x2560). Premium and LE were aligned to the Pro's printed art by a perspective fit, about 0.5 pixel error, and all were cropped to 900x1659 of the Pro. Coordinates use a 640x1180 grid. Raised toys do not line up.
+- The X-Jet, Downtown, Uptown, Midtown, Subway, Highway and Beast Lab labels fix those entrances, and the Sentinel head, mission inserts, mini-flipper, Cerebro dome and Premium and LE Sentinel hand are clear. Paths past the entrances are estimated; the ramps cross. The Danger Room spinner, exit ramp, targets, Abort and bonus hold targets, both pop bumpers, X-Mansion target, Kitty Pryde lane, Sentinel mouth, Pro Beast's Lab captive ball and right lanes are the least certain. The Nightcrawler targets, Cerebro Bonus Build targets, Sentinel targets, slingshots and left lanes are not marked. Verify them on a real machine.
 
 ## Add a machine
 Create `Machines/<name>/` with:
