@@ -25,6 +25,7 @@ address that name a section still redirect to the Star Wars guide.
 - *Star Trek*: `star-trek/index.html` (Pro / Premium / LE switch)
 - *Star Wars (2017)*: `star-wars/index.html` (Pro / Premium / LE switch)
 - *Star Wars: Fall of the Empire*: `star-wars-fall-of-the-empire/index.html`
+- *Stranger Things*: `stranger-things/index.html` (Pro / Premium / LE switch)
 - *Teenage Mutant Ninja Turtles*: `teenage-mutant-ninja-turtles/index.html` (Pro / Premium / LE switch)
 - *Transformers: More Than Meets the Eye*: `transformers-more-than-meets-the-eye/index.html` (Pro / Premium / LE switch)
 - *Venom*: `venom/index.html` (Pro / Premium / LE switch)
@@ -134,6 +135,11 @@ Each guide is a single static page, so no build tools are needed to host it.
 - Rules come from the supplied rulesheet (code 0.97), which is unfinished. It treats Premium and LE as one game and gives the Pro no gong, a different Deadeye letter and no physical train lock, and each model has its own photo. Its Layout section is blank, Terror on the Tower and 8th Wonder say only "TBD", and several values are question marks.
 - The photos are Stern's 1319x2560 top views. Premium and LE were aligned to the Pro's printed art by a perspective fit, under 1 pixel error, and all were cropped to 980x1822 of the Pro. Coordinates use a 640x1190 grid. Raised toys do not line up.
 - Printed inserts, Kong, the biplane, the center ramp with its Lock inserts, the gong shot, the pit magnet and the Premium and LE gong and train car are clear. The cliffs ramp, river and left orbit on the far left are my reading of the arrows, Light Island Jackpot and Log Bridge inserts and may be swapped. The side ramp entrance, center spinner, U-turn, right orbit, Kong Cave lane, KONG drop targets, Island Treasure target, power-up target, pit targets and punchback target are the least certain. The spinners, slingshots, orange 2x targets and the Pro's blue island arrows are not marked. Verify them on a real machine.
+
+## Accuracy (Stranger Things)
+- Rules come from the supplied rulesheet (code 1.09). It treats Premium and LE as one game and gives them a magnetic Telekinesis lock that holds up to two balls for a 2x or 3x super jackpot and a swipe-a-ball, where the Pro holds one ball behind an up-post, and each model has its own photo. Its Layout section is only photos, it does not describe the Final Showdown, it uses saucer, left saucer and kicker for what I take to be one shot, and it gives two Burn It Back extra ball ranges.
+- The photos are Stern's 2500x4233 top views. Premium and LE were aligned to the Pro's printed art by a perspective fit, about 1 pixel error, and all were cropped to 1660x3112 of the Pro and scaled to 1280x2400. Coordinates use a 640x1200 grid. Raised toys do not line up. In the Pro photo the center ramp covers the drop targets and the M and O letters.
+- Printed inserts, the Demogorgon, the center ramp, the Premium and LE drop targets, the saucer and the Lite Lock targets are clear. The Lock Ball, Extra Ball and Mystery, Demogorgon mode and Burn It Back inserts fix the left ramp, left standup lane, center and Burn It Back loop; paths past the entrances are estimated. The left orbit, right ramp and right orbit are my reading of the chapter arrows. The left standup target, center scoop, second pop bumper and DEMODOG standups are the least certain. The spinner, slingshots, right ramp standups and the Premium and LE magnet are not marked. Verify them on a real machine.
 
 ## Add a machine
 Create `Machines/<name>/` with:
