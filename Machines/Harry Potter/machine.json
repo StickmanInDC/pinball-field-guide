@@ -1,0 +1,17 @@
+{
+  "name": "Harry Potter",
+  "manufacturer": "Jersey Jack Pinball",
+  "year": 2025,
+  "code_rev": "1.26",
+  "title": "Harry Potter Field Guide",
+  "heading": "Harry Potter",
+  "aria": "Harry Potter playfield with the current step's shots highlighted",
+  "width": 640,
+  "height": 1136,
+  "label_split": 320,
+  "output": "harry-potter/index.html",
+  "editions": [
+    {"id": "ce", "label": "Collector's", "image": "playfield-ce.jpg"},
+    {"id": "ae", "label": "Arcade", "image": "playfield-ae.jpg"}
+  ]
+}

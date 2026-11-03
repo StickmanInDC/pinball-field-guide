@@ -15,6 +15,7 @@ address that name a section still redirect to the Star Wars guide.
 - *Galactic Tank Force*: `galactic-tank-force/index.html`
 - *Godzilla*: `godzilla/index.html` (Pro / Premium / LE switch)
 - *Guardians of the Galaxy*: `guardians-of-the-galaxy/index.html` (Pro / Premium / LE switch)
+- *Harry Potter*: `harry-potter/index.html` (Collector's / Arcade Edition switch)
 - *Iron Maiden: Legacy of the Beast*: `iron-maiden-legacy-of-the-beast/index.html` (Pro / Premium / LE switch)
 - *James Bond 007*: `james-bond-007/index.html` (Pro / Premium / LE switch)
 - *Jaws*: `jaws/index.html` (Pro / Premium / LE switch)
@@ -153,6 +154,11 @@ Each guide is a single static page, so no build tools are needed to host it.
 - American Pinball sold Deluxe, Limited and Victory editions on one core playfield, so the guide has no edition switch.
 - No overhead photo was available. The photo is American Pinball's 613x920 full-machine promo shot from the player's end, straightened to a top view by a perspective fit that assumes a 20.25 inch wide playfield and about 38.5 inches from the top wall to the flippers. Coordinates use a 640x1300 grid. The upper half is blurred and raised toys appear shifted toward the top.
 - The Tanks, Medals and Missions insert columns, the wizard inserts, the left flank award inserts, the robot, the UFO and the LAB sign are clear. Both orbits, the left ramp, the right saucer, the lab saucer, the top lanes, the pop bumpers, the AIR targets, the flank targets, the return lanes, the atomic shield and the Lucky Break lanes are estimated. The spinner, charge methane shots and hidden quantum accelerator targets are not marked. Verify them on a real machine.
+
+## Accuracy (Harry Potter)
+- Rules come from the supplied rulesheet (code 1.26). It does not separate the editions; its only edition note is a pair of Collector's and Arcade Edition layout photos. Most lesson shot tables are incomplete, Years 5 and 6 list lesson names only, Nagini and the Voldemort battle are not described, and it gives two conditions for lighting Protego and two skill shot levels for the extra ball.
+- The photos are Jersey Jack Pinball's 2878x4470 Collector's Edition top view and P1-AG's 3478x5000 Arcade Edition top view. The Arcade photo was aligned to the Collector's by a perspective fit, under 1 pixel error (it appears to be the same render), and both were cropped to 1680x2982 of the Collector's and scaled to 1280x2272. Coordinates use a 640x1136 grid. Reviews list a Wizard's Edition on the same playfield; it has no switch.
+- The Quidditch inserts fix the left ramp, the location inserts the center ramp, the house inserts and staircase the right ramp, and the Diagon Alley inserts the center lane. The Death Eater, staircase, cauldron, Whomping Willow, upper playfield, upper flipper and printed inserts are clear. The library ramp, inner loop and right orbit are my reading of the other Advance Term arrows and may be swapped. The scoop, under-flipper hole, right spinner, drop target, Hagrid, RON, Hermione and allies targets, wand lock and pop bumpers are estimated. The Y lane, left and upper spinners, upper target and snitch inserts are not marked. Verify them on a real machine.
 
 ## Add a machine
 Create `Machines/<name>/` with:
