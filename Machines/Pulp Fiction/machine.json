@@ -1,0 +1,13 @@
+{
+  "name": "Pulp Fiction",
+  "manufacturer": "Chicago Gaming Company",
+  "year": 2023,
+  "code_rev": "not stated",
+  "title": "Pulp Fiction Field Guide",
+  "heading": "Pulp Fiction",
+  "aria": "Pulp Fiction playfield with the current step's shots highlighted",
+  "width": 640,
+  "height": 1330,
+  "label_split": 320,
+  "output": "pulp-fiction/index.html"
+}

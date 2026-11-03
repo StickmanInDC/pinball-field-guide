@@ -23,6 +23,7 @@ address that name a section still redirect to the Star Wars guide.
 - *King Kong: Myth of Terror Island*: `king-kong-myth-of-terror-island/index.html` (Pro / Premium / LE switch)
 - *Jurassic Park*: `jurassic-park/index.html` (Pro / Premium / LE switch)
 - *Pokémon*: `pokemon/index.html` (Pro / Premium / LE switch)
+- *Pulp Fiction*: `pulp-fiction/index.html`
 - *Rush*: `rush/index.html` (Pro / Premium / LE switch)
 - *Star Trek*: `star-trek/index.html` (Pro / Premium / LE switch)
 - *Star Wars (2017)*: `star-wars/index.html` (Pro / Premium / LE switch)
@@ -160,6 +161,12 @@ Each guide is a single static page, so no build tools are needed to host it.
 - Rules come from the supplied rulesheet (code 1.26). It does not separate the editions; its only edition note is a pair of Collector's and Arcade Edition layout photos. Most lesson shot tables are incomplete, Years 5 and 6 list lesson names only, Nagini and the Voldemort battle are not described, and it gives two conditions for lighting Protego and two skill shot levels for the extra ball.
 - The photos are Jersey Jack Pinball's 2878x4470 Collector's Edition top view and P1-AG's 3478x5000 Arcade Edition top view. The Arcade photo was aligned to the Collector's by a perspective fit, under 1 pixel error (it appears to be the same render), and both were cropped to 1680x2982 of the Collector's and scaled to 1280x2272. Coordinates use a 640x1136 grid. Reviews list a Wizard's Edition on the same playfield; it has no switch.
 - The Quidditch inserts fix the left ramp, the location inserts the center ramp, the house inserts and staircase the right ramp, and the Diagon Alley inserts the center lane. The Death Eater, staircase, cauldron, Whomping Willow, upper playfield, upper flipper and printed inserts are clear. The library ramp, inner loop and right orbit are my reading of the other Advance Term arrows and may be swapped. The scoop, under-flipper hole, right spinner, drop target, Hagrid, RON, Hermione and allies targets, wand lock and pop bumpers are estimated. The Y lane, left and upper spinners, upper target and snitch inserts are not marked. Verify them on a real machine.
+
+## Accuracy (Pulp Fiction)
+- Rules come from the supplied rulesheet, which gives no code revision and has a blank Layout section. Chicago Gaming's Rules Manual (release 1.7, February 2024, https://www.chicago-gaming.com/brochures/Pulp_Fiction_Pinball_Rules_Manual.pdf) was used to name and place the shots. Where the two disagree, the guide gives both: the Briefcase Boogie super payoff, letters per switch hit in Pulp Fiction Frenzy (9 and 99 against 10 and 110), and when The Shot completes its objective. The rulesheet's "top to bottom" scene list runs opposite to the scene inserts on the playfield.
+- Chicago Gaming sells Special, Special DBV (SED) and Bad Mother Flipper Limited Editions. Its feature matrix lists every playfield feature for all models, so the guide has no edition switch.
+- The picture is not a photo. It is the top-down layout drawing from the Rules Manual (page 4), rendered from the PDF with the manual's fade layer and shot arrows left out, cropped to 1900x3950 and scaled to 1280x2660. Coordinates use a 640x1330 grid. Plastics and toys are drawn see-through. The uncropped render is `Machines/Pulp Fiction/playfield-source.jpg`. Chicago Gaming's only playfield photo (https://www.chicago-gaming.com/images/pfp/playfield_full.jpg, 3733x3844) is a steep angled shot of the LE and was not used.
+- The manual's shot maps outline most targets, so the saucers, briefcase lane and drop targets, pawn shop scoop, center drop targets, Roll Scene lane, drop target and saucer, both orbits, the seven red arrow targets, both Big Kahuna targets, the Royale with Cheese, bullseye and MPH Bonus targets, the lanes and the inserts are clear. The spinners, bullseye magnet, rotating briefcase, ball release rail, flippers and plunger lane are estimated. The slingshots are not marked. Verify them on a real machine.
 
 ## Add a machine
 Create `Machines/<name>/` with:
