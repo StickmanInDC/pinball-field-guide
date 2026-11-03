@@ -1,0 +1,18 @@
+{
+  "name": "The Mandalorian",
+  "manufacturer": "Stern",
+  "year": 2021,
+  "code_rev": "1.42",
+  "title": "The Mandalorian Field Guide",
+  "heading": "The Mandalorian",
+  "aria": "The Mandalorian playfield with the current step's shots highlighted",
+  "width": 640,
+  "height": 1242,
+  "label_split": 320,
+  "output": "the-mandalorian/index.html",
+  "editions": [
+    {"id": "pro", "label": "Pro", "image": "playfield-pro.jpg"},
+    {"id": "premium", "label": "Premium", "image": "playfield-premium.jpg"},
+    {"id": "le", "label": "LE", "like": "premium", "image": "playfield-le.jpg"}
+  ]
+}
