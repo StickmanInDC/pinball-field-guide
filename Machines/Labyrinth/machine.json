@@ -1,0 +1,13 @@
+{
+  "name": "Labyrinth",
+  "manufacturer": "Barrels of Fun",
+  "year": 2023,
+  "code_rev": "2024-09-25",
+  "title": "Labyrinth Field Guide",
+  "heading": "Jim Henson's Labyrinth",
+  "aria": "Labyrinth playfield with the current step's shots highlighted",
+  "width": 849,
+  "height": 1928,
+  "label_split": 424,
+  "output": "labyrinth/index.html"
+}
