@@ -140,5 +140,6 @@ For a machine with several versions, list them in `machine.json` under `editions
 
 ## Develop
     python tools/build.py          # all machines, or pass one folder name
-    python tools/check.py          # needs playwright; screenshots to tools/shots/
-    python tools/check.py <url>    # same checks against the live site
+    python tools/check.py <folder> # needs playwright; checks one machine, screenshots to tools/shots/
+    python tools/check.py <url> <folder>  # same checks against the live site
+    python tools/check.py          # every machine; about 30 seconds each, so slow
