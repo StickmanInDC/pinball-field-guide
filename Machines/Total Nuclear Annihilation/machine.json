@@ -1,0 +1,13 @@
+{
+  "name": "Total Nuclear Annihilation",
+  "manufacturer": "Spooky Pinball",
+  "year": 2017,
+  "code_rev": "not stated",
+  "title": "Total Nuclear Annihilation Field Guide",
+  "heading": "Total Nuclear Annihilation",
+  "aria": "Total Nuclear Annihilation playfield with the current step's shots highlighted",
+  "width": 1000,
+  "height": 2070,
+  "label_split": 500,
+  "output": "total-nuclear-annihilation/index.html"
+}
