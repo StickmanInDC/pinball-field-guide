@@ -18,6 +18,7 @@ address that name a section still redirect to the Star Wars guide.
 - *James Bond 007*: `james-bond-007/index.html` (Pro / Premium / LE switch)
 - *Jaws*: `jaws/index.html` (Pro / Premium / LE switch)
 - *John Wick*: `john-wick/index.html` (Pro / Premium / LE switch)
+- *King Kong: Myth of Terror Island*: `king-kong-myth-of-terror-island/index.html` (Pro / Premium / LE switch)
 - *Jurassic Park*: `jurassic-park/index.html` (Pro / Premium / LE switch)
 - *Pokémon*: `pokemon/index.html` (Pro / Premium / LE switch)
 - *Rush*: `rush/index.html` (Pro / Premium / LE switch)
@@ -128,6 +129,11 @@ Each guide is a single static page, so no build tools are needed to host it.
 - Rules come from the supplied rulesheet (code 1.02). It treats Premium and LE as one game, marks the car skill shot, physical Deconsecrated locks, swipe-a-ball and Excommunicado short-plunge locks as Premium and LE only, and gives different car hit counts. It has no Layout section, its Competition sections are blank, and it gives two first car multiball hit counts for the Pro.
 - The photos are Stern's top views (Pro 2500x4262, Premium 2500x4260, LE 2500x4231). Premium and LE were aligned to the Pro's printed art by a perspective fit, about 1 pixel error, and all were cropped to 1720x3053 of the Pro and scaled to 1280x2272. Coordinates use a 640x1136 grid. Raised toys do not line up.
 - Printed inserts, the car, Continental and captive ball, weapons crate, Blood Oath Marker and Red Circle bumper are clear. The Akira, Charon and Katia diamonds fix the left, center and right ramps, and the Dance Club insert fixes the Red Circle lane; paths past the entrances are estimated. The left eject, left orbit, right orbit, orange standups, gold coin targets, pop bumper and right VUK are the least certain. The left orbit spinner, VIP lane, car skill shot lane, blood marker standups and slingshots are not marked. Verify them on a real machine.
+
+## Accuracy (King Kong)
+- Rules come from the supplied rulesheet (code 0.97), which is unfinished. It treats Premium and LE as one game and gives the Pro no gong, a different Deadeye letter and no physical train lock, and each model has its own photo. Its Layout section is blank, Terror on the Tower and 8th Wonder say only "TBD", and several values are question marks.
+- The photos are Stern's 1319x2560 top views. Premium and LE were aligned to the Pro's printed art by a perspective fit, under 1 pixel error, and all were cropped to 980x1822 of the Pro. Coordinates use a 640x1190 grid. Raised toys do not line up.
+- Printed inserts, Kong, the biplane, the center ramp with its Lock inserts, the gong shot, the pit magnet and the Premium and LE gong and train car are clear. The cliffs ramp, river and left orbit on the far left are my reading of the arrows, Light Island Jackpot and Log Bridge inserts and may be swapped. The side ramp entrance, center spinner, U-turn, right orbit, Kong Cave lane, KONG drop targets, Island Treasure target, power-up target, pit targets and punchback target are the least certain. The spinners, slingshots, orange 2x targets and the Pro's blue island arrows are not marked. Verify them on a real machine.
 
 ## Add a machine
 Create `Machines/<name>/` with:

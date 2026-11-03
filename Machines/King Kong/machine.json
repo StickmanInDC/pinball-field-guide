@@ -1,0 +1,18 @@
+{
+  "name": "King Kong: Myth of Terror Island",
+  "manufacturer": "Stern",
+  "year": 2025,
+  "code_rev": "0.97",
+  "title": "King Kong: Myth of Terror Island Field Guide",
+  "heading": "King Kong: Myth of Terror Island",
+  "aria": "King Kong playfield with the current step's shots highlighted",
+  "width": 640,
+  "height": 1190,
+  "label_split": 320,
+  "output": "king-kong-myth-of-terror-island/index.html",
+  "editions": [
+    {"id": "pro", "label": "Pro", "image": "playfield-pro.jpg"},
+    {"id": "premium", "label": "Premium", "image": "playfield-premium.jpg"},
+    {"id": "le", "label": "LE", "like": "premium", "image": "playfield-le.jpg"}
+  ]
+}
