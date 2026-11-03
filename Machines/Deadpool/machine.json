@@ -1,0 +1,18 @@
+{
+  "name": "Deadpool",
+  "manufacturer": "Stern",
+  "year": 2018,
+  "code_rev": "1.10",
+  "title": "Deadpool Field Guide",
+  "heading": "Deadpool",
+  "aria": "Deadpool playfield with the current step's shots highlighted",
+  "width": 640,
+  "height": 1267,
+  "label_split": 320,
+  "output": "deadpool/index.html",
+  "editions": [
+    {"id": "pro", "label": "Pro", "image": "playfield-pro.jpg"},
+    {"id": "premium", "label": "Premium", "image": "playfield-premium.jpg"},
+    {"id": "le", "label": "LE", "like": "premium", "image": "playfield-le.jpg"}
+  ]
+}

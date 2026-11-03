@@ -9,6 +9,7 @@ filters. `tools/build.py` generates it from the `machine.json` files. Old links 
 address that name a section still redirect to the Star Wars guide.
 
 - *Avengers: Infinity Quest*: `avengers-infinity-quest/index.html` (Pro / Premium / LE switch)
+- *Deadpool*: `deadpool/index.html` (Pro / Premium / LE switch)
 - *Fallout Pro*: `fallout-pro/index.html`
 - *Foo Fighters*: `foo-fighters/index.html` (Pro / Premium / LE switch)
 - *Godzilla*: `godzilla/index.html` (Pro / Premium / LE switch)
@@ -110,6 +111,11 @@ Each guide is a single static page, so no build tools are needed to host it.
 - Rules come from the supplied rulesheet (code 1.06). It treats Premium and LE as one game and notes where the Pro differs, and each model has its own photo. It has no layout text, gives no third mini-mode for Venomized Wolverine, and leaves most of Venomized Ghost Rider's table blank.
 - The photos are Stern's 1476x2500 top views. Premium and LE were aligned to the Pro's printed art by a perspective fit, under 1 pixel error, and all were cropped to 980x1880 of the Pro and scaled to 1280x2456. Coordinates use a 640x1228 grid. Raised toys do not line up.
 - Printed inserts, the captive ball, Carnage track and Bell Tower toy are clear. Stern's apron card fixes the center ramp and scoop, and the Choose Host insert fixes the left ramp, but paths past the arrows are estimated. The left orbit, left loop, right loop, right orbit, bell tower target, canisters, bottom lanes, and the Premium and LE U-turn ramp and flyaway targets are the least certain. Only two of the five red targets are placed. Top lanes, rollover lanes, the Secret Hideout saucer, sinkhole, pop bumpers, spinners and slingshots are not marked. Verify them on a real machine.
+
+## Accuracy (Deadpool)
+- Rules come from the supplied rulesheet (code 1.10). It treats Premium and LE as one game and marks Disco Loops as Premium and LE only, and each model has its own photo. Its Layout section is only photos, Clone Multiball does not name its four shots, and the Final Battle does not say what happens if time runs out.
+- The photos are Stern's 1384x2500, 1383x2500 and 1378x2500 top views. Premium and LE were aligned to the Pro's printed art by a perspective fit, under 1 pixel error, and all were cropped to 980x1940 of the Pro and scaled to 1280x2534. Coordinates use a 640x1267 grid. Raised toys do not line up.
+- Printed inserts, the right ramp, katana, Lil' Deadpool, Keep Out lock, top lanes and figures are clear. Team-Up inserts fix the left orbit, U-turn, center spinner and right orbit, and Stern's apron card and features list name the Dazzler spinner, Colossus Loop and Hell House scoop. The left ramp and U-turn may be swapped. The scoop, orbit paths, OOF drop targets, D-E-A-D and P-O-O-L targets, bottom lanes and pop bumpers are the least certain. The SNIKT! target, Dazzler spinner, Colossal Jackpot target, third pop bumper and slingshots are not marked. Verify them on a real machine.
 
 ## Add a machine
 Create `Machines/<name>/` with:
