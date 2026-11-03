@@ -1,0 +1,13 @@
+{
+  "name": "Winchester Mystery House",
+  "manufacturer": "Barrels of Fun",
+  "year": 2025,
+  "code_rev": "2026.10.01",
+  "title": "Winchester Mystery House Field Guide",
+  "heading": "Winchester Mystery House",
+  "aria": "Winchester Mystery House playfield with the current step's shots highlighted",
+  "width": 1200,
+  "height": 2460,
+  "label_split": 600,
+  "output": "winchester-mystery-house/index.html"
+}
