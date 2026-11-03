@@ -1,6 +1,6 @@
 # Pinball Field Guides
 
-Interactive, step-by-step guides to Stern pinball machines. Rulesheet sections on the left; the
+Interactive, step-by-step guides to pinball machines. Rulesheet sections on the left; the
 playfield photo highlights the shots for the current step. Works on phones, tablets and desktop.
 Use Back/Next or the arrow keys; Esc returns to the list.
 
@@ -12,6 +12,7 @@ address that name a section still redirect to the Star Wars guide.
 - *Deadpool*: `deadpool/index.html` (Pro / Premium / LE switch)
 - *Fallout Pro*: `fallout-pro/index.html`
 - *Foo Fighters*: `foo-fighters/index.html` (Pro / Premium / LE switch)
+- *Galactic Tank Force*: `galactic-tank-force/index.html`
 - *Godzilla*: `godzilla/index.html` (Pro / Premium / LE switch)
 - *Guardians of the Galaxy*: `guardians-of-the-galaxy/index.html` (Pro / Premium / LE switch)
 - *Iron Maiden: Legacy of the Beast*: `iron-maiden-legacy-of-the-beast/index.html` (Pro / Premium / LE switch)
@@ -146,6 +147,12 @@ Each guide is a single static page, so no build tools are needed to host it.
 - Rules come from the supplied rulesheet (code 0.98), which is unfinished. Its only edition note is that a Sentinel Attack can also start at any shot feeding the Sentinel hands on the Premium and LE, and each model has its own photo. Its Layout section is blank, Master Mold is a placeholder for a later code update, and it gives two sets of Sentinel Attack shots and two limits on Rogue's add-a-ball.
 - The photos are Stern's top views (Pro 1287x2560, Premium 3094x6154, LE 1287x2560). Premium and LE were aligned to the Pro's printed art by a perspective fit, about 0.5 pixel error, and all were cropped to 900x1659 of the Pro. Coordinates use a 640x1180 grid. Raised toys do not line up.
 - The X-Jet, Downtown, Uptown, Midtown, Subway, Highway and Beast Lab labels fix those entrances, and the Sentinel head, mission inserts, mini-flipper, Cerebro dome and Premium and LE Sentinel hand are clear. Paths past the entrances are estimated; the ramps cross. The Danger Room spinner, exit ramp, targets, Abort and bonus hold targets, both pop bumpers, X-Mansion target, Kitty Pryde lane, Sentinel mouth, Pro Beast's Lab captive ball and right lanes are the least certain. The Nightcrawler targets, Cerebro Bonus Build targets, Sentinel targets, slingshots and left lanes are not marked. Verify them on a real machine.
+
+## Accuracy (Galactic Tank Force)
+- Rules come from the supplied rulesheet, which gives no code revision and is unfinished. Its Overview and Layout sections are blank, Extra Balls and End-of-Ball Bonus are TBD, and the three wizard modes have qualifying rules only. American Pinball says later code adds extra balls and the Tank Zulu mini-wizard mode; the guide does not cover them.
+- American Pinball sold Deluxe, Limited and Victory editions on one core playfield, so the guide has no edition switch.
+- No overhead photo was available. The photo is American Pinball's 613x920 full-machine promo shot from the player's end, straightened to a top view by a perspective fit that assumes a 20.25 inch wide playfield and about 38.5 inches from the top wall to the flippers. Coordinates use a 640x1300 grid. The upper half is blurred and raised toys appear shifted toward the top.
+- The Tanks, Medals and Missions insert columns, the wizard inserts, the left flank award inserts, the robot, the UFO and the LAB sign are clear. Both orbits, the left ramp, the right saucer, the lab saucer, the top lanes, the pop bumpers, the AIR targets, the flank targets, the return lanes, the atomic shield and the Lucky Break lanes are estimated. The spinner, charge methane shots and hidden quantum accelerator targets are not marked. Verify them on a real machine.
 
 ## Add a machine
 Create `Machines/<name>/` with:

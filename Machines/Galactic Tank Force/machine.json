@@ -1,0 +1,13 @@
+{
+  "name": "Galactic Tank Force",
+  "manufacturer": "American Pinball",
+  "year": 2023,
+  "code_rev": "not stated",
+  "title": "Galactic Tank Force Field Guide",
+  "heading": "Galactic Tank Force",
+  "aria": "Galactic Tank Force playfield with the current step's shots highlighted",
+  "width": 640,
+  "height": 1300,
+  "label_split": 320,
+  "output": "galactic-tank-force/index.html"
+}
