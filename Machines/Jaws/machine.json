@@ -1,0 +1,18 @@
+{
+  "name": "Jaws",
+  "manufacturer": "Stern",
+  "year": 2024,
+  "code_rev": "1.01",
+  "title": "Jaws Field Guide",
+  "heading": "Jaws",
+  "aria": "Jaws playfield with the current step's shots highlighted",
+  "width": 640,
+  "height": 1136,
+  "label_split": 320,
+  "output": "jaws/index.html",
+  "editions": [
+    {"id": "pro", "label": "Pro", "image": "playfield-pro.jpg"},
+    {"id": "premium", "label": "Premium", "image": "playfield-premium.jpg"},
+    {"id": "le", "label": "LE", "like": "premium", "image": "playfield-le.jpg"}
+  ]
+}

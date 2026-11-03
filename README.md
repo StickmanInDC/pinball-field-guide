@@ -16,6 +16,7 @@ address that name a section still redirect to the Star Wars guide.
 - *Guardians of the Galaxy*: `guardians-of-the-galaxy/index.html` (Pro / Premium / LE switch)
 - *Iron Maiden: Legacy of the Beast*: `iron-maiden-legacy-of-the-beast/index.html` (Pro / Premium / LE switch)
 - *James Bond 007*: `james-bond-007/index.html` (Pro / Premium / LE switch)
+- *Jaws*: `jaws/index.html` (Pro / Premium / LE switch)
 - *Jurassic Park*: `jurassic-park/index.html` (Pro / Premium / LE switch)
 - *Pokémon*: `pokemon/index.html` (Pro / Premium / LE switch)
 - *Rush*: `rush/index.html` (Pro / Premium / LE switch)
@@ -116,6 +117,11 @@ Each guide is a single static page, so no build tools are needed to host it.
 - Rules come from the supplied rulesheet (code 1.10). It treats Premium and LE as one game and marks Disco Loops as Premium and LE only, and each model has its own photo. Its Layout section is only photos, Clone Multiball does not name its four shots, and the Final Battle does not say what happens if time runs out.
 - The photos are Stern's 1384x2500, 1383x2500 and 1378x2500 top views. Premium and LE were aligned to the Pro's printed art by a perspective fit, under 1 pixel error, and all were cropped to 980x1940 of the Pro and scaled to 1280x2534. Coordinates use a 640x1267 grid. Raised toys do not line up.
 - Printed inserts, the right ramp, katana, Lil' Deadpool, Keep Out lock, top lanes and figures are clear. Team-Up inserts fix the left orbit, U-turn, center spinner and right orbit, and Stern's apron card and features list name the Dazzler spinner, Colossus Loop and Hell House scoop. The left ramp and U-turn may be swapped. The scoop, orbit paths, OOF drop targets, D-E-A-D and P-O-O-L targets, bottom lanes and pop bumpers are the least certain. The SNIKT! target, Dazzler spinner, Colossal Jackpot target, third pop bumper and slingshots are not marked. Verify them on a real machine.
+
+## Accuracy (Jaws)
+- Rules come from the supplied rulesheet (code 1.01). It treats Premium and LE as one game and marks the Orca upper playfield, Orca Wheel Awards and Say Ah! as Premium and LE only, and each model has its own photo. Its Layout section is only photos, its ball bonus needs more information, and it gives two values for the Say Ah! perk.
+- The photos are Stern's 2500x4233 top views. Premium and LE were aligned to the Pro's printed art by a perspective fit, about 1 pixel error, and all were cropped to 1780x3160 of the Pro and scaled to 1280x2272. Coordinates use a 640x1136 grid. Raised toys do not line up.
+- Printed inserts, the chum bucket, center captive ball, fishing reel, Quint's Shack ramp, mini-flipper and Premium and LE Orca toys are clear. The five white shark arrows carry the mode inserts, which fix the left orbit, wave ramp, center ramp, fishing reel and right ramp, but paths past the arrows are estimated. The harpoon lane, shark fin track, left target bank, shark tower targets, mini-flipper lanes, pop bumper and Lookout Tower ramp are the least certain. The Light Life Ring target, slingshots and spinner blades are not marked. Verify them on a real machine.
 
 ## Add a machine
 Create `Machines/<name>/` with:
