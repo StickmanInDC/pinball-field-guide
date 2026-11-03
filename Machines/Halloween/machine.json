@@ -1,0 +1,13 @@
+{
+  "name": "Halloween",
+  "manufacturer": "Spooky Pinball",
+  "year": 2021,
+  "code_rev": "not stated",
+  "title": "Halloween Field Guide",
+  "heading": "Halloween",
+  "aria": "Halloween playfield with the current step's shots highlighted",
+  "width": 980,
+  "height": 2050,
+  "label_split": 490,
+  "output": "halloween/index.html"
+}
