@@ -1,0 +1,18 @@
+{
+  "name": "Black Knight: Sword of Rage",
+  "manufacturer": "Stern",
+  "year": 2019,
+  "code_rev": "1.14",
+  "title": "Black Knight: Sword of Rage Field Guide",
+  "heading": "Black Knight: Sword of Rage",
+  "aria": "Black Knight: Sword of Rage playfield with the current step's shots highlighted",
+  "width": 640,
+  "height": 1381,
+  "label_split": 320,
+  "output": "black-knight-sword-of-rage/index.html",
+  "editions": [
+    {"id": "pro", "label": "Pro", "image": "playfield-pro.jpg"},
+    {"id": "premium", "label": "Premium", "image": "playfield-premium.jpg"},
+    {"id": "le", "label": "LE", "like": "premium", "image": "playfield-le.jpg"}
+  ]
+}
