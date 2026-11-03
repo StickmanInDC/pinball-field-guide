@@ -17,6 +17,7 @@ address that name a section still redirect to the Star Wars guide.
 - *Iron Maiden: Legacy of the Beast*: `iron-maiden-legacy-of-the-beast/index.html` (Pro / Premium / LE switch)
 - *James Bond 007*: `james-bond-007/index.html` (Pro / Premium / LE switch)
 - *Jaws*: `jaws/index.html` (Pro / Premium / LE switch)
+- *John Wick*: `john-wick/index.html` (Pro / Premium / LE switch)
 - *Jurassic Park*: `jurassic-park/index.html` (Pro / Premium / LE switch)
 - *Pokémon*: `pokemon/index.html` (Pro / Premium / LE switch)
 - *Rush*: `rush/index.html` (Pro / Premium / LE switch)
@@ -122,6 +123,11 @@ Each guide is a single static page, so no build tools are needed to host it.
 - Rules come from the supplied rulesheet (code 1.01). It treats Premium and LE as one game and marks the Orca upper playfield, Orca Wheel Awards and Say Ah! as Premium and LE only, and each model has its own photo. Its Layout section is only photos, its ball bonus needs more information, and it gives two values for the Say Ah! perk.
 - The photos are Stern's 2500x4233 top views. Premium and LE were aligned to the Pro's printed art by a perspective fit, about 1 pixel error, and all were cropped to 1780x3160 of the Pro and scaled to 1280x2272. Coordinates use a 640x1136 grid. Raised toys do not line up.
 - Printed inserts, the chum bucket, center captive ball, fishing reel, Quint's Shack ramp, mini-flipper and Premium and LE Orca toys are clear. The five white shark arrows carry the mode inserts, which fix the left orbit, wave ramp, center ramp, fishing reel and right ramp, but paths past the arrows are estimated. The harpoon lane, shark fin track, left target bank, shark tower targets, mini-flipper lanes, pop bumper and Lookout Tower ramp are the least certain. The Light Life Ring target, slingshots and spinner blades are not marked. Verify them on a real machine.
+
+## Accuracy (John Wick)
+- Rules come from the supplied rulesheet (code 1.02). It treats Premium and LE as one game, marks the car skill shot, physical Deconsecrated locks, swipe-a-ball and Excommunicado short-plunge locks as Premium and LE only, and gives different car hit counts. It has no Layout section, its Competition sections are blank, and it gives two first car multiball hit counts for the Pro.
+- The photos are Stern's top views (Pro 2500x4262, Premium 2500x4260, LE 2500x4231). Premium and LE were aligned to the Pro's printed art by a perspective fit, about 1 pixel error, and all were cropped to 1720x3053 of the Pro and scaled to 1280x2272. Coordinates use a 640x1136 grid. Raised toys do not line up.
+- Printed inserts, the car, Continental and captive ball, weapons crate, Blood Oath Marker and Red Circle bumper are clear. The Akira, Charon and Katia diamonds fix the left, center and right ramps, and the Dance Club insert fixes the Red Circle lane; paths past the entrances are estimated. The left eject, left orbit, right orbit, orange standups, gold coin targets, pop bumper and right VUK are the least certain. The left orbit spinner, VIP lane, car skill shot lane, blood marker standups and slingshots are not marked. Verify them on a real machine.
 
 ## Add a machine
 Create `Machines/<name>/` with:
