@@ -1,0 +1,13 @@
+{
+  "name": "Elvira's House of Horrors",
+  "manufacturer": "Stern",
+  "year": 2019,
+  "code_rev": "1.01",
+  "title": "Elvira's House of Horrors Field Guide",
+  "heading": "Elvira's House of Horrors",
+  "aria": "Elvira's House of Horrors playfield with the current step's shots highlighted",
+  "width": 640,
+  "height": 1210,
+  "label_split": 320,
+  "output": "elviras-house-of-horrors/index.html"
+}
