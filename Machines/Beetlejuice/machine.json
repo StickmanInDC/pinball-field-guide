@@ -1,0 +1,13 @@
+{
+  "name": "Beetlejuice",
+  "manufacturer": "Spooky Pinball",
+  "year": 2026,
+  "code_rev": "not stated",
+  "title": "Beetlejuice Field Guide",
+  "heading": "Beetlejuice",
+  "aria": "Beetlejuice playfield with the current step's shots highlighted",
+  "width": 640,
+  "height": 1280,
+  "label_split": 320,
+  "output": "beetlejuice/index.html"
+}
