@@ -1,0 +1,13 @@
+{
+  "name": "Hot Wheels",
+  "manufacturer": "American Pinball",
+  "year": 2020,
+  "code_rev": "not stated",
+  "title": "Hot Wheels Field Guide",
+  "heading": "Hot Wheels",
+  "aria": "Hot Wheels playfield with the current step's shots highlighted",
+  "width": 640,
+  "height": 1305,
+  "label_split": 320,
+  "output": "hot-wheels/index.html"
+}
