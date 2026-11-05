@@ -1,0 +1,13 @@
+{
+  "name": "The Hobbit",
+  "manufacturer": "Jersey Jack Pinball",
+  "year": 2016,
+  "code_rev": "not stated",
+  "title": "The Hobbit Field Guide",
+  "heading": "The Hobbit",
+  "aria": "The Hobbit playfield with the current step's shots highlighted",
+  "width": 640,
+  "height": 1051,
+  "label_split": 320,
+  "output": "the-hobbit/index.html"
+}
