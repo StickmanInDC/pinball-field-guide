@@ -24,9 +24,10 @@ var F={
  mini_flip:{n:"Mini-flipper",c:1,s:[B([[528,682],[513,740]],14)],a:[520,712],x:"The small flipper on the right. The rulesheet shoots the left target bank from it and uses it for Flip-Lock."},
  mini_lanes:{n:"Lanes above the mini-flipper",c:0,s:[E(478,655,7,26),E(497,655,7,26)],a:[488,655],x:"Two rollover lanes that feed the mini-flipper. The rulesheet uses \"the lane directly above\" the mini-flipper for the level 2 skill shot and Fish Finder, and \"the right lane\" for lighting the harpoon lane. Which is which is my guess."},
  ff_ins:{n:"Activate Fish Finder insert",c:1,s:[C(543,608,12)],a:[543,608]},
- pop:{n:"Pop bumper",c:0,s:[C(515,555,22)],a:[515,555],x:"The yellow barrel cap on the right. The rulesheet says Flip-Lock time shows on the flashing barrel atop the bumper, and the level 1 skill shot plunges into it. I could not see a second bumper."},
+ pop:{n:"Pop bumper",c:0,s:[C(515,555,22)],a:[515,555],x:"The yellow buoy on the right. The rulesheet says Flip-Lock time shows on the flashing barrel atop the bumper, and the level 1 skill shot plunges into it. I could not see a second bumper."},
  life_ins:{n:"Life Ring insert",c:1,s:[C(62,830,12)],a:[62,830],x:"The life ring above the left outlane."},
- life_arrow:{n:"Light Life Ring insert",c:1,s:[E(425,640,24,10)],a:[425,640],x:"Printed Life Ring arrow. I could not find the Light Life Ring target it belongs to, so it is not marked."},
+ life_arrow:{n:"Light Life Ring insert",c:1,s:[E(425,640,24,10)],a:[425,640],x:"Printed Life Ring arrow. It points at the Light Life Ring target to its right."},
+ life_target:{n:"Light Life Ring target",c:0,s:[B([[469,626],[474,682]],18)],a:[471,654],x:"The owner confirms it sits at the lower right, under the bumper with the buoy, where the Light Life Ring insert points. I marked the dark red face between the posts; its exact extent is estimated from the photo."},
  left_out:{n:"Left outlane",c:0,s:[B([[60,838],[56,900]],14)],a:[58,870],x:"Under the life ring insert. The rulesheet saves balls here with the Life Ring."},
  return_lanes:{n:"Return lanes",c:0,s:[E(116,845,8,22),E(485,848,8,22)],a:[116,845],x:"The inlanes under the two Machete inserts."},
  right_ret:{n:"Right return lane",c:0,s:[E(485,848,8,22)],a:[485,848],x:"The right inlane. Quint's Challenge is printed on the guide below it."},
@@ -140,7 +141,7 @@ var SECTIONS=[
  {t:"Qualifying",ed:"pro",h:["target_bank","ff_arrows"],b:"<p>On the Pro, hit the left standup targets in single-ball play, lit or not: 3 hits for the first award, +1 each time after.</p>"},
  {t:"Qualifying",ed:"premium",h:["target_bank","ff_arrows"],b:"<p>On the Premium and LE, a blinking arrow roves up and down the three unlit arrows. Hit the drop target it points to and that arrow lights solid. The game's first hit also spots an adjacent arrow. Light all three to qualify.</p>"},
  {t:"Collecting",h:["mini_lanes","ff_ins","mini_flip","target_bank"],b:"<p>Roll through the lane directly above the mini-flipper, then hit a flashing left target. All three flash for the first award, two for the second, then one. Any other switch first turns the flashing arrows off until you roll the lane again.</p><p>Bumper hits change the lit award. After catching the hammerhead, the left flipper changes it.</p>"},
- {t:"Awards",h:["ff_awards"],b:"<ul><li>Super Buoys: alternate between the lit slingshots for a rising multiplier.</li><li>Super Life Ring: the Light Life Ring target scores 10M +5M per shot.</li><li>Cast 'n' Catch: count-ups at the center and right ramps from 1M up to 30M.</li><li>Light Video Mode: Shark Hunter at the right ramp, 3000x the video score.</li><li>Night Search Multiball: 2 balls, jackpots at all major shots.</li></ul>"},
+ {t:"Awards",h:["ff_awards",["life_target",0,"alt"]],b:"<ul><li>Super Buoys: alternate between the lit slingshots for a rising multiplier.</li><li>Super Life Ring: the Light Life Ring target scores 10M +5M per shot.</li><li>Cast 'n' Catch: count-ups at the center and right ramps from 1M up to 30M.</li><li>Light Video Mode: Shark Hunter at the right ramp, 3000x the video score.</li><li>Night Search Multiball: 2 balls, jackpots at all major shots.</li></ul>"},
  {t:"Night Search Multiball",h:alt(MAJ).concat(["target_bank","captive","shark"]),b:"<p>Jackpots light at all major shots and vanish if time runs out. Left targets relight them and boat targets raise them. After 8 jackpots, shoot the shark within 10 seconds for super jackpots. 4 jackpots light gear, and a super jackpot raises the machete multiplier.</p><p data-ed=\"premium\">On the Premium and LE, the Orca's steering wheel awards one add-a-ball.</p>"},
  {t:"What it leads to",h:["center_ramp"],b:"<p>Collect all five awards to light Super Cast 'n Catch at the center ramp.</p>"}
 ]},
@@ -162,7 +163,7 @@ var SECTIONS=[
  {t:"Easy",h:NUM(["left_orbit","right_ramp","chum"]),b:"<ul><li>Left orbit, right ramp, chum bucket</li><li>Center ramp, right ramp, chum bucket</li><li data-ed=\"premium\">Wave ramp, lookout tower (Premium and LE)</li></ul>"},
  {t:"Medium",h:NUM(["left_orbit","right_ramp","wave_ramp"]),b:"<ul><li>Left orbit, right ramp, wave ramp</li><li>Center ramp, reel spinner, chum bucket</li><li data-ed=\"premium\">Wave ramp, wheel spinner, harpoon lane (Premium and LE)</li></ul>"},
  {t:"Hard",h:NUM(["reel","harpoon","right_ramp"]),b:"<ul><li>Reel spinner, harpoon lane, right ramp</li><li>Center ramp, right ramp, center ramp, reel</li><li data-ed=\"premium\">Left orbit, right ramp, wave ramp, lookout tower (Premium and LE)</li></ul><p>Levels 3 and 4 also give limited time to make the first shot.</p>"},
- {t:"Extra hard",h:NUM(["wave_ramp","harpoon"]).concat([["life_arrow",3,"alt"]]),b:"<ul><li>Center ramp, reel, harpoon lane, life ring target</li><li>Wave ramp, harpoon lane, life ring target</li><li data-ed=\"premium\">Wave ramp, lookout tower, life ring target (Premium and LE)</li><li data-ed=\"premium\">Center ramp, right ramp, wave ramp, lookout tower, right ramp (Premium and LE)</li></ul>"+UNK("I could not find the life ring target, so its insert is marked.")},
+ {t:"Extra hard",h:NUM(["wave_ramp","harpoon","life_target"]),b:"<ul><li>Center ramp, reel, harpoon lane, life ring target</li><li>Wave ramp, harpoon lane, life ring target</li><li data-ed=\"premium\">Wave ramp, lookout tower, life ring target (Premium and LE)</li><li data-ed=\"premium\">Center ramp, right ramp, wave ramp, lookout tower, right ramp (Premium and LE)</li></ul>"},
  {t:"Rewards",h:[],b:"<p>Each knot raises the bonus multiplier: the first knot +1x for this ball only, later knots +1x for the rest of the game. Each knot adds 50M to the gear sale. Normally one try per knot. The thresher gives two.</p>"}
 ]},
 {g:"Other scoring",id:"pipit",title:"Pipit",steps:[
@@ -174,7 +175,7 @@ var SECTIONS=[
  {t:"Raising it",h:["machete_ins"],b:"<p>It starts at 2x. Permanent +1x: complete a shark encounter, catch a bounty shark other than the Mako first time, or complete Night Search Multiball. Temporary: complete the drop targets with a machete available (+1x), Pipit (+1x), or the +3x Machete wheel award (Premium and LE).</p><p>Machete cannot be lit during multiballs, except via Pipit, or wizard modes, but can be carried in.</p>"+UNK("The rulesheet says \"complete the drop targets\" here, though the Pro's left bank is standups.")}
 ]},
 {g:"Other scoring",id:"lifering",title:"Life Ring",steps:[
- {t:"Qualifying",h:["life_arrow"],b:"<p>Shoot the Light Life Ring target, then again while it flashes, to qualify the life ring ball save.</p>"+UNK("I could not find the target itself, so only its insert is marked.")},
+ {t:"Qualifying",h:["life_target","life_arrow"],b:"<p>Shoot the Light Life Ring target, then again while it flashes, to qualify the life ring ball save.</p>"},
  {t:"Using it",h:["life_ins","left_out"],b:"<p>The life ring insert above the left outlane lights orange for a short time after you press the action button. Time it to save a ball draining there. The first use each game has a grace period, and the timer gets shorter with each use.</p>"}
 ]},
 {g:"Other scoring",id:"combos",title:"Character combos",steps:[
@@ -184,7 +185,7 @@ var SECTIONS=[
  {t:"Pipit",h:NUM(["wave_ramp","lookout"]),ed:"premium",b:"<p>Wave ramp, lookout tower.</p>"},
  {t:"Alex Kintner",h:NUM(["right_ramp","center_ramp","reel","harpoon"]),b:"<p>Right ramp, center ramp, reel spinner, harpoon lane.</p>"},
  {t:"Ben Gardner",h:NUM(["center_ramp","right_ramp","left_orbit"]),b:"<p>Center ramp, right ramp, left orbit.</p>"},
- {t:"Scout Leader",h:NUM(["reel","harpoon"]).concat([["life_arrow",3,"alt"]]),b:"<p>Reel spinner, harpoon lane, life ring target.</p>"},
+ {t:"Scout Leader",h:NUM(["reel","harpoon","life_target"]),b:"<p>Reel spinner, harpoon lane, life ring target.</p>"},
  {t:"Sam Quint",h:NUM(["reel","harpoon","captive"]),b:"<p>Reel spinner, harpoon lane, captive ball or shark.</p>"},
  {t:"Goat",h:NUM(["center_ramp","right_ramp","chum"]),b:"<p>Center ramp, right ramp, chum bucket.</p>"}
 ]},
