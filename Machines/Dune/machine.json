@@ -1,0 +1,13 @@
+{
+  "name": "Dune",
+  "manufacturer": "Barrels of Fun",
+  "year": 2025,
+  "code_rev": "2026.03.30",
+  "title": "Dune Field Guide",
+  "heading": "Dune",
+  "aria": "Dune playfield with the current step's shots highlighted",
+  "width": 830,
+  "height": 1645,
+  "label_split": 415,
+  "output": "dune/index.html"
+}
