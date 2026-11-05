@@ -1,0 +1,13 @@
+{
+  "name": "Pirates of the Caribbean",
+  "manufacturer": "Jersey Jack Pinball",
+  "year": 2018,
+  "code_rev": "not stated",
+  "title": "Pirates of the Caribbean Field Guide",
+  "heading": "Pirates of the Caribbean",
+  "aria": "Pirates of the Caribbean playfield with the current step's shots highlighted",
+  "width": 640,
+  "height": 1020,
+  "label_split": 320,
+  "output": "pirates-of-the-caribbean/index.html"
+}
