@@ -1,0 +1,13 @@
+{
+  "name": "Dialed In!",
+  "manufacturer": "Jersey Jack Pinball",
+  "year": 2017,
+  "code_rev": "not stated",
+  "title": "Dialed In! Field Guide",
+  "heading": "Dialed In!",
+  "aria": "Dialed In! playfield with the current step's shots highlighted",
+  "width": 640,
+  "height": 1300,
+  "label_split": 320,
+  "output": "dialed-in/index.html"
+}
