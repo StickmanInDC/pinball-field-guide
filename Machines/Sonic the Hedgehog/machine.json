@@ -1,0 +1,13 @@
+{
+  "name": "Sonic the Hedgehog",
+  "manufacturer": "Jersey Jack Pinball",
+  "year": 2026,
+  "code_rev": "0.94",
+  "title": "Sonic the Hedgehog Field Guide",
+  "heading": "Sonic the Hedgehog",
+  "aria": "Sonic the Hedgehog playfield with the current step's shots highlighted",
+  "width": 640,
+  "height": 1213,
+  "label_split": 320,
+  "output": "sonic-the-hedgehog/index.html"
+}
